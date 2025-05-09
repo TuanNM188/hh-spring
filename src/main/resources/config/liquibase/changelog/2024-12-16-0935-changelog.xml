@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1728969148558-99" author="TuanNM">
+        <addColumn tableName="feature">
+            <column name="group_code" type="VARCHAR(255)"/>
+            <column name="group_name" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1728969098558-99" author="TuanNM">
+        <sql>
+            UPDATE feature
+            SET group_code='BUSINESS_OWNER_INTAKE',group_name='Business Owner Intake'
+            WHERE id='0b1d537f-1cfd-4444-9f09-508f10cccad4'::uuid::uuid;
+            UPDATE feature
+            SET group_code='BUSINESS_OWNER_INTAKE',group_name='Business Owner Intake'
+            WHERE id='0b0eaa03-f772-4ac8-913b-b45a992cd1b2'::uuid::uuid;
+            UPDATE feature
+            SET group_code='BUSINESS_OWNER_INTAKE',group_name='Business Owner Intake'
+            WHERE id='0b1aa7c4-ac0d-4f0d-8f2a-e453fc6dfec7'::uuid::uuid;
+            UPDATE feature
+            SET group_code='BUSINESS_OWNER_INTAKE',group_name='Business Owner Intake'
+            WHERE id='0b10489c-7d27-4f43-8ff5-7e11c5221a88'::uuid::uuid;
+            UPDATE feature
+            SET group_code='BUSINESS_OWNER_INTAKE',group_name='Business Owner Intake'
+            WHERE id='0b0eaa03-f772-4ac8-913b-b45a992cd1b4'::uuid::uuid;
+            UPDATE feature
+            SET group_name='Technical Assistance Application',group_code='TECHNICAL_ASSISTANCE_APPLICATION'
+            WHERE id='7d9f3b89-e5b6-4543-8ed7-872b2888751c'::uuid::uuid;
+            INSERT INTO feature (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"name",feature_code,is_dynamic,priority_order,parent_id,group_code,group_name)
+            VALUES ('580b10c0-b798-473b-a736-45b903b03c40'::uuid,'admin@localhost.com','2024-09-09 02:38:49.086','admin@localhost.com'
+                   ,'2024-09-09 02:38:49.086',false,'Additional Questions','TECHNICAL_ASSISTANCE_ADDITIONAL_QUESTIONS'
+                   ,false,5,'0b25991b-9689-4e61-91d7-0fa2ded8547b'::uuid,'TECHNICAL_ASSISTANCE_APPLICATION','Technical Assistance Application');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

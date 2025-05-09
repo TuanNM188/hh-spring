@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1734061430884-01" author="LinhNguyen">
+        <createTable tableName="community_board_comment">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_comment"/>
+            </column>
+            <column name="author_id" type="UUID"/>
+            <column name="post_id" type="UUID"/>
+            <column name="parent_id" type="UUID"/>
+            <column name="content" type="TEXT"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1734061430884-02" author="LinhNguyen">
+        <createTable tableName="community_board_file">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_file"/>
+            </column>
+            <column name="entry_type" type="varchar(255)"/>
+            <column name="entry_id" type="uuid"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="real_name" type="varchar(255)"/>
+            <column name="path" type="varchar(255)"/>
+            <column name="size" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="suffix" type="varchar(255)"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1734061430884-03" author="LinhNguyen">
+        <createTable tableName="community_board_group_member">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_group_member"/>
+            </column>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+            <column name="group_role" type="VARCHAR(255)"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1734061430884-04" author="LinhNguyen">
+        <createTable tableName="community_board_like">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_like"/>
+            </column>
+            <column name="author_id" type="UUID"/>
+            <column name="entry_type" type="VARCHAR(255)"/>
+            <column name="entry_id" type="UUID"/>
+            <column name="like_icon" type="VARCHAR(255)"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1734061430884-05" author="LinhNguyen">
+        <createTable tableName="community_board_post">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_post"/>
+            </column>
+            <column name="author_id" type="UUID"/>
+            <column name="content" type="TEXT"/>
+            <column name="visibility" type="VARCHAR(255)"/>
+            <column name="group_id" type="UUID"/>
+            <column name="scheduled_time" type="TIMESTAMP"/>
+            <column name="is_pin" type="BOOLEAN"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1734061430884-06" author="LinhNguyen">
+        <createTable tableName="community_board_user_restriction">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_user_restriction"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="restriction_type" type="VARCHAR(255)"/>
+            <column name="restricted_since" type="TIMESTAMP"/>
+            <column name="restricted_until" type="TIMESTAMP"/>
+            <column name="reason" type="TEXT"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734061430884-07" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('7f47bbce-8789-489e-87e3-f5453176d316', 'CREATE_COMMUNITY_BOARD_POST', 'API'),
+                ('64c03c5e-2a0c-4748-9a79-2355a6fae364', 'GET_COMMUNITY_BOARD_POSTS', 'API'),
+                ('59900818-cde9-4ed4-83ee-bb10e8fdaf60', 'UPDATE_COMMUNITY_BOARD_POST', 'API'),
+                ('41a82eea-ba2e-4206-8eb3-68f094a67e57', 'DELETE_COMMUNITY_BOARD_POST', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '7f47bbce-8789-489e-87e3-f5453176d316'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '64c03c5e-2a0c-4748-9a79-2355a6fae364'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '59900818-cde9-4ed4-83ee-bb10e8fdaf60'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '41a82eea-ba2e-4206-8eb3-68f094a67e57'),
+
+                ('ROLE_PORTAL_HOST', '7f47bbce-8789-489e-87e3-f5453176d316'),
+                ('ROLE_PORTAL_HOST', '64c03c5e-2a0c-4748-9a79-2355a6fae364'),
+                ('ROLE_PORTAL_HOST', '59900818-cde9-4ed4-83ee-bb10e8fdaf60'),
+                ('ROLE_PORTAL_HOST', '41a82eea-ba2e-4206-8eb3-68f094a67e57'),
+
+                ('ROLE_TECHNICAL_ADVISOR', '7f47bbce-8789-489e-87e3-f5453176d316'),
+                ('ROLE_TECHNICAL_ADVISOR', '64c03c5e-2a0c-4748-9a79-2355a6fae364'),
+                ('ROLE_TECHNICAL_ADVISOR', '59900818-cde9-4ed4-83ee-bb10e8fdaf60'),
+                ('ROLE_TECHNICAL_ADVISOR', '41a82eea-ba2e-4206-8eb3-68f094a67e57'),
+
+                ('ROLE_BUSINESS_OWNER', '7f47bbce-8789-489e-87e3-f5453176d316'),
+                ('ROLE_BUSINESS_OWNER', '64c03c5e-2a0c-4748-9a79-2355a6fae364'),
+                ('ROLE_BUSINESS_OWNER', '59900818-cde9-4ed4-83ee-bb10e8fdaf60'),
+                ('ROLE_BUSINESS_OWNER', '41a82eea-ba2e-4206-8eb3-68f094a67e57'),
+
+                ('ROLE_COMMUNITY_PARTNER', '7f47bbce-8789-489e-87e3-f5453176d316'),
+                ('ROLE_COMMUNITY_PARTNER', '64c03c5e-2a0c-4748-9a79-2355a6fae364'),
+                ('ROLE_COMMUNITY_PARTNER', '59900818-cde9-4ed4-83ee-bb10e8fdaf60'),
+                ('ROLE_COMMUNITY_PARTNER', '41a82eea-ba2e-4206-8eb3-68f094a67e57');
+        </sql>
+    </changeSet>
+    <changeSet id="1734061430884-08" author="LinhNguyen">
+        <addColumn tableName="community_board_group">
+            <column name="portal_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-09" author="LinhNguyen">
+        <addColumn tableName="community_board_file">
+            <column name="index_order" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-10" author="LinhNguyen">
+        <addColumn tableName="community_board_post">
+            <column name="portal_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-11" author="LinhNguyen">
+        <addColumn tableName="community_board_post">
+            <column defaultValueBoolean="false" name="is_notify_all" type="boolean"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-12" author="LinhNguyen">
+        <modifyDataType tableName="community_board_group_member" columnName="group_id" newDataType="UUID"/>
+        <modifyDataType tableName="community_board_group_member" columnName="user_id" newDataType="UUID"/>
+    </changeSet>
+    <changeSet id="1734061430884-13" author="LinhNguyen">
+        <createTable tableName="community_board_report">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_community_board_report"/>
+            </column>
+            <column name="action_type" type="VARCHAR(255)"/>
+            <column name="target_type" type="VARCHAR(255)"/>
+            <column name="target_id" type="UUID"/>
+            <column name="description" type="TEXT"/>
+            <column name="performed_id" type="UUID"/>
+            <column name="performed_at" type="TIMESTAMP" defaultValueComputed="NOW()"/>
+            <column name="related_data" type="TEXT"/>
+            <column name="portal_id" type="UUID"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734061430884-14" author="LinhNguyen">
+        <addColumn tableName="community_board_user_restriction">
+            <column name="portal_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-15" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('a2202fd3-86d6-4e51-af07-bbca09a248df', 'GET_ALL_COMMUNITY_BOARD_GROUP', 'API'),
+                ('d798c892-0ff4-4dab-bd8d-59af23fc766f', 'CREATE_COMMUNITY_BOARD_COMMENT', 'API'),
+                ('e3602e87-b3a7-44a2-b03d-695bb640a359', 'GET_COMMUNITY_BOARD_COMMENT', 'API'),
+                ('84ccc83e-4cc8-4cae-8966-0032bca674a2', 'UPDATE_COMMUNITY_BOARD_COMMENT', 'API'),
+                ('d20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4', 'DELETE_COMMUNITY_BOARD_COMMENT', 'API'),
+                ('ea51eaba-693b-4a04-87e7-0c4a64d86d41', 'ADD_USER_RESTRICT', 'API'),
+                ('ab535e85-5221-4c32-bfd9-861aab2b735e', 'REMOVE_USER_RESTRICT', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'a2202fd3-86d6-4e51-af07-bbca09a248df'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'd798c892-0ff4-4dab-bd8d-59af23fc766f'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'e3602e87-b3a7-44a2-b03d-695bb640a359'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '84ccc83e-4cc8-4cae-8966-0032bca674a2'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'd20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'ea51eaba-693b-4a04-87e7-0c4a64d86d41'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'ab535e85-5221-4c32-bfd9-861aab2b735e'),
+
+                ('ROLE_PORTAL_HOST', 'a2202fd3-86d6-4e51-af07-bbca09a248df'),
+                ('ROLE_PORTAL_HOST', 'd798c892-0ff4-4dab-bd8d-59af23fc766f'),
+                ('ROLE_PORTAL_HOST', 'e3602e87-b3a7-44a2-b03d-695bb640a359'),
+                ('ROLE_PORTAL_HOST', '84ccc83e-4cc8-4cae-8966-0032bca674a2'),
+                ('ROLE_PORTAL_HOST', 'd20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4'),
+                ('ROLE_PORTAL_HOST', 'ea51eaba-693b-4a04-87e7-0c4a64d86d41'),
+                ('ROLE_PORTAL_HOST', 'ab535e85-5221-4c32-bfd9-861aab2b735e'),
+
+                ('ROLE_TECHNICAL_ADVISOR', 'a2202fd3-86d6-4e51-af07-bbca09a248df'),
+                ('ROLE_TECHNICAL_ADVISOR', 'd798c892-0ff4-4dab-bd8d-59af23fc766f'),
+                ('ROLE_TECHNICAL_ADVISOR', 'e3602e87-b3a7-44a2-b03d-695bb640a359'),
+                ('ROLE_TECHNICAL_ADVISOR', '84ccc83e-4cc8-4cae-8966-0032bca674a2'),
+                ('ROLE_TECHNICAL_ADVISOR', 'd20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4'),
+
+                ('ROLE_BUSINESS_OWNER', 'a2202fd3-86d6-4e51-af07-bbca09a248df'),
+                ('ROLE_BUSINESS_OWNER', 'd798c892-0ff4-4dab-bd8d-59af23fc766f'),
+                ('ROLE_BUSINESS_OWNER', 'e3602e87-b3a7-44a2-b03d-695bb640a359'),
+                ('ROLE_BUSINESS_OWNER', '84ccc83e-4cc8-4cae-8966-0032bca674a2'),
+                ('ROLE_BUSINESS_OWNER', 'd20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4'),
+
+                ('ROLE_COMMUNITY_PARTNER', 'a2202fd3-86d6-4e51-af07-bbca09a248df'),
+                ('ROLE_COMMUNITY_PARTNER', 'd798c892-0ff4-4dab-bd8d-59af23fc766f'),
+                ('ROLE_COMMUNITY_PARTNER', 'e3602e87-b3a7-44a2-b03d-695bb640a359'),
+                ('ROLE_COMMUNITY_PARTNER', '84ccc83e-4cc8-4cae-8966-0032bca674a2'),
+                ('ROLE_COMMUNITY_PARTNER', 'd20ad58d-c89a-4ea4-8ff9-d2c9fc5bb4e4');
+        </sql>
+    </changeSet>
+    <changeSet id="1734061430884-16" author="LinhNguyen">
+        <dropTable tableName="community_board_report" />
+    </changeSet>
+    <changeSet id="1734061430884-17" author="LinhNguyen">
+        <dropColumn tableName="community_board_like" columnName="created_by" />
+        <dropColumn tableName="community_board_like" columnName="created_date" />
+        <dropColumn tableName="community_board_like" columnName="last_modified_by" />
+        <dropColumn tableName="community_board_like" columnName="last_modified_date" />
+        <dropColumn tableName="community_board_like" columnName="is_delete" />
+    </changeSet>
+    <changeSet id="1734061430884-18" author="LinhNguyen">
+        <renameColumn tableName="community_board_user_restriction" oldColumnName="restricted_since" newColumnName="start_date" columnDataType="TIMESTAMP" />
+        <renameColumn tableName="community_board_user_restriction" oldColumnName="restricted_until" newColumnName="end_date" columnDataType="TIMESTAMP" />
+    </changeSet>
+    <changeSet id="1734061430884-20" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_post
+            SET is_pin = false
+            WHERE is_pin IS NULL;
+        </sql>
+    </changeSet>
+    <changeSet id="1734061430884-21" author="LinhNguyen">
+        <addColumn tableName="community_board_group_member">
+            <column name="status" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734061430884-22" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_group_member
+            SET status = 'REQUEST_JOIN', group_role = null
+            WHERE group_role = 'REQUEST_JOIN';
+        </sql>
+    </changeSet>
+    <changeSet id="1734061430884-23" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_group_member
+            SET status = 'SEND_INVITE', group_role = null
+            WHERE group_role = 'SEND_INVITE';
+        </sql>
+    </changeSet>
+    <changeSet id="1734061430884-24" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_group_member
+            SET status = 'JOINED'
+            WHERE status is null;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

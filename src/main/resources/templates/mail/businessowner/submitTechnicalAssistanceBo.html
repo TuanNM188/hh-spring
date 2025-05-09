@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.business.owner.apply.technical.assistance.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.business.owner.apply.technical.assistance.body}">
+    Thank you for applying for the 1-on-1 support program. Our team is reviewing and verifying your application. If your
+    application is approved,
+    you will receive an email from us with instructions for booking your first appointment and your recommended advisors.
+  </p>
+  <p>
+    <span th:text="#{email.business.owner.apply.technical.assistance.body2}">
+      If you have any additional questions or need assistance regarding your appointment, email
+    </span>
+    <span
+        th:text="${supportEmail}"
+    >contact@myhuub.com</span> or
+    <a
+        th:href="${supportLiveChat}"
+        th:text="#{email.footer.chat.lowercase.team.text}"
+    >chat with our team now.
+  </p>
+  <p class="mb-0" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>
+

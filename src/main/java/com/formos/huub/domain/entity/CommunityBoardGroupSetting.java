@@ -1,0 +1,26 @@
+package com.formos.huub.domain.entity;
+
+import com.formos.huub.domain.entity.embedkey.CommunityBoardGroupSettingEmbedKey;
+import com.formos.huub.domain.enums.SettingKeyCodeEnum;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "community_board_group_setting")
+public class CommunityBoardGroupSetting {
+
+    @EmbeddedId
+    private CommunityBoardGroupSettingEmbedKey id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "setting_key")
+    private SettingKeyCodeEnum settingKey;
+
+    @Column(name = "setting_value")
+    private String settingValue;
+}

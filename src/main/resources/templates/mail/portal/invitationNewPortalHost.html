@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.portalHost.new.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.invitation.portalHost.new.invite(${portalName})}">
+    We are excited to invite you to join {0} on the HUUB platform as a Portal Host. As a Portal Host,
+    you will have access to manage and oversee the portal to ensure it serves your community effectively.
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.portalHost.new.invite2}">
+    Please follow the link below to set up your account and get started:
+  </p>
+  <p class="mt-0">
+    <a th:with="url=(@{|${baseUrl}/auth/set-password/${token}?type=PORTAL-HOST|})" th:href="${url}" text="Setup Your Account">Setup Your Account</a>
+  </p>
+  <p>
+      <span th:text="#{email.invitation.portalHost.new.support1(${supportEmail})}">
+        If you have any questions or need assistance during the setup process, please do not hesitate to contact our support team at {0}.
+      </span>
+  </p>
+  <a
+      th:href="${liveChat}"
+      th:text="#{email.footer.chat.team.text}"
+  >Chat with our team now.</a>
+  <p th:text="#{email.invitation.portalHost.new.support2(${portalName})}">
+  </p>
+  <p>
+      <span th:text="#{email.invitation.portalHost.new.support3}">
+        Best regards,
+      </span>
+    <br/>
+    <strong th:text="#{email.invitation.portalHost.new.support4}">
+        HUUB Team
+      </strong>
+    <br/>
+    <span th:text="#{email.invitation.portalHost.new.support5(${supportEmail})}">
+        {0}
+    </span>
+  </p>
+</div>
+</html>

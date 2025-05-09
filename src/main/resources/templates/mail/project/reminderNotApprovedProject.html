@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p th:text="#{email.reminder.project.notApproved.hello(${navigatorFirstName})}">Hello {Navigator First Name},</p>
+  <p th:text="#{email.reminder.project.notApproved.content(${advisorFullName}, ${businessOwnerFullName}, ${threeDaysLater})}">A new project proposal needs to be reviewed from {Advisor Full Name} for {Business Owner Full Name}. Please take a moment to review the proposal and approve or deny it before {today’s date + 3}. This project proposal will expire if no action is taken by then.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${linkToProjectDetail}|})"
+          th:href="${linkToProjectDetail}"
+          th:text="#{email.reminder.project.notApproved.viewProject}"
+        >View Project Proposal</a
+        >
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+

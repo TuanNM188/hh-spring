@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+
+    <changeSet id="1729350938155-07" author="BinhTran">
+        <sql>
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.priorityFirst',
+                group_key = 'privacy-setting.about'
+            WHERE id = '27d92c8a-f4c8-4cde-9184-4d8d652e39bb';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.company',
+                group_key = 'privacy-setting.about'
+            WHERE id = '40f0c01f-64fa-44f3-9146-d9dc305442a8';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.supportRequest',
+                group_key = 'privacy-setting.about'
+            WHERE id = '49ec8f3e-83e3-412a-ab1b-7c6f081e1782';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.huubPortal',
+                group_key = 'privacy-setting.about'
+            WHERE id = 'b0e73043-dc0e-444a-9564-bfe5377ffa15';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.prioritySecond',
+                group_key = 'privacy-setting.about'
+            WHERE id = 'b64a475e-5c5d-4814-8d6c-90a4bbf4f664';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.businessWebsite',
+                group_key = 'privacy-setting.about'
+            WHERE id = 'e2838116-26d8-4e8a-aa96-e6a6fe68ea14';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.gender',
+                group_key = 'privacy-setting.about'
+            WHERE id = 'ec0b6f67-c7f3-4f83-8f68-70e41aa7caa9';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.businessOpenedDate',
+                group_key = 'privacy-setting.about'
+            WHERE id = 'efc8874e-17ce-4c0e-b039-1b113cc35212';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.username',
+                group_key = 'privacy-setting.details'
+            WHERE id = '29c4c01b-548a-4c08-b35c-7cbbab5fbaeb';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.lastName',
+                group_key = 'privacy-setting.details'
+            WHERE id = '8b3811d3-1bfb-4f89-b818-793e4c808eef';
+
+            UPDATE setting_definition
+            SET title_key = 'privacy-setting.firstName',
+                group_key = 'privacy-setting.details'
+            WHERE id = '998dd5e8-a5ac-45c3-ac59-8aaed73dc65e';
+
+
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1719476647425-10" author="UyHoang">
+        <createTable tableName="outside_report">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_outside_report"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="month" type="INT"/>
+            <column name="year" type="INT"/>
+            <column name="portal_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pdf_url" type="VARCHAR(1000)"/>
+            <column name="summary" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1719476647425-11" author="UyHoang">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="outside_report"
+                                 constraintName="FK_OUTSIDE_REPORT_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+
+    <changeSet id="1729353996925-75" author="Uy">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('8e82a72e-c66d-4ae8-9e4e-dd8484241239'::uuid,'CREATE_OUTSIDE_REPORT','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','8e82a72e-c66d-4ae8-9e4e-dd8484241239'::uuid)
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996925-76" author="Uy">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('7542ff0c-9825-4de9-a7db-59ba9abe9130'::uuid,'DELETE_OUTSIDE_REPORT','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','7542ff0c-9825-4de9-a7db-59ba9abe9130'::uuid)
+        </sql>
+    </changeSet>
+
+    <changeSet id="172935399692-77" author="Uy">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('46bb0ac3-b17f-4956-8101-8b84bc9867ce'::uuid,'SEARCH_OUTSIDE_REPORT','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','46bb0ac3-b17f-4956-8101-8b84bc9867ce'::uuid),
+                   ('ROLE_PORTAL_HOST','46bb0ac3-b17f-4956-8101-8b84bc9867ce'::uuid);
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996925-78" author="Uy">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('4608c1da-901a-4d6c-aa64-ac57c563c5d0'::uuid,'UPLOAD_OUTSIDE_REPORT_ATTACHMENT','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','4608c1da-901a-4d6c-aa64-ac57c563c5d0'::uuid)
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

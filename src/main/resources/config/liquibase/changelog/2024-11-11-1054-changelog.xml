@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719476647421-77" author="hnnguyen (generated)">
+        <dropForeignKeyConstraint baseTableName="booking_setting"
+                                  constraintName="fk_booking_setting_on_technical_advisor" />
+
+        <dropForeignKeyConstraint baseTableName="booking_setting"
+                                  constraintName="fk_setting_on_technical_advisor" />
+
+        <dropUniqueConstraint constraintName="uc_setting_technical_advisor"
+                              tableName="booking_setting"
+                              uniqueColumns="technical_advisor_id"/>
+
+        <sql>
+            UPDATE booking_setting b
+            SET technical_advisor_id = (
+                SELECT ta.user_id
+                FROM technical_advisor ta
+                WHERE ta.id = b.technical_advisor_id
+            )
+            WHERE EXISTS (
+                SELECT 1
+                FROM technical_advisor ta
+                WHERE ta.id = b.technical_advisor_id
+            );
+        </sql>
+
+        <renameColumn
+            newColumnName="user_id"
+            oldColumnName="technical_advisor_id"
+            tableName="booking_setting"
+        />
+
+        <addColumn tableName="jhi_user">
+            <column defaultValueBoolean="false" name="allow_business_owner_booking" type="boolean"/>
+        </addColumn>
+
+    </changeSet>
+
+    <changeSet id="1719476647421-74" author="hnnguyen (generated)">
+        <addUniqueConstraint columnNames="user_id" constraintName="uc_setting_user"
+                             tableName="booking_setting"/>
+    </changeSet>
+
+    <changeSet id="1719476647421-34" author="hnnguyen (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="booking_setting"
+                                 constraintName="FK_SETTING_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+
+
+</databaseChangeLog>

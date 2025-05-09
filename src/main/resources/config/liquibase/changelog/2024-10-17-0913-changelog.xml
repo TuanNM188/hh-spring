@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1729129674324-74" author="fvnDN_24 (generated)">
+        <createTable tableName="setting_definition">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_setting_definition"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_code" type="VARCHAR(255)"/>
+            <column name="group_name" type="VARCHAR(255)"/>
+            <column name="data_type" type="VARCHAR(255)"/>
+            <column name="default_value" type="VARCHAR(255)"/>
+            <column name="options" type="VARCHAR(255)"/>
+            <column name="priority_order" type="INT"/>
+            <column name="is_disable" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1729129674324-76" author="fvnDN_24 (generated)">
+        <createTable tableName="user_setting">
+            <column name="setting_key" type="VARCHAR(255)"/>
+            <column name="setting_value" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_setting"/>
+            </column>
+            <column name="setting_definition_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_setting"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

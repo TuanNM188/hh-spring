@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
+<head>
+    <title th:text="#{email.direct.message.new.title(${portalName})}">JHipster activation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" th:href="@{|${baseUrl}/favicon.ico|}"/>
+</head>
+<body>
+<p th:text="#{email.direct.message.new.notification(${senderName}, ${portalName})}">You have a new message from ... on your HUUB account.
+</p>
+<p>
+    <a th:with="url=(@{|${baseUrl}|})" th:href="${url}" th:text="${url}">Activation link</a>
+</p>
+</body>
+</html>

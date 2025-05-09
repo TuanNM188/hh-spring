@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1742986294020-100" author="TuanNM">
+        <sql>
+            UPDATE public.question
+            SET option_type='COUNTRY'
+            WHERE id='0ae9bb00-f7d5-4de6-8073-d6facb7dc39a'::uuid::uuid;
+            UPDATE public.question
+            SET option_type='STATE'
+            WHERE id='0ae56733-2982-430d-87f2-947beda5698f'::uuid::uuid;
+            UPDATE question
+            SET option_type='CITY'
+            WHERE id='0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53'::uuid::uuid;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

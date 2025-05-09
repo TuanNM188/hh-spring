@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720165885891-21" author="Nghia Nguyen">
+        <createTable tableName="portal_funding">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_portal_funding"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="date_added" type="DATETIME"/>
+            <column name="publish_date" type="DATETIME"/>
+            <column name="type" type="VARCHAR(50)"/>
+            <column name="amount" type="decimal(10,2)" defaultValueNumeric="0.00"/>
+            <column name="description" type="TEXT"/>
+            <column name="image_url" type="VARCHAR(1000)"/>
+            <column name="funder_name" type="VARCHAR(255)"/>
+            <column name="funder_url" type="VARCHAR(1000)"/>
+            <column name="application_deadline" type="DATETIME"/>
+            <column name="application_url" type="VARCHAR(1000)"/>
+            <column name="application_process" type="TEXT"/>
+            <column name="application_requirement" type="TEXT"/>
+            <column name="application_restriction" type="TEXT"/>
+            <column name="portal_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720666099278-90" author="Nghia Nguyen">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="portal_funding"
+                                 constraintName="FK_PORTAL_FUNDING_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1684799935641-20" author="Nghia Nguyen">
+        <createTable tableName="portal_funding_category">
+            <column name="portal_funding_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="portal_funding_id, category_id" tableName="portal_funding_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="portal_funding_id"
+                                 baseTableName="portal_funding_category"
+                                 constraintName="fk_portal_funding_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portal_funding"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="portal_funding_category"
+                                 constraintName="fk_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+    </changeSet>
+
+</databaseChangeLog>

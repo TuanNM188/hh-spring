@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1798255619953-32" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('f7eec42c-6a5e-4253-aa59-e15398e50fcd', 'CREATE_COMMUNITY_BOARD_GROUP', 'API'),
+                ('f05158b1-5117-44a9-b5ed-f9150f1c67e6', 'GET_COMMUNITY_BOARD_GROUP_DETAIL', 'API'),
+                ('dc02d44e-703a-44f3-80b7-4f4f77cb2306', 'UPDATE_COMMUNITY_BOARD_GROUP', 'API'),
+                ('36a2a227-f1be-42be-af1e-cdf3e956b779', 'GET_COMMUNITY_BOARD_GROUP_INITIAL_SETTINGS', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'f7eec42c-6a5e-4253-aa59-e15398e50fcd'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'f05158b1-5117-44a9-b5ed-f9150f1c67e6'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'dc02d44e-703a-44f3-80b7-4f4f77cb2306'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '36a2a227-f1be-42be-af1e-cdf3e956b779'),
+                ('ROLE_PORTAL_HOST', 'f7eec42c-6a5e-4253-aa59-e15398e50fcd'),
+                ('ROLE_PORTAL_HOST', 'f05158b1-5117-44a9-b5ed-f9150f1c67e6'),
+                ('ROLE_PORTAL_HOST', 'dc02d44e-703a-44f3-80b7-4f4f77cb2306'),
+                ('ROLE_PORTAL_HOST', '36a2a227-f1be-42be-af1e-cdf3e956b779');
+        </sql>
+    </changeSet>
+    <changeSet id="1798255619953-43" author="LinhNguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_TECHNICAL_ADVISOR', 'f7eec42c-6a5e-4253-aa59-e15398e50fcd'),
+                ('ROLE_TECHNICAL_ADVISOR', 'dc02d44e-703a-44f3-80b7-4f4f77cb2306'),
+                ('ROLE_TECHNICAL_ADVISOR', '36a2a227-f1be-42be-af1e-cdf3e956b779');
+        </sql>
+    </changeSet>
+    <changeSet id="1798255619953-33" author="LinhNguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_COMMUNITY_PARTNER', 'f7eec42c-6a5e-4253-aa59-e15398e50fcd'),
+                ('ROLE_COMMUNITY_PARTNER', 'f05158b1-5117-44a9-b5ed-f9150f1c67e6'),
+                ('ROLE_COMMUNITY_PARTNER', 'dc02d44e-703a-44f3-80b7-4f4f77cb2306'),
+                ('ROLE_COMMUNITY_PARTNER', '36a2a227-f1be-42be-af1e-cdf3e956b779'),
+
+                ('ROLE_BUSINESS_OWNER', 'f05158b1-5117-44a9-b5ed-f9150f1c67e6'),
+                ('ROLE_TECHNICAL_ADVISOR', 'f05158b1-5117-44a9-b5ed-f9150f1c67e6');
+        </sql>
+    </changeSet>
+    <changeSet id="1798255619953-34" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('ac784e5f-f38b-410f-a7a4-3f6f96149c7b', 'DELETE_COMMUNITY_BOARD_GROUP', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'ac784e5f-f38b-410f-a7a4-3f6f96149c7b'),
+                ('ROLE_PORTAL_HOST', 'ac784e5f-f38b-410f-a7a4-3f6f96149c7b'),
+                ('ROLE_COMMUNITY_PARTNER', 'ac784e5f-f38b-410f-a7a4-3f6f96149c7b'),
+                ('ROLE_TECHNICAL_ADVISOR', 'ac784e5f-f38b-410f-a7a4-3f6f96149c7b');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1727755619953-85" author="hnnguyen (generated)">
+        <sql>
+            DROP PROCEDURE IF EXISTS insert_user_settings(UUID);
+
+            CREATE PROCEDURE insert_user_settings(userId UUID)
+                LANGUAGE plpgsql
+            AS '
+            BEGIN
+              IF NOT EXISTS (
+                SELECT 1 FROM user_setting
+                WHERE user_setting.user_id = userId
+              ) THEN
+                INSERT INTO user_setting (setting_key, setting_value, user_id, setting_definition_id)
+                SELECT
+                    sd.key_code as setting_key,
+                    CASE
+                        WHEN sd.data_type = ''JSON'' THEN sd.default_value
+                        WHEN sd.data_type = ''STRING'' THEN sd.default_value
+                        ELSE sd.default_value
+                    END as setting_value,
+                    userId as user_id,
+                    sd.id as setting_definition_id
+                FROM setting_definition sd WHERE sd.category IN (''NOTIFICATION'', ''PRIVACY'');
+                        END IF;
+            END;
+            ';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1090363117064-106" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('9ee0150e-f30b-48f3-87b0-14e657694690'::uuid,'SEARCH_EVENT_REGISTRATION_LIST','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_PORTAL_HOST','9ee0150e-f30b-48f3-87b0-14e657694690'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','9ee0150e-f30b-48f3-87b0-14e657694690'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','9ee0150e-f30b-48f3-87b0-14e657694690'::uuid);
+        </sql>
+    </changeSet>
+    <changeSet id="1090389117064-106" author="TuanNM">
+        <sql>
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",router_link,priority_order,is_active,"position",is_public,menu_code,menu_key)
+            VALUES ('52a63b9f-7152-4970-989d-f831d536c83e'::uuid,'admin@localhost.com','2024-12-31 03:45:08.432','admin@localhost.com','2024-12-31 03:45:08.432',false,'Courses','/course-managements/courses',1,true,'COURSE_MANAGEMENT',false,'COURSE_MANAGEMENT_COURSE_REGISTRATION','menu.courseRegistration');
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",router_link,priority_order,is_active,"position",is_public,menu_code,menu_key)
+            VALUES ('d4023504-508d-4ef6-951c-77fca76b356a'::uuid,'admin@localhost.com','2024-12-31 03:45:08.432','admin@localhost.com','2024-12-31 03:45:08.432',false,'Events','/course-managements/events',2,true,'COURSE_MANAGEMENT',false,'COURSE_MANAGEMENT_EVENT_REGISTRATION','menu.eventRegistration');
+
+        </sql>
+    </changeSet>
+    <changeSet id="1090380917064-106" author="TuanNM">
+        <sql>
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_PORTAL_HOST','52a63b9f-7152-4970-989d-f831d536c83e'::uuid);
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','52a63b9f-7152-4970-989d-f831d536c83e'::uuid);
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','52a63b9f-7152-4970-989d-f831d536c83e'::uuid);
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_PORTAL_HOST','d4023504-508d-4ef6-951c-77fca76b356a'::uuid);
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','d4023504-508d-4ef6-951c-77fca76b356a'::uuid);
+            INSERT INTO  menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','d4023504-508d-4ef6-951c-77fca76b356a'::uuid);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+  <div th:fragment="body-content">
+    <p th:text="#{email.invitation.greeting(${receiverName})}">
+      Hello {0},
+    </p>
+    <p th:text="#{email.invitation.invite(${inviteSenderName}, ${inviteSenderOrganizationName})}">
+      {0} with {1} has invited you to become an advisor with their organization on HUUB. Use the URL below to set up your account and get started:
+    </p>
+<!--    <ul>-->
+<!--      <li th:each="portal : ${portals}">-->
+<!--        <span th:text="${portal.portalName}"><strong></strong></span>-->
+<!--        <span> - </span>-->
+<!--        <a-->
+<!--           th:href="${portal.clientAppUrl}"-->
+<!--           th:text="${portal.clientAppUrl}"-->
+<!--        ></a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <p th:text="#{email.invitation.invite1}">-->
+<!--      Use the URL below to set up your account and get started:-->
+<!--    </p>-->
+    <p>
+      <a th:with="url=(@{|${portals[0].clientAppUrl}/auth/set-password/${token}?type=${type}|})" th:href="${url}" th:text="#{email.invitation.setup}">Setup Your Account</a>
+    </p>
+    <p class="mb-0" th:text="#{email.invitation.support1}">
+      If you have any questions, please contact our customer success team anytime. We also offer live chat during business hours.
+    </p>
+    <a
+       th:href="${liveChat}"
+       th:text="#{email.footer.chat.team.text}"
+    >Chat with our team now.</a>
+    <p class="mb-0" th:text="#{email.footer.welcome}">Welcome To HUUB,</p>
+    <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+  </div>
+</html>

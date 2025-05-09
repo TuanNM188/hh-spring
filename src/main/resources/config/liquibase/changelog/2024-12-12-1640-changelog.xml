@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729988983234-03" author="TuanNM">
+        <sql>
+            INSERT INTO public.menu_authority (authority_name, menu_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR', '251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid),
+                   ('ROLE_BUSINESS_OWNER', '251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid),
+                   ('ROLE_PORTAL_HOST', '251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid);
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

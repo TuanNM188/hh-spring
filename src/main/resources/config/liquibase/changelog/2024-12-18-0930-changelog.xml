@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1734488889373-113" author="hnnguyen">
+        <addColumn tableName="learning_library_registration_detail">
+            <column name="completion_date" type="DATETIME"/>
+            <column name="submission_date" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1734488889373-114" author="hnnguyen">
+        <addColumn tableName="learning_library_registration">
+            <column name="course_type" type="VARCHAR(50)"/>
+            <column name="decision_date" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

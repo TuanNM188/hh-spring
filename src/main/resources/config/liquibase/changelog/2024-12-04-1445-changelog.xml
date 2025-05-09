@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619853-01" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('003deafb-6143-4b96-a497-88fb068921b6', 'RATING_LEARNING_LIBRARY', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '003deafb-6143-4b96-a497-88fb068921b6'),
+                ('ROLE_PORTAL_HOST', '003deafb-6143-4b96-a497-88fb068921b6'),
+                ('ROLE_TECHNICAL_ADVISOR', '003deafb-6143-4b96-a497-88fb068921b6'),
+                ('ROLE_COMMUNITY_PARTNER', '003deafb-6143-4b96-a497-88fb068921b6'),
+                ('ROLE_BUSINESS_OWNER', '003deafb-6143-4b96-a497-88fb068921b6');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

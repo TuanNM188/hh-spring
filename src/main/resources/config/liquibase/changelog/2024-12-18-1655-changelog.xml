@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1734515654998-116" author="hnnguyen">
+        <addColumn tableName="learning_library">
+            <column name="published_date" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1734515654998-117" author="hnnguyen">
+        <sql>
+            UPDATE learning_library
+            SET published_date = '2024-12-18 10:15:30.992151' WHERE status = 'PUBLISHED';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

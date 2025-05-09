@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <a
+        th:href="${memberUrl}"
+        th:text="${postAuthor}"
+    >senderName</a>
+    <span th:text="#{email.activity.post.group.body}">posted in</span>
+    <a
+        th:href="${groupUrl}"
+        th:text="${groupName}"
+    >groupName</a>:
+  </p>
+  <div >
+    <p th:utext="${description}">description</p>
+  </div>
+</div>
+</html>

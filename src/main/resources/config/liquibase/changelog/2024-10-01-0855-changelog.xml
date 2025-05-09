@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720666099973-98" author="TuanNM">
+        <sql>
+            UPDATE public.question
+            SET placeholder='Select all that apply...'
+            WHERE id='09a98977-9fdf-48aa-be01-3966f834b5b6'::uuid::uuid;
+        </sql>
+    </changeSet>
+    <changeSet id="1717942378963-3" author="TuanNM">
+        <addColumn tableName="question">
+            <column name="message_validate" type="VARCHAR(1000)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1720666099904-98" author="TuanNM">
+        <sql>
+            UPDATE public.question
+            SET message_validate = CASE question_code
+                                       WHEN 'PORTAL_INTAKE_QUESTION_FIRST_NAME' THEN 'First Name required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_LAST_NAME' THEN 'Last Name required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_EMAIL_ADDRESS' THEN 'Email Address required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_PHONE_NUMBER' THEN 'Phone Number required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_JOB_TITLE' THEN 'Job Title required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_BUSINESS' THEN 'Business Name required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_COUNTRY' THEN 'Country required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_STATE_PROVINCE' THEN 'State/Province required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_CITY' THEN 'City Name required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_ZIPCODE' THEN 'Zip Code required'
+                                       WHEN 'PORTAL_INTAKE_QUESTION_STREET_ADDRESS' THEN 'Street Address required'
+                                       WHEN 'QUESTION_BUSINESS_STRUCTURE' THEN 'Structure of Business required'
+                                       WHEN 'QUESTION_BUSINESS_OPENING_DATE' THEN 'Date Opened required'
+                                       WHEN 'QUESTION_BUSINESS_INDUSTRY_INFORMATION' THEN 'Business Industry required'
+                                       WHEN 'QUESTION_BUSINESS_REVENUE_INFORMATION_TOW_YEAR' THEN 'Annual Gross Revenue required'
+                                       WHEN 'QUESTION_BUSINESS_REVENUE_INFORMATION_ONE_YEAR' THEN 'Annual Gross Revenue required'
+                                       WHEN 'QUESTION_BUSINESS_REGISTRATION' THEN 'Field required'
+                                       WHEN 'QUESTION_BUSINESS_EMPLOYEE_COUNT' THEN 'Current Employee Number required'
+                                       ELSE 'Field required'
+                END
+            WHERE question_code IN (
+                                    'PORTAL_INTAKE_QUESTION_FIRST_NAME', 'PORTAL_INTAKE_QUESTION_LAST_NAME',
+                                    'PORTAL_INTAKE_QUESTION_EMAIL_ADDRESS', 'PORTAL_INTAKE_QUESTION_PHONE_NUMBER',
+                                    'PORTAL_INTAKE_QUESTION_JOB_TITLE', 'PORTAL_INTAKE_QUESTION_PREFER_CONTACTED',
+                                    'PORTAL_INTAKE_QUESTION_HEAR_ABOUT_PROGRAM', 'PORTAL_INTAKE_QUESTION_HEAR_ABOUT_PROGRAM_OTHER',
+                                    'PORTAL_INTAKE_QUESTION_BUSINESS', 'PORTAL_INTAKE_QUESTION_COUNTRY',
+                                    'PORTAL_INTAKE_QUESTION_STATE_PROVINCE', 'PORTAL_INTAKE_QUESTION_CITY',
+                                    'PORTAL_INTAKE_QUESTION_ZIPCODE', 'PORTAL_INTAKE_QUESTION_STREET_ADDRESS',
+                                    'QUESTION_BUSINESS_STRUCTURE', 'QUESTION_BUSINESS_OPENING_DATE',
+                                    'QUESTION_BUSINESS_INDUSTRY_INFORMATION', 'QUESTION_BUSINESS_REVENUE_INFORMATION_TOW_YEAR',
+                                    'QUESTION_BUSINESS_REVENUE_INFORMATION_ONE_YEAR', 'QUESTION_BUSINESS_REGISTRATION',
+                                    'QUESTION_BUSINESS_EMPLOYEE_COUNT', 'QUESTION_BUSINESS_HOME_BASED_LOCATION',
+                                    'QUESTION_BUSINESS_HOW_MANY_LOCATIONS', 'QUESTION_BUSINESS_HAVE_MORE_THAN_ONE_LOCATION_IN_CITY',
+                                    'PORTAL_INTAKE_QUESTION_AGE_RANGE', 'PORTAL_INTAKE_QUESTION_GENDER',
+                                    'PORTAL_INTAKE_QUESTION_HOUSEHOLD_INCOME', 'PORTAL_INTAKE_QUESTION_LANGUAGE_SPEAKING',
+                                    'PORTAL_INTAKE_QUESTION_EDUCATION', 'PORTAL_INTAKE_QUESTION_MILITARY_AFFILIATION',
+                                    'PORTAL_INTAKE_QUESTION_LGBTQIA', 'PORTAL_INTAKE_QUESTION_DISABILITY_OR_DISABILITIES',
+                                    'PORTAL_INTAKE_QUESTION_RESOURCE_INTERESTED', 'PORTAL_INTAKE_QUESTION_ETHNICITY',
+                                    'PORTAL_INTAKE_QUESTION_HOW_MANY_PEOPLE', 'QUESTION_BUSINESS_DURATION',
+                                    'QUESTION_BUSINESS_STATUS', 'PORTAL_INTAKE_QUESTION_DESCRIBE_ASSISTANCE',
+                                    'PORTAL_INTAKE_QUESTION_FIRST_PRIORITY_AREA', 'PORTAL_INTAKE_QUESTION_SECOND_PRIORITY_AREA',
+                                    'PORTAL_INTAKE_QUESTION_HOW_FREE_ASSISTANCE', 'PORTAL_INTAKE_QUESTION_WOULD_TOU_LIKE_APPLY_FREE_ASSISTANCE',
+                                    'PORTAL_INTAKE_QUESTION_RESOURCE_INTERESTED_OTHER', 'PORTAL_INTAKE_ADDITIONAL_QUESTION'
+                );
+            UPDATE public.question
+            SET message_validate='Field required'
+            WHERE message_validate IS NULL;
+
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

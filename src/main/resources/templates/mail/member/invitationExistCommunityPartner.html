@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.portalHost.exist.greeting(${receiverName})}">
+    Hi {0},
+  </p>
+  <p th:text="#{email.invitation.community.partner.exist.invite(${communityPartnerName})}">
+    We are pleased to inform you that you have been added as a Community Partner for [Portal Name] on the HUUB platform.
+    As a Community Partner, you will have access to manage and oversee the portal to ensure it serves your community
+    effectively.
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.community.partner.exist.support1(${supportEmail})}">
+    You can log in using your existing credentials. If you have any questions or need assistance, please do not hesitate
+    to contact our support team at {0}.
+  </p>
+  <a class="link-custom"
+     th:href="#{email.footer.chat.team.href}"
+     th:text="#{email.footer.chat.team.text}"
+  >Chat with our team now.</a>
+  <p>
+      <span th:text="#{email.invitation.community.partner.exist.support2}">
+        We look forward to your contributions as a Community Partner. Thank you for your dedication and support.
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.community.partner.exist.support3}">
+    Best regards,
+  </p>
+  <p class="mt-0">
+    <strong th:text="#{email.invitation.community.partner.exist.support4}">The HUUB Team</strong>
+  </p>
+
+</div>
+</html>

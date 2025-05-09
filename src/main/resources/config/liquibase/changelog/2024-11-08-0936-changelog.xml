@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="172773919953-25" author="hnnguyen (generated)">
+        <sql>
+            UPDATE setting_definition
+            SET default_value = 'ALL_GROUP_MEMBERS'
+            WHERE id IN ('1e72bae2-ed18-46d6-bc83-c9eb111d2320',
+                         'c2c36973-59e0-4340-ad4e-f361c6989cc3',
+                         '22a44f5b-0f14-4fc5-b3c6-4d8c529e61c6',
+                         '23393478-648e-40d9-ab71-1ffbe01eeb8f',
+                         '88d74db2-7553-46da-a1db-48237377457f',
+                         '7e0438f2-6e85-44f0-8ee2-3987accf9af4');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1718089739942-23" author="Uy hoang">
+        <addColumn tableName="feature">
+            <column name="feature_key" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1729350938395-08" author="Uy hoang">
+        <sql>
+            UPDATE feature
+            SET feature_key = 'feature.portals'
+            WHERE id = '3764923a-a3c2-46fc-8a42-2c0e23a71c88';
+
+            UPDATE feature
+            SET feature_key = 'feature.workPackages'
+            WHERE id = '5c8231aa-0779-4385-bd64-c359c61e9c46';
+
+            UPDATE feature
+            SET feature_key = 'feature.learningLibrary'
+            WHERE id = 'f1c15304-e075-40cd-8138-bab3ce05ee58';
+
+            UPDATE feature
+            SET feature_key = 'feature.reports'
+            WHERE id = 'fa509f5b-2c83-4c15-a9f8-827b4bfd3e68';
+
+            UPDATE feature
+            SET feature_key = 'feature.messaging'
+            WHERE id = '89efcf83-9e1c-4dce-8ce4-0c900ce91d29';
+
+            UPDATE feature
+            SET feature_key = 'feature.about'
+            WHERE id = 'aa59b4c0-31b9-4037-b3e9-445f7f52ae50';
+
+            UPDATE feature
+            SET feature_key = 'feature.features'
+            WHERE id = 'ab8d8bbf-acd1-475b-8566-98eed10b4d90';
+
+            UPDATE feature
+            SET feature_key = 'feature.funding'
+            WHERE id = 'f1507fed-428e-4715-a40e-93800a5d2b82';
+
+            UPDATE feature
+            SET feature_key = 'feature.settings'
+            WHERE id = 'bdc72b47-5be8-429e-ba74-2a04020f6677';
+
+            UPDATE feature
+            SET feature_key = 'feature.communityPartners'
+            WHERE id = '2cfc6df9-2e3f-404b-bd90-a97a9063802d';
+
+            UPDATE feature
+            SET feature_key = 'feature.calendarEvents'
+            WHERE id = '5e994fbb-c48f-4837-8705-b39c9642607d';
+
+            UPDATE feature
+            SET feature_key = 'feature.learningLibrary'
+            WHERE id = 'cb53089c-8d8f-49fc-917e-9faeb9b1a3af';
+
+            UPDATE feature
+            SET feature_key = 'feature.about'
+            WHERE id = 'cbd2eb0c-4215-4822-a683-0dc5eb3e1ad5';
+
+            UPDATE feature
+            SET feature_key = 'feature.businessOwners'
+            WHERE id = '94094ea7-8cc5-4577-a77c-d286ae1c5bfa';
+
+            UPDATE feature
+            SET feature_key = 'feature.speakers'
+            WHERE id = 'd3581c2e-04b3-494c-b8d9-3847a6907c76';
+
+            UPDATE feature
+            SET feature_key = 'feature.stepsLessons'
+            WHERE id = 'ece9b329-db14-461b-bc6c-53146d46bf61';
+
+            UPDATE feature
+            SET feature_key = 'feature.communityResources'
+            WHERE id = 'fd210bad-e471-49f0-97bd-5e4feca0b265';
+
+            UPDATE feature
+            SET feature_key = 'feature.communityAboutPage'
+            WHERE id = '1c153552-51ac-4783-a9ee-8706be3c7260';
+
+            UPDATE feature
+            SET feature_key = 'feature.profile'
+            WHERE id = '0b1d537f-1cfd-4444-9f09-508f10cccad4';
+
+            UPDATE feature
+            SET feature_key = 'feature.about'
+            WHERE id = '1e64fca1-c052-4877-9413-9b22d22e37b2';
+
+            UPDATE feature
+            SET feature_key = 'feature.funderDetails'
+            WHERE id = '2629bd2a-3f91-4519-852c-e0f6f97af02b';
+
+            UPDATE feature
+            SET feature_key = 'feature.applicationDetails'
+            WHERE id = '2a862950-6c3e-46af-8bef-d783b9b9e513';
+
+            UPDATE feature
+            SET feature_key = 'feature.assistanceNeeds'
+            WHERE id = '0b0eaa03-f772-4ac8-913b-b45a992cd1b2';
+
+            UPDATE feature
+            SET feature_key = 'feature.intakeQuestions'
+            WHERE id = '0b25991b-9689-4e61-91d7-0fa2ded8547b';
+
+            UPDATE feature
+            SET feature_key = 'feature.programDetails'
+            WHERE id = '7d9f3b89-e5b6-4543-8ed7-872b2888751c';
+
+            UPDATE feature
+            SET feature_key = 'feature.customize'
+            WHERE id = 'b25f607d-e279-4cfb-a747-7b0620c5ab70';
+
+            UPDATE feature
+            SET feature_key = 'feature.locations'
+            WHERE id = '4016486c-b8ec-409a-a9ab-deb5596b6ec5';
+
+            UPDATE feature
+            SET feature_key = 'feature.business'
+            WHERE id = '0b1aa7c4-ac0d-4f0d-8f2a-e453fc6dfec7';
+
+            UPDATE feature
+            SET feature_key = 'feature.demographics'
+            WHERE id = '0b10489c-7d27-4f43-8ff5-7e11c5221a88';
+
+            UPDATE feature
+            SET feature_key = 'feature.additionalQuestions'
+            WHERE id = '0b0eaa03-f772-4ac8-913b-b45a992cd1b4';
+
+            UPDATE feature
+            SET feature_key = 'feature.communityBoards'
+            WHERE id = 'fca2a297-3e1e-46db-8a62-9b1b7411670e';
+
+            UPDATE feature
+            SET feature_key = 'feature.portalHosts'
+            WHERE id = '5e57c104-e283-4527-a7d3-fa31495c5c58';
+
+            UPDATE feature
+            SET feature_key = 'feature.additionalQuestions'
+            WHERE id = '580b10c0-b798-473b-a736-45b903b03c40';
+
+            UPDATE feature
+            SET feature_key = 'feature.portalWelcome'
+            WHERE id = '9e81a9f2-6ad8-402e-aaee-81a7123ca7e2';
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1718089739922-25" author="Uy hoang">
+        <addColumn tableName="feature">
+            <column name="group_key" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1729350938396-09" author="Uy hoang">
+        <sql>
+            UPDATE feature
+            SET group_key = 'feature.businessOwnerIntake'
+            WHERE group_code = 'BUSINESS_OWNER_INTAKE';
+
+            UPDATE feature
+            SET group_key = 'feature.technicalAssistanceApplication'
+            WHERE group_code = 'TECHNICAL_ASSISTANCE_APPLICATION';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <span th:text="#{email.promoted.group.body(${groupRole})}">You have been promoted to {0} in the group:</span>
+    <a
+      th:href="${buttonHref}"
+      th:text="${groupName}"
+    >groupName</a>
+  </p>
+</div>
+</html>

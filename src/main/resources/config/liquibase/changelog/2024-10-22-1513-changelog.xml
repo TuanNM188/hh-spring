@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1729129603324-74" author="TuanNM">
+        <modifyDataType tableName="calendar_event" columnName="subject" newDataType="TEXT"/>
+    </changeSet>
+
+    <changeSet id="1729123434324-74" author="TuanNM">
+        <modifyDataType tableName="jhi_user" columnName="username" newDataType="VARCHAR(255)"/>
+    </changeSet>
+
+    <changeSet id="1729144638334-74" author="TuanNM">
+       <sql>
+           UPDATE jhi_user u SET username = null;
+           WITH updated_users AS (
+               SELECT id,
+                      username ,
+                      replace(LOWER(first_name || last_name), ' ', '') AS base_username,
+                      ROW_NUMBER() OVER (PARTITION BY replace(LOWER(first_name || last_name), ' ', '') ORDER BY id) AS row_num
+               FROM jhi_user
+           )
+           UPDATE jhi_user u
+           SET username = case
+                              WHEN uu.username is not null THEN replace(uu.username, ' ', '')
+                              WHEN uu.row_num = 1 THEN uu.base_username || '01'
+                              ELSE replace(uu.base_username || LPAD(uu.row_num::text, 2, '0'), ' ', '')
+               END
+               FROM updated_users uu
+           WHERE u.id = uu.id;
+       </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

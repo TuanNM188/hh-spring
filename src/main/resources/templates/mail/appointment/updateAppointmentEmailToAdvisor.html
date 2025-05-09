@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <strong th:text="#{email.update.appointment.greeting(${receiverName})}">Hello {receiverName},</strong>
+  <p th:text="#{email.update.appointment.body(${senderName})}">
+    The details for your appointment with {0} have changed.
+  </p>
+  <p th:text="#{email.update.appointment.body1(${appointmentDateAndTime})}">
+    Your appointment is now scheduled for {0}.
+  </p>
+  <p>
+      <span th:text="#{email.update.appointment.body2}">
+        As a reminder, you'll be meeting with each other virtually using this link:
+      </span>
+      <a th:with="url=(@{|${advisorMeetingLink}|})" th:href="${url}" text="Meeting Link" class="link-custom"> Meeting Link </a>
+  </p>
+  <p>
+      <span th:text="#{email.update.appointment.body3(${appointmentDateAndTime})}">
+        Your appointment is scheduled for {appointmentDateAndTime}.
+      </span>
+      <a th:with="url=(@{|${baseUrl}${appointmentDetailUrl}|})"
+         th:href="${url}"
+          th:text="#{email.advisor.schedule.appointment.viewDetails}"
+          class="link-custom"
+      >
+        View the appointment details here.
+      </a>
+  </p>
+  <p>
+    <strong>
+      <span th:text="#{email.update.appointment.body4}"> Need to adjust this appointment? </span>
+    </strong>
+      <br/>
+    <span th:text="#{email.update.appointment.body5(${portalName})}">
+        Manage your appointments via your dashboard in the {0}. You must contact the business owner directly to coordinate any scheduling changes.
+      </span>
+  </p>
+  <p>
+    <strong>
+      <span th:text="#{email.schedule.appointment.cancellationPolicy}" class="red-color"> Cancelation Policy: </span>
+    </strong>
+    <span th:text="#{email.update.appointment.body6}">
+        All bookings are confirmed immediately, and any cancelations must be made at least 24 hours before the session date. Rescheduling appointments must occur at least 2 hours before the scheduled session date and time. Please
+    </span>
+    <a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}" th:text="#{email.schedule.appointment.support}" class="link-custom">
+      chat with our team
+    </a>
+    <span th:text="#{email.update.appointment.body7}">
+      now if you need scheduling assistance.
+    </span>
+      <span th:text="#{email.update.appointment.body8}">
+      Repeated and frequent cancelations or rescheduling can result in removal from the advisor network.
+    </span>
+  </p>
+  <p class="mb-0" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>

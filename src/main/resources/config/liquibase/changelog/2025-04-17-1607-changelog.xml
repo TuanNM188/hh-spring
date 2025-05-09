@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1740363117064-106" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('a9af7d70-55a2-4fbf-8657-a8efb7c66020', 'SEND_MESSAGE_ALL', 'API');
+        </sql>
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'a9af7d70-55a2-4fbf-8657-a8efb7c66020'),
+                ('ROLE_PORTAL_HOST', 'a9af7d70-55a2-4fbf-8657-a8efb7c66020');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

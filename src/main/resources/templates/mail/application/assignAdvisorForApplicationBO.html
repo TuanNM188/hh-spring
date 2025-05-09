@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.applications.business.owner.assign.advisor.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.applications.business.owner.assign.advisor.body(${navigatorName})}">
+    Your navigator, {0}, has reviewed your application and provided the following recommendations for advisors:
+  </p>
+  <ul class="advisor-list">
+    <li th:if="${advisor1 != null and !#strings.isEmpty(advisor1)}"
+        th:text="#{email.applications.business.owner.assign.advisor.body.advisor(${advisor1})}">Advisor Recommendation
+      #1 Full Name
+    </li>
+    <li th:if="${advisor2 != null and !#strings.isEmpty(advisor2)}"
+        th:text="#{email.applications.business.owner.assign.advisor.body.advisor(${advisor2})}">Advisor Recommendation
+      #2 Full Name
+    </li>
+  </ul>
+  <p th:text="#{email.applications.business.owner.assign.advisor.body2(${portalName})}">These recommendations were based
+    on your application. Book with them or choose from the other advisors on {PortalName}.</p>
+  <a
+    th:with="url=(@{|${baseUrl}/browse-advisors/advisors|})"
+    th:href="${url}"
+    th:text="#{email.applications.business.owner.assign.advisor.body.bookHere}"
+  >
+    [Book Here]
+  </a>
+  <p>You must book your first session within 30 days of the assignment, or these hours will expire, and your status will
+    change to inactive.</p>
+
+  <h3>Here’s how to book your session:</h3>
+  <ol>
+    <li><strong>Find your advisor.</strong> <span
+      th:text="#{email.applications.business.owner.assign.advisor.body5(${portalName})}"></span></li>
+    <li><strong>Schedule.</strong> Easily book a time for your first 1-hour advisor session. The first session is always
+      an informational consultation. Be prepared to discuss all your needs so your consultant can build a scope to
+      deliver work for you.
+    </li>
+    <li><strong>Confirm your session.</strong> Once you've answered a few booking questions, you'll be prompted to
+      finalize your appointment on the booking screen. You will receive a confirmation email with a virtual meeting
+      link, calendar invite, and booking details.
+    </li>
+  </ol>
+
+  <p>Wondering what comes next, or still have questions?</p>
+
+  <span>
+      <a th:with="url=(@{|${liveChat}|})" th:href="${url}"
+         th:text="#{email.applications.business.owner.assign.advisor.body9}">Chat with our team</a>
+      <span th:text="#{email.applications.business.owner.assign.advisor.body10(${navigatorEmail})}">now or email your navigator at {NavigatorEmailAddress}</span>
+    </span>
+  <p class="mb-0">To your success,</p>
+  <p class="mt-0"><strong>The HUUB Team</strong></p>
+</div>
+</html>

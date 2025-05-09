@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720661239278-95" author="Nghia Nguyen">
+        <dropForeignKeyConstraint baseTableName="portal_funding"
+                                  constraintName="FK_PORTAL_FUNDING_ON_PORTAL"/>
+    </changeSet>
+    <changeSet id="1720667889278-98" author="Nghia Nguyen">
+        <dropColumn columnName="portal_id" tableName="portal_funding"/>
+    </changeSet>
+    <changeSet id="1772466095478-95" author="Nghia Nguyen">
+        <renameTable
+            oldTableName="portal_funding"
+            newTableName="funding"/>
+    </changeSet>
+    <changeSet id="1689999935641-20" author="Nghia Nguyen">
+        <renameColumn
+            newColumnName="funding_id"
+            oldColumnName="portal_funding_id"
+            tableName="portal_funding_category"
+        />
+        <renameTable
+            oldTableName="portal_funding_category"
+            newTableName="funding_category"/>
+    </changeSet>
+    <changeSet id="1720963885857-77" author="Nghia Nguyen">
+        <createTable tableName="funding_location">
+            <column name="funding_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="portal_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="funding_id, portal_id" tableName="funding_location"/>
+
+        <addForeignKeyConstraint baseColumnNames="funding_id"
+                                 baseTableName="funding_location"
+                                 constraintName="fk_funding_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="funding"/>
+
+        <addForeignKeyConstraint baseColumnNames="portal_id"
+                                 baseTableName="funding_location"
+                                 constraintName="fk_portal_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1720668979278-99" author="Nghia Nguyen">
+        <dropColumn columnName="community_partners_email" tableName="portal"/>
+        <dropColumn columnName="contract_year_start_date" tableName="portal"/>
+        <dropColumn columnName="contract_year_end_date" tableName="portal"/>
+    </changeSet>
+
+</databaseChangeLog>

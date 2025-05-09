@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719476647421-9" author="TuanNM">
+        <createTable tableName="availability">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_availability"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="day" type="SMALLINT"/>
+            <column name="start_time" type="TIME"/>
+            <column name="end_time" type="TIME"/>
+            <column name="is_active" type="BOOLEAN"/>
+            <column name="booking_setting_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719476647421-17" author="TuanNM">
+        <createTable tableName="booking_setting">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_setting"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="earliest_date" type="DATETIME"/>
+            <column name="timezone" type="VARCHAR(50)"/>
+            <column name="meeting_platform" type="VARCHAR(50)"/>
+            <column name="link_meeting_platform" type="TEXT"/>
+            <column name="technical_advisor_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719476647421-39" author="TuanNM">
+        <addUniqueConstraint columnNames="technical_advisor_id" constraintName="uc_setting_technical_advisor"
+                             tableName="booking_setting"/>
+    </changeSet>
+    <changeSet id="1719476647421-41" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="booking_setting_id" baseTableName="availability"
+                                 constraintName="FK_AVAILABILITY_ON_SETTING" referencedColumnNames="id"
+                                 referencedTableName="booking_setting"/>
+    </changeSet>
+    <changeSet id="1719476647421-43" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="technical_advisor_id" baseTableName="booking_setting"
+                                 constraintName="FK_SETTING_ON_TECHNICAL_ADVISOR" referencedColumnNames="id"
+                                 referencedTableName="technical_advisors"/>
+    </changeSet>
+
+</databaseChangeLog>

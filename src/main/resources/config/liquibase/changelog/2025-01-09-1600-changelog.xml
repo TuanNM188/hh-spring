@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1736227819326-1" author="TuanNM">
+        <sql>
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",icon,router_link,priority_order,is_active,"position",is_public)
+            VALUES ('323805d8-86f8-4ef2-a13e-0356838220b2'::uuid,'admin@localhost.com','2024-10-01 03:45:08.432','admin@localhost.com','2024-10-01 03:45:08.432',false,'My Portal','city-portal','/business-owner-portal/info',3,true,'BOTTOM',false);
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_BUSINESS_OWNER','323805d8-86f8-4ef2-a13e-0356838220b2'::uuid);
+        </sql>
+    </changeSet>
+    <changeSet id="1736227029326-1" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('832486e2-0c4b-4d91-97b4-b4d3ff940ff9'::uuid,'GET_PORTAl_INFO_FOR_BUSINESS_OWNER','API');
+
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_BUSINESS_OWNER','832486e2-0c4b-4d91-97b4-b4d3ff940ff9'::uuid);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-89" author="hnnguyen">
+        <sql>
+            UPDATE setting_definition
+            SET title = 'Huub Portal', key_code = 'HUUB_PORTAL' WHERE id = 'b0e73043-dc0e-444a-9564-bfe5377ffa15';
+            UPDATE setting_definition
+            SET title = 'First Name' WHERE id = '998dd5e8-a5ac-45c3-ac59-8aaed73dc65e';
+            UPDATE setting_definition
+            SET title = 'Last Name' WHERE id = '8b3811d3-1bfb-4f89-b818-793e4c808eef';
+        </sql>
+    </changeSet>
+
+    <changeSet id="1727755619953-88" author="hnnguyen">
+        <sql>
+            DELETE FROM user_setting;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

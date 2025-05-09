@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619853-54" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('f2f1f738-aacb-4879-8590-c52b4caa60e1', 'UPDATE_PROFILE_PASSWORD', 'API');
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'f2f1f738-aacb-4879-8590-c52b4caa60e1'),
+                ('ROLE_PORTAL_HOST', 'f2f1f738-aacb-4879-8590-c52b4caa60e1'),
+                ('ROLE_TECHNICAL_ADVISOR', 'f2f1f738-aacb-4879-8590-c52b4caa60e1'),
+                ('ROLE_COMMUNITY_PARTNER', 'f2f1f738-aacb-4879-8590-c52b4caa60e1'),
+                ('ROLE_BUSINESS_OWNER', 'f2f1f738-aacb-4879-8590-c52b4caa60e1');
+
+        </sql>
+    </changeSet>
+    <changeSet id="1727755619853-59" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('c072c196-9ff8-4993-897f-4f04e0fad131', 'LINK_SOCIAL_ACCOUNT', 'API'),
+                ('805a6526-1e8e-4394-b098-feea945f42bf', 'UNLINK_SOCIAL_ACCOUNT', 'API'),
+                ('cdeadac1-c418-474c-8864-c77da05f75e4', 'GET_USER_SOCIAL_LINK_BY_USER_ID', 'API');
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c072c196-9ff8-4993-897f-4f04e0fad131'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '805a6526-1e8e-4394-b098-feea945f42bf'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'cdeadac1-c418-474c-8864-c77da05f75e4'),
+                ('ROLE_PORTAL_HOST', 'c072c196-9ff8-4993-897f-4f04e0fad131'),
+                ('ROLE_PORTAL_HOST', '805a6526-1e8e-4394-b098-feea945f42bf'),
+                ('ROLE_PORTAL_HOST', 'cdeadac1-c418-474c-8864-c77da05f75e4'),
+                ('ROLE_TECHNICAL_ADVISOR', 'c072c196-9ff8-4993-897f-4f04e0fad131'),
+                ('ROLE_TECHNICAL_ADVISOR', '805a6526-1e8e-4394-b098-feea945f42bf'),
+                ('ROLE_TECHNICAL_ADVISOR', 'cdeadac1-c418-474c-8864-c77da05f75e4'),
+                ('ROLE_COMMUNITY_PARTNER', 'c072c196-9ff8-4993-897f-4f04e0fad131'),
+                ('ROLE_COMMUNITY_PARTNER', '805a6526-1e8e-4394-b098-feea945f42bf'),
+                ('ROLE_COMMUNITY_PARTNER', 'cdeadac1-c418-474c-8864-c77da05f75e4'),
+                ('ROLE_BUSINESS_OWNER', 'c072c196-9ff8-4993-897f-4f04e0fad131'),
+                ('ROLE_BUSINESS_OWNER', '805a6526-1e8e-4394-b098-feea945f42bf'),
+                ('ROLE_BUSINESS_OWNER', 'cdeadac1-c418-474c-8864-c77da05f75e4');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

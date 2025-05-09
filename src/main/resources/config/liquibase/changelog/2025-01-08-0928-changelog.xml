@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1736301501854-117" author="hnnguyen">
+        <dropColumn columnName="is_taken" tableName="user_learning_library"/>
+        <addColumn tableName="user_learning_library">
+            <column name="completion_status" type="VARCHAR(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1736301501854-118" author="hnnguyen">
+        <sql>
+            UPDATE user_learning_library ull
+            SET completion_status = 'COMPLETE'
+            WHERE (
+                      SELECT COUNT(lesson.id)
+                      FROM learning_library_lesson lesson
+                               JOIN learning_library_step step
+                                    ON step.id = lesson.learning_library_step_id
+                                        AND step.is_delete = 'false'
+                      WHERE lesson.is_delete = 'false'
+                        AND step.learning_library_id = ull.learning_library_id
+                  ) = (
+                      SELECT COUNT(reg_detail.id)
+                      FROM learning_library_registration_detail reg_detail
+                               JOIN learning_library_registration reg
+                                    ON reg.id = reg_detail.learning_library_registration_id
+                                        AND reg.is_delete = 'false'
+                      WHERE reg_detail.is_delete = 'false'
+                        AND reg.user_id = ull.user_id
+                        AND reg.learning_library_id = ull.learning_library_id
+                        AND reg_detail.learning_status = 'COMPLETE'
+                  );
+
+            UPDATE user_learning_library ull
+            SET completion_status = 'STARTED'
+            WHERE (
+                      SELECT COUNT(lesson.id)
+                      FROM learning_library_lesson lesson
+                               JOIN learning_library_step step
+                                    ON step.id = lesson.learning_library_step_id
+                                        AND step.is_delete = 'false'
+                      WHERE lesson.is_delete = 'false'
+                        AND step.learning_library_id = ull.learning_library_id
+                  ) > (
+                      SELECT COUNT(reg_detail.id)
+                      FROM learning_library_registration_detail reg_detail
+                               JOIN learning_library_registration reg
+                                    ON reg.id = reg_detail.learning_library_registration_id
+                                        AND reg.is_delete = 'false'
+                      WHERE reg_detail.is_delete = 'false'
+                        AND reg.user_id = ull.user_id
+                        AND reg.learning_library_id = ull.learning_library_id
+                        AND reg_detail.learning_status = 'COMPLETE'
+                  ) AND (
+                            SELECT COUNT(reg_detail.id)
+                            FROM learning_library_registration_detail reg_detail
+                                     JOIN learning_library_registration reg
+                                          ON reg.id = reg_detail.learning_library_registration_id
+                                              AND reg.is_delete = 'false'
+                            WHERE reg_detail.is_delete = 'false'
+                              AND reg.user_id = ull.user_id
+                              AND reg.learning_library_id = ull.learning_library_id
+                              AND reg_detail.learning_status = 'COMPLETE'
+                        ) > 0;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

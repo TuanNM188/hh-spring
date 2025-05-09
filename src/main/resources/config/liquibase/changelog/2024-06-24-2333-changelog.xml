@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719239413411-21" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="activity_log"/>
+    </changeSet>
+    <changeSet id="1719239413411-22" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="cities"/>
+    </changeSet>
+    <changeSet id="1719239413411-23" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1719239413411-24" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="language"/>
+    </changeSet>
+    <changeSet id="1719239413411-25" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="organizations"/>
+    </changeSet>
+    <changeSet id="1719239413411-26" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="service_offered"/>
+    </changeSet>
+    <changeSet id="1719239413411-27" author="Hung Tran">
+        <dropColumn columnName="ex_id" tableName="technical_advisors"/>
+    </changeSet>
+    <changeSet id="1719239413411-28" author="Hung Tran">
+        <dropSequence sequenceName="sequence_generator"/>
+    </changeSet>
+
+</databaseChangeLog>

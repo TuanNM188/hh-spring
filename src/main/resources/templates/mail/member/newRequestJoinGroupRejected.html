@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <span th:text="#{email.join.group.rejected.body}">Your membership request for the group</span>
+    <a
+        th:href="${groupUrl}"
+        th:text="${groupName}"
+    >groupName</a>
+    <span th:text="#{email.join.group.rejected.body1}">has been rejected.</span>
+  </p>
+</div>

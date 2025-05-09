@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718558838999-95" author="hnnguyen">
+        <sql>
+            INSERT INTO question
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_code, form_code, question_type, question, is_require, group_code, parent_id , option_type, priority_order, allow_custom_options, column_size, placeholder)
+            VALUES
+                -- QUESTION
+                ('0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_AGE_RANGE', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'What''s your age range?', true, null, null, 'ANSWER_OPTION', 1, false, '12', 'Age range...'),
+                ('0a69c77f-f357-4ef6-b43e-ef9eee8f01b7'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_GENDER', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'What gender do you identify as?', true, null, null, 'ANSWER_OPTION', 2, true, '12', 'Gender identify...'),
+                ('0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_HOUSEHOLD_INCOME', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'Household income', true, null, null, 'ANSWER_OPTION', 3, false, '12', 'Household income...'),
+                ('0a679568-5dd9-496f-8801-d7ee25deaf44'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_HOW_MANY_PEOPLE', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'TEXT', 'How many people, including yourself, live at home with you?', true, null, null, 'ANSWER_OPTION', 4, false, '12', 'Number of people...'),
+                ('0a66272d-3414-4784-8a8b-c3f4a89706ce'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_LANGUAGE_SPEAKING', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'Which language do you feel most comfortable speaking?', true, null, null, 'LANGUAGE', 5, false, '12', 'Language speaking...'),
+                ('0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_ETHNICITY', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_MULTIPLE_CHOICE', 'How do you describe your ethnicity?* Select all that apply.', true, null, null,'ANSWER_OPTION', 6, false, '12', 'Ethnicity...'),
+                ('0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_EDUCATION', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'What''s the highest level of education you''ve completed?', true, null, null, 'ANSWER_OPTION', 7, false, '12', 'Education...'),
+                ('0a59e5ad-4edf-43ef-afad-dc507afc8003'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_MILITARY_AFFILIATION', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'Do you have any military affiliation?', true, null, null, 'ANSWER_OPTION', 8, false, '12', 'Military affiliation...'),
+                ('0a586a08-9447-4105-82c0-5d381b3f4878'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_LGBTQIA', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_SINGLE_CHOICE', 'Do you identify as LGBTQIA+?', true, null, null, 'ANSWER_OPTION', 9, false, '12', 'Identify as LGBTQIA+...'),
+                ('0a561740-a57a-4cd0-aabb-0faa6be899a8'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_DISABILITY_OR_DISABILITIES', 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'DROPDOWN_MULTIPLE_CHOICE', 'Do you consider yourself to be an individual with a disability or disabilities?', true, null, null, 'ANSWER_OPTION', 10, false, '12', 'Disability or disabilities...');
+
+            INSERT INTO answer_option
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_id, answer, priority_order, is_extra)
+            VALUES
+                -- PORTAL_INTAKE_QUESTION_AGE_RANGE
+                ('0a528e92-718c-45c6-9782-137fe3409524'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '18 or younger', 1, false),
+                ('0a50cc0f-d077-48e2-88b6-2d773a433cc4'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '19 - 24', 2, false),
+                ('0a4f089b-0069-4a14-93e2-e687df34bee8'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '25 - 34', 3, false),
+                ('0a4e7705-517f-413b-8855-3b9435cad917'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '35 - 44', 4, false),
+                ('0a4bccb7-9ca5-4e1d-8308-c76dc07e47c1'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '45 - 54', 5, false),
+                ('0a49f473-d2aa-40f3-9668-82881e03f817'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '55 - 64', 6, false),
+                ('0a49bb69-2e47-41ea-91b6-4aff47067d37'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a6a95d6-2899-448a-9c20-b53ae2913057'::uuid, '65 or older', 7, false),
+
+                -- PORTAL_INTAKE_QUESTION_GENDER
+                ('0a48a30d-9bd9-4e93-a31c-83710b9b97b7'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7'::uuid, 'Female', 1, false),
+                ('0a436d0b-83ce-447f-9aa6-badefb59a28f'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7'::uuid, 'Male', 2, false),
+                ('0a4330bf-4457-49c5-b66f-870c1fe4a4a9'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7'::uuid, 'Prefer not to answer', 3, false),
+
+                -- PORTAL_INTAKE_QUESTION_HOUSEHOLD_INCOME
+                ('0a4152f1-0d1e-47f0-818e-fcbe0daf947f'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, 'Under $20,000', 1, false),
+                ('0a38f7f4-bbf0-4c02-8fa4-56d073d07f52'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$20,001 - $40,000', 2, false),
+                ('0a36a228-a1d3-4589-8bde-80472389ae61'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$40,001 - $60,000', 3, false),
+                ('0a356b88-f5e3-4822-8774-6faaef9ea63f'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$60,001 - $80,000', 4, false),
+                ('0a2d6573-3930-4ccd-8333-ae2c1902c109'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$80,001 - $100,000', 5, false),
+                ('0a2b63fa-596f-43f5-94ec-37372aafd563'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$100,001 - $120,000', 6, false),
+                ('0a251f16-39c1-42a2-a957-2aec994177f4'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$120,001 - $140,000', 7, false),
+                ('0a247597-fab6-427b-8878-26ff81cdd9cf'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$140,001 - $160,000', 8, false),
+                ('0a204ea1-f218-4cd3-88f2-b10ff73b99ae'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, '$160,000 or more', 9, false),
+                ('0a1edeed-a451-4e51-9b2c-96ba466decb7'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a67be2b-ece4-4606-a77a-10dcf0d1edcf'::uuid, 'Prefer not to answer', 10, false),
+
+                -- PORTAL_INTAKE_QUESTION_ETHNICITY
+                ('0a1b094f-2314-497f-b9d5-8287557fcc81'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Hispanic, Latino, or Spanish origin', 1, false),
+                ('0a191f37-49ca-4310-bd62-4ad1a860954f'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Native American or Alaska Native', 2, false),
+                ('0a0dd04d-b902-4109-863f-f4a3225ba3aa'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Asian or Pacific Islander', 3, false),
+                ('0a0d8c79-8843-4562-8812-a4afabd24734'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Black or African American', 4, false),
+                ('0a0d2b5f-8800-4170-a1cb-d526a2b19de2'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Native Hawaiian or other Pacific Islander', 5, false),
+                ('0a015811-717a-4f96-96e3-4f727c59cf0a'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'White/Caucasian', 6, false),
+                ('09ff07e7-df82-42d4-94ca-3d82207a3a80'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Middle Eastern or North African', 7, false),
+                ('09f96556-0ed3-439f-ba41-47c55879a99b'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a65032c-7fbf-44e1-95e9-ebee1cc8f422'::uuid, 'Prefer not to answer', 8, false),
+
+                -- PORTAL_INTAKE_QUESTION_EDUCATION
+                ('09f5d78a-0253-4c80-ba79-3cd1a3cb89db'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Less than High School', 1, false),
+                ('09f5067e-d392-4a70-bcb5-363eda128377'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'High School', 2, false),
+                ('09f4f1eb-8cd1-45bc-8c4d-a7865287ad01'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Some College / University', 3, false),
+                ('09e3be31-89df-49b4-8e9e-54982c911b71'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'College Diploma / Certificate', 4, false),
+                ('09e2bc2e-e206-43d4-9245-931fbdb25b5e'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Undergraduate Degree', 5, false),
+                ('09dd1cd9-4ada-4f70-907e-423c1de9ac75'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Masters / Graduate Degree', 6, false),
+                ('09da51f9-4eb6-4f4b-89d7-25b2640962c9'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Doctorate', 7, false),
+                ('09d4965d-d963-4e5a-938d-ac072768d1a2'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a615beb-95f2-44f3-acb0-2d943f9f11b4'::uuid, 'Prefer not to answer', 8, false),
+
+                -- PORTAL_INTAKE_QUESTION_MILITARY_AFFILIATION
+                ('09d2cb17-bdc1-404b-908b-51126aa3c3bb'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Active Duty', 1, false),
+                ('09d0a567-d7fc-4ae1-9bb0-c6219ade66fa'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Veteran', 2, false),
+                ('09ceb92b-d480-4685-a0ba-e47d103b9943'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Member of the reserve', 3, false),
+                ('09cb03ba-eb60-460c-a82c-e654d25a1dc7'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Service-disabled veteran', 4, false),
+                ('09c78e8a-d00d-441e-954a-5adbd285c402'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Member of the National Guard', 5, false),
+                ('09c237d6-af68-40ca-bcd6-8fafdffbd0bc'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Military Family Member', 6, false),
+                ('09c16db2-d7be-4cf5-9bd5-dbb871835b8c'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'Military Spouse', 7, false),
+                ('09c08305-15e0-49ca-8415-9da95749cdc4'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a59e5ad-4edf-43ef-afad-dc507afc8003', 'None', 8, false),
+
+                -- PORTAL_INTAKE_QUESTION_LGBTQIA
+                ('09bde0de-96a4-459a-ab6e-db38e98e4277'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a586a08-9447-4105-82c0-5d381b3f4878', 'Yes', 1, false),
+                ('09bc60e4-6276-4962-9a5b-852fa3120c94'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a586a08-9447-4105-82c0-5d381b3f4878', 'No', 2, false),
+                ('09baf653-5d80-4688-8ff8-405717e90733'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a586a08-9447-4105-82c0-5d381b3f4878', 'Prefer not to answer', 3, false),
+
+                -- PORTAL_INTAKE_QUESTION_DISABILITY_OR_DISABILITIES
+                ('09b804db-3fef-4599-adb2-9e09945f93fd'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a561740-a57a-4cd0-aabb-0faa6be899a8', 'Yes', 1, false),
+                ('09b59c4e-a456-4130-abf5-a8f1c9f65116'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a561740-a57a-4cd0-aabb-0faa6be899a8', 'No', 2, false),
+                ('09b58037-464c-4819-9012-0de87dc030e1'::uuid, 'admin@localhost.com', CURRENT_TIMESTAMP, 'admin@localhost.com', CURRENT_TIMESTAMP, false, '0a561740-a57a-4cd0-aabb-0faa6be899a8', 'Prefer not to answer', 3, false);
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1718558838995-96" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET question_type = 'DROPDOWN_SINGLE_CHOICE'
+            WHERE id = '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

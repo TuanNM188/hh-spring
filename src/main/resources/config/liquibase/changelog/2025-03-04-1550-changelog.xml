@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1738900527233-001" author="Tai Tran">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                --                 GET_PROJECT_DETAIL
+                ('ROLE_TECHNICAL_ADVISOR', 'fcfbfb0e-4472-4e23-a936-692c6b8e14f3'),
+                --                 GET_PROJECT_EXTENSION_REQUEST
+                ('ROLE_TECHNICAL_ADVISOR', '1d63ab3a-04de-4dfa-bf96-0a560e381db1'),
+                --                 GET_PROJECT_REPORT
+                ('ROLE_TECHNICAL_ADVISOR', 'c3abc372-8546-4deb-a124-a0bf7028685c'),
+                --                 GET_PROJECT_UPDATE
+                ('ROLE_TECHNICAL_ADVISOR', 'c42d8b64-44b1-4178-9534-be395f0133ab')
+            ;
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="1738900527233-002" author="Tai Tran">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_TECHNICAL_ADVISOR', '8a6e3249-681a-4bfd-9b5a-2391ce20a6be')
+
+            ;
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="1738900527233-003" author="Tai Tran">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                --                 APPROVE_PROJECT_EXTENSION_REQUEST
+                ('ROLE_TECHNICAL_ADVISOR', '58ed536d-67e7-49dc-b003-2565cf410606'),
+                --                 DENY_PROJECT_EXTENSION_REQUEST
+                ('ROLE_TECHNICAL_ADVISOR', 'd17108c9-d8cd-4685-8ed7-b71561367329')
+            ;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

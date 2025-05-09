@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717942379562-11" author="LinhNguyen">
+        <addColumn tableName="community_board_group">
+            <column name="last_active" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1717942379562-12" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_group
+            SET last_active = CURRENT_TIMESTAMP
+            WHERE last_active is null;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1718089739931-29" author="BinhTran">
+        <addColumn tableName="setting_definition">
+            <column name="title_key" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1718089739911-23" author="BinhTran">
+        <addColumn tableName="setting_definition">
+            <column name="group_key" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="1729350938114-07" author="BinhTran">
+        <sql>
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.enableNotifications',
+                group_key = 'notification-setting.general'
+            WHERE id = '8daa9fb6-f90a-4335-a67a-0ad576d0a41b';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.memberMentions',
+                 group_key = 'notification-setting.mentions'
+            WHERE id = 'f32d7c70-4c9f-471b-b5ea-769d410b25f4';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.passwordChanged',
+                 group_key = 'notification-setting.accountSettings'
+            WHERE id = '818f95fc-fc8e-437c-b96e-eb8b4a0f31d9';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.privateMessages',
+                 group_key = 'notification-setting.newPrivateMessage'
+            WHERE id = 'f504d3a7-4b4d-4a79-ab54-92a6da4d706b';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.postReply',
+                 group_key = 'notification-setting.communityBoard'
+            WHERE id = 'e2dcfb83-0c31-4108-881a-34064697c37a';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.newPostFollowedMember',
+                 group_key = 'notification-setting.communityBoard'
+            WHERE id = 'd8428455-c849-47db-8ba6-efbe15a16073';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.newFollower',
+                 group_key = 'notification-setting.communityBoard'
+            WHERE id = 'a53a9bb8-b1e6-4d73-b03d-c96cea82ab6c';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.groupDetailsUpdated',
+                 group_key = 'notification-setting.groups'
+            WHERE id = '42ab5f88-c7df-4733-97d7-9a5a241ad265';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.promotedInGroup',
+                 group_key = 'notification-setting.groups'
+            WHERE id = '1930e17d-adb3-45f0-baf6-5045257ec11a';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.newGroupInvite',
+                 group_key = 'notification-setting.groups'
+            WHERE id = 'b367bcb5-b8bf-4715-bf4d-1d75171990f5';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.groupJoinRequest',
+                group_key = 'notification-setting.groups'
+            WHERE id = '7638f6f9-d2d3-4d75-b367-9cc02046a675';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.groupRequestAccepted',
+                 group_key = 'notification-setting.groups'
+            WHERE id = 'ce21c182-cf78-40f1-8323-2ddcc4923acb';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.groupRequestRejected',
+                 group_key = 'notification-setting.groups'
+            WHERE id = '29d17dbc-4fb5-4ae2-bf53-a04acc608de1';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.newGroupMessage',
+                 group_key = 'notification-setting.groups'
+            WHERE id = 'e4a2de25-0c62-4b75-88f0-1fc91ae26304';
+
+            UPDATE setting_definition
+            SET title_key = 'notification-setting.newGroupPost',
+                 group_key = 'notification-setting.groups'
+            WHERE id = 'e64ec354-074a-47aa-8bab-d1688c49f839';
+
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

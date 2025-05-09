@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353996958-115" author="hnnguyen">
+        <sql>
+            UPDATE setting_definition
+            SET title = 'Group Posts'
+            WHERE id = 'c2c36973-59e0-4340-ad4e-f361c6989cc3';
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-116" author="hnnguyen">
+        <sql>
+            UPDATE setting_definition
+            SET key_code = 'GROUP_POSTS'
+            WHERE id = 'c2c36973-59e0-4340-ad4e-f361c6989cc3';
+
+            UPDATE community_board_group_setting
+            SET setting_key = 'GROUP_POSTS'
+            WHERE setting_key = 'COMMUNITY_BOARD';
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

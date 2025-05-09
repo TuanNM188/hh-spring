@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.projectReport.greeting(${businessOwnerFirstName})}">Hello {0},</p>
+  <p th:text="#{email.invitation.projectReport.body}">Your advisor recently delivered your completed project. We'd love to know how it turned out and if you have any feedback.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${postProjectFeedbackFormLink}|})"
+          th:href="${postProjectFeedbackFormLink}"
+          th:text="#{email.invitation.projectReport.rateProject}"
+        >Rate your project.</a
+        >
+      </span>
+  </p>
+  <p>
+    <span th:text="#{email.invitation.projectReport.body1}">Have additional questions or concerns?</span>
+    <span><a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"  th:text="#{email.invitation.projectReport.body2}">chat with our team now.</a></span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729146938334-74" author="TuanNM">
+       <sql>
+           INSERT INTO "permission" (id,"name","type")
+           VALUES ('807368ba-77f9-4eec-9030-e2c30b56f839'::uuid,'GET_ABOUT_PORTAL','API');
+           INSERT INTO authority_permissions (authority_name,permission_id)
+           VALUES('ROLE_PORTAL_HOST','807368ba-77f9-4eec-9030-e2c30b56f839'::uuid),
+                 ('ROLE_BUSINESS_OWNER','807368ba-77f9-4eec-9030-e2c30b56f839'::uuid),
+                 ('ROLE_TECHNICAL_ADVISOR','807368ba-77f9-4eec-9030-e2c30b56f839'::uuid),
+                 ('ROLE_COMMUNITY_PARTNER','807368ba-77f9-4eec-9030-e2c30b56f839'::uuid);
+       </sql>
+    </changeSet>
+    <changeSet id="1729146938335-01" author="Linh Nguyen">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('5889e614-797b-4418-b6b7-684fc8353cc0'::uuid,'GET_ADDRESS_PORTAL','API');
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES('ROLE_PORTAL_HOST','5889e614-797b-4418-b6b7-684fc8353cc0'::uuid),
+                  ('ROLE_SYSTEM_ADMINISTRATOR','5889e614-797b-4418-b6b7-684fc8353cc0'::uuid),
+                  ('ROLE_BUSINESS_OWNER','5889e614-797b-4418-b6b7-684fc8353cc0'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','5889e614-797b-4418-b6b7-684fc8353cc0'::uuid),
+                  ('ROLE_COMMUNITY_PARTNER','5889e614-797b-4418-b6b7-684fc8353cc0'::uuid);
+        </sql>
+    </changeSet>
+    <changeSet id="1729350938334-74" author="TuanNM">
+        <sql>
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",icon,router_link,priority_order,is_active,"position")
+            VALUES ('5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9'::uuid,'admin@localhost.com','2024-10-01 03:45:08.432','admin@localhost.com','2024-10-01 03:45:08.432',false,'About','about','/about',9,true,'TOP');
+            UPDATE menu
+            SET priority_order=10
+            WHERE id='20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid::uuid;
+            UPDATE menu
+            SET priority_order=11
+            WHERE id='251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid::uuid;
+            UPDATE menu
+            SET priority_order=12
+            WHERE id='2586bab8-79a1-472f-a041-3b19c83267b1'::uuid::uuid;
+            UPDATE menu
+            SET priority_order=13
+            WHERE id='4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace'::uuid::uuid;
+            UPDATE menu
+            SET priority_order=14
+            WHERE id='a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid::uuid;
+
+
+        </sql>
+    </changeSet>
+    <changeSet id="1729353938334-74" author="TuanNM">
+        <sql>
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9'::uuid),
+             ('ROLE_COMMUNITY_PARTNER','5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9'::uuid),
+             ('ROLE_BUSINESS_OWNER','5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9'::uuid),
+             ('ROLE_PORTAL_HOST','5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9'::uuid);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

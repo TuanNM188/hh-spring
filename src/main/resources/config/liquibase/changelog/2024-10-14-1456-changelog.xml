@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-80" author="hnnguyen">
+        <sql>
+            INSERT INTO setting_definition (id, category, key_code, title, group_code, group_name, data_type, default_value, options, priority_order, is_disable)
+            VALUES
+                -- Notification settings
+                ('8daa9fb6-f90a-4335-a67a-0ad576d0a41b', 'NOTIFICATION', 'ENABLE_NOTIFICATIONS', 'Enable notifications', 'GENERAL', 'General', 'JSON', '{"email": true, "web": true}', NULL, 1, false),
+                ('f32d7c70-4c9f-471b-b5ea-769d410b25f4', 'NOTIFICATION', 'MEMBER_MENTION', 'A member mentions you using "@{username}"', 'MENTIONS', 'Mentions', 'JSON', '{"email": true, "web": true}', NULL, 2, false),
+                ('818f95fc-fc8e-437c-b96e-eb8b4a0f31d9', 'NOTIFICATION', 'PASSWORD_CHANGED', 'Your password is changed', 'ACCOUNT_SETTINGS', 'Account Settings', 'JSON', '{"email": true, "web": true}', NULL, 3, false),
+                ('e2dcfb83-0c31-4108-881a-34064697c37a', 'NOTIFICATION', 'MEMBER_REPLIES_POST_COMMENT', 'A member replies to your post or comment', 'ACTIVITY_FEEDS', 'Activity Feeds', 'JSON', '{"email": true, "web": true}', NULL, 4, false),
+                ('d8428455-c849-47db-8ba6-efbe15a16073', 'NOTIFICATION', 'NEW_POST_MEMBER_FOLLOWING', 'New post by a member you''re following', 'ACTIVITY_FEEDS', 'Activity Feeds', 'JSON', '{"email": true, "web": true}', NULL, 5, false),
+                ('a53a9bb8-b1e6-4d73-b03d-c96cea82ab6c', 'NOTIFICATION', 'MEMBER_STARTS_FOLLOWING', 'A member starts following you', 'ACTIVITY_FEEDS', 'Activity Feeds', 'JSON', '{"email": true, "web": true}', NULL, 6, false),
+                ('42ab5f88-c7df-4733-97d7-9a5a241ad265', 'NOTIFICATION', 'DETAILS_GROUP_MANAGE_UPDATED', 'The details of a group you manage are updated', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 7, false),
+                ('1930e17d-adb3-45f0-baf6-5045257ec11a', 'NOTIFICATION', 'PROMOTED_IN_GROUP', 'You''re promoted in a group', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 8, false),
+                ('b367bcb5-b8bf-4715-bf4d-1d75171990f5', 'NOTIFICATION', 'RECEIVE_INVITE_JOIN_GROUP', 'You receive a new invite to join a group', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 9, false),
+                ('7638f6f9-d2d3-4d75-b367-9cc02046a675', 'NOTIFICATION', 'MEMBER_REQUEST_JOIN_GROUP', 'A member requests to join a group you manage', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 10, false),
+                ('ce21c182-cf78-40f1-8323-2ddcc4923acb', 'NOTIFICATION', 'REQUEST_JOIN_GROUP_ACCEPTED', 'Your request to join a group is accepted', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 11, false),
+                ('29d17dbc-4fb5-4ae2-bf53-a04acc608de1', 'NOTIFICATION', 'REQUEST_JOIN_GROUP_REJECTED', 'Your request to join a group is rejected', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 12, false),
+                ('e4a2de25-0c62-4b75-88f0-1fc91ae26304', 'NOTIFICATION', 'RECEIVE_NEW_GROUP_MESSAGE', 'You receive a new group message', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 13, false),
+                ('e64ec354-074a-47aa-8bab-d1688c49f839', 'NOTIFICATION', 'NEW_POST_IN_GROUP_SUBSCRIBED', 'New post in a group you''re subscribed to', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 14, false),
+                ('902b58df-80a8-4760-9d5c-372115e1ab32', 'NOTIFICATION', 'NEW_MEETING_SCHEDULED_IN_GROUP', 'New meeting is scheduled in one of your groups', 'SOCIAL_GROUPS', 'Social Groups', 'JSON', '{"email": true, "web": true}', NULL, 15, false),
+                ('f504d3a7-4b4d-4a79-ab54-92a6da4d706b', 'NOTIFICATION', 'RECEIVE_NEW_PRIVATE_MESSAGE', 'You receive a new private message', 'PRIVATE_MESSAGES', 'Private Messages', 'JSON', '{"email": true, "web": true}', NULL, 16, false),
+                ('526b5e5c-698f-41c5-9dae-e0c49398f623', 'NOTIFICATION', 'RECEIVE_NEW_CONNECTION_REQUEST', 'You receive a new connection request', 'MEMBER_CONNECTIONS', 'Member Connections', 'JSON', '{"email": true, "web": true}', NULL, 17, false),
+                ('cbe54ed2-d458-4931-a5af-1e43b8d2faa2', 'NOTIFICATION', 'CONNECTION_REQUEST_ACCEPTED', 'Your connection request is accepted', 'MEMBER_CONNECTIONS', 'Member Connections', 'JSON', '{"email": true, "web": true}', NULL, 18, false),
+
+                -- Privacy settings
+                ('b0e73043-dc0e-444a-9564-bfe5377ffa15', 'PRIVACY','HUUB_CITY', 'Hub city', 'ABOUT', 'About', 'STRING', 'public', '["public", "only_me"]', 1, false),
+                ('40f0c01f-64fa-44f3-9146-d9dc305442a8', 'PRIVACY','COMPANY', 'Company', 'ABOUT','About', 'STRING', 'public', '["public", "only_me"]', 2, false),
+                ('e2838116-26d8-4e8a-aa96-e6a6fe68ea14', 'PRIVACY','BUSINESS_WEBSITE', 'Your Business Website', 'ABOUT', 'About', 'STRING', 'public', '["public", "only_me"]', 3, false),
+                ('efc8874e-17ce-4c0e-b039-1b113cc35212', 'PRIVACY','DATE_BUSINESS_OPENED', 'Date Your Business Opened', 'ABOUT', 'About', 'STRING', 'public', '["public", "only_me"]', 4, false),
+                ('ec0b6f67-c7f3-4f83-8f68-70e41aa7caa9', 'PRIVACY','GENDER', 'Gender', 'ABOUT', 'About', 'STRING', 'only_me', '["public", "only_me"]', 5, false),
+                ('27d92c8a-f4c8-4cde-9184-4d8d652e39bb', 'PRIVACY','FIRST_PRIORITY_ASSISTANCE', 'What is your *1st* priority for 1:1 assistance?', 'ABOUT', 'About', 'STRING', 'only_me', '["public", "only_me"]', 6, true),
+                ('b64a475e-5c5d-4814-8d6c-90a4bbf4f664', 'PRIVACY','SECOND_PRIORITY_ASSISTANCE', 'What is your *2nd* priority for 1:1 assistance?', 'ABOUT', 'About', 'STRING', 'only_me', '["public", "only_me"]', 7, true),
+                ('49ec8f3e-83e3-412a-ab1b-7c6f081e1782', 'PRIVACY','WOULD_LIKE_SUPPORT_ON', 'Would like support on', 'ABOUT', 'About', 'STRING', 'only_me', '["public", "only_me"]', 8, false),
+                ('998dd5e8-a5ac-45c3-ac59-8aaed73dc65e', 'PRIVACY','FIRST_NAME', 'First name', 'DETAILS', 'Details', 'STRING', 'public', '["public", "only_me"]', 9, true),
+                ('8b3811d3-1bfb-4f89-b818-793e4c808eef', 'PRIVACY','LAST_NAME', 'Last name', 'DETAILS', 'Details', 'STRING', 'public', '["public", "only_me"]', 10, false),
+                ('29c4c01b-548a-4c08-b35c-7cbbab5fbaeb', 'PRIVACY','USERNAME', 'Username', 'DETAILS', 'Details', 'STRING', 'public', '["public", "only_me"]', 11, true);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

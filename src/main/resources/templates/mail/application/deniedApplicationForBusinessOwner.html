@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.applications.business.owner.denied.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.applications.business.owner.denied.body}">
+    Thank you for your application to the 1-on-1 support program. We appreciate your time and patience throughout the
+    application process.
+  </p>
+  <p th:text="#{email.applications.business.owner.denied.body2(${portalName})}">
+    Your application has been processed and reviewed by {Portal Name} staff.
+    We regret to inform you that your application has been denied as you do not meet the requirements to participate in
+    the program at this time.
+  </p>
+  <p
+    th:text="#{email.applications.business.owner.denied.body3(${programManagerName}, ${programManagerEmail}, ${portalName})}">
+    If you have any questions regarding this determination or to learn about other resources available,
+    please contact {Program Manager Name} via email at {program manager email}.
+    You can also find additional 1-on-1 support programs via the Community Resources page in {Portal Name}
+  </p>
+  <p>
+  <span th:text="#{email.applications.business.owner.denied.support1}">
+     To your success,
+  </span>
+    <br/>
+    <strong th:text="#{email.applications.business.owner.denied.support2}">
+      The HUUB Team
+    </strong>
+  </p>
+  <span th:text="#{email.applications.business.owner.denied.support3}">
+  Need additional booking support?
+</span>
+   <a th:with="url=(@{|${liveChat}|})" th:href="${url}"
+      th:text="#{email.applications.business.owner.denied.support4}">Chat with our team now.</a>
+</div>
+</html>
+
+
+
+

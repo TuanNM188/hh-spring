@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.restrict.user.notify.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p>
+    <span th:text="#{email.restrict.user.notify.body}">
+      Your account has been restricted from creating posts and comments.
+    </span>
+      <span th:text="#{email.restrict.user.notify.body2}">
+      If you have any questions, please contact your portal host.
+    </span>
+  </p>
+  <p class="mb-0" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>

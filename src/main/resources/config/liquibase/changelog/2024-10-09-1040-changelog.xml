@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1726718850481-86" author="hnnguyen">
+        <sql>
+            DELETE FROM terms_acceptance;
+            DELETE FROM terms_and_conditions WHERE id = '27ce01b8-4c54-482f-b156-cdcf524d7ca9';
+        </sql>
+        <insert tableName="terms_and_conditions">
+            <column name="id" value="27ce01b8-4c54-482f-b156-cdcf524d7ca9"/>
+            <column name="created_by" value="admin@localhost.com"/>
+            <column name="created_date" value="2024-09-24 02:38:49.086"/>
+            <column name="last_modified_by" value="admin@localhost.com"/>
+            <column name="last_modified_date" value="2024-09-24 02:38:49.086"/>
+            <column name="is_delete" value="false"/>
+            <column name="text">
+                <![CDATA[
+**1. Introduction**
+
+These Terms and Conditions ("Agreement") govern your use of our platform and the submission of content. By submitting content, you agree to comply with these terms. This is a legally binding agreement between you and [Company Name].
+
+**2. Eligibility**
+
+You must be at least 18 years old or the legal age of majority in your jurisdiction to submit content. By agreeing to these terms, you represent and warrant that you meet these eligibility requirements.
+
+**3. Content Submission**
+
+By submitting content, you grant [Company Name] a non-exclusive, worldwide, royalty-free, perpetual, and irrevocable license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display the content in any media. You also represent and warrant that you own all rights to the content or have obtained all necessary permissions.
+
+**4. User Conduct**
+
+You agree not to submit any content that is illegal, harmful, defamatory, obscene, or otherwise objectionable. [Company Name] reserves the right to remove any content that violates these terms or is deemed inappropriate.
+
+**5. Intellectual Property**
+
+All content submitted by you remains your intellectual property. However, by submitting content, you grant [Company Name] the rights outlined in Section 3.
+
+**6. Privacy**
+
+We value your privacy. Please review our Privacy Policy to understand how we collect, use, and protect your personal information.
+
+**7. Limitation of Liability**
+
+[Company Name] will not be liable for any damages arising from the use or inability to use the platform or submission of content, including but not limited to indirect, incidental, punitive, and consequential damages.
+
+**8. Governing Law**
+
+This Agreement is governed by the laws of [Jurisdiction], without regard to its conflict of law principles.
+            ]]>
+            </column>
+            <column name="version_number" value="1"/>
+            <column name="is_active" value="true"/>
+            <column name="type" value="LEARNING_LIBRARY"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

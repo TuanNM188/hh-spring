@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="1741835863453-100" author="huytruong (generated)">
+        <dropColumn columnName="start_time" tableName="appointment"/>
+        <dropColumn columnName="end_time" tableName="appointment"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718597438875-65" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET question = 'Your First Name' WHERE id = '0b0c59de-9b24-4941-9cfb-554675170dba';
+            UPDATE question
+            SET question = 'Your Last Name' WHERE id = '0b0853a6-f5f5-4394-bc07-001c9db45a7e';
+            UPDATE question
+            SET question = 'Your Email Address' WHERE id = '0afc52a3-5759-4da3-b726-7cdabe40b2d2';
+            UPDATE question
+            SET question = 'Your Phone Number' WHERE id = '0af7f1b3-4b88-46b4-8e9b-675658c1db74';
+            UPDATE question
+            SET question = 'Your Job Title' WHERE id = '0af55be8-b146-4e22-96d5-c2a6bb4baf51';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

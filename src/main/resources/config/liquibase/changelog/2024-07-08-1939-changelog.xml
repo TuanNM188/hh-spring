@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717943218121-3" author="Nghia Nguyen">
+        <addColumn tableName="jhi_user">
+            <column name="status" type="VARCHAR(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1717954438121-3" author="Nghia Nguyen">
+        <sql>
+            UPDATE jhi_user SET status = 'ACTIVE' WHERE activated = true;
+            UPDATE jhi_user SET status = 'INACTIVE' WHERE activated = false;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

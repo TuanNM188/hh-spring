@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1718558838875-01" author="hnnguyen">
+        <sql>
+            INSERT INTO answer_option
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_id, answer, priority_order, is_extra)
+            VALUES
+                ('974679ae-bee1-49a1-93ee-f6cdcce31bd6', 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a','Guam', 3, false),
+                ('024141b8-2091-40f7-b3ab-362c36dc2a6a', 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a','Puerto Rico', 4, false),
+                ('fd04e69d-12f5-46ba-aae7-777a3ce53ebc', 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a','U.S. Virgin Islands', 5, false);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

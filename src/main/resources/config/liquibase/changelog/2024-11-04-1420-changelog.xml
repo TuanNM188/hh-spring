@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1730704710142-80" author="hnnguyen (generated)">
+        <createTable tableName="community_board_group">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_community_board_group"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="group_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_avatar" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cover_photo" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1730704746063-82" author="hnnguyen (generated)">
+        <createTable tableName="community_board_group_setting">
+            <column name="setting_key" type="VARCHAR(255)"/>
+            <column name="setting_value" type="VARCHAR(255)"/>
+            <column name="community_board_group_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_community_board_group_setting"/>
+            </column>
+            <column name="setting_definition_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_community_board_group_setting"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-31" author="hnnguyen (generated)">
+        <sql>
+            CREATE PROCEDURE insert_user_settings(userId UUID)
+            LANGUAGE plpgsql
+            AS '
+            BEGIN
+              IF NOT EXISTS (
+                SELECT 1 FROM user_setting
+                WHERE user_setting.user_id = userId
+              ) THEN
+                INSERT INTO user_setting (setting_key, setting_value, user_id, setting_definition_id)
+                SELECT
+                    sd.key_code as setting_key,
+                    CASE
+                        WHEN sd.data_type = ''JSON'' THEN sd.default_value
+                        WHEN sd.data_type = ''STRING'' THEN sd.default_value
+                        ELSE sd.default_value
+                    END as setting_value,
+                    userId as user_id,
+                    sd.id as setting_definition_id
+                FROM setting_definition sd;
+                        END IF;
+            END;
+            ';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

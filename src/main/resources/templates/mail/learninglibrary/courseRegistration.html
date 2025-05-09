@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.course.registration.greeting(${portalHostName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.course.registration.body(${courseName}, ${businessOwnerName})}">
+    A new course registration is ready to be reviewed for {0} from {1}.
+  </p>
+  <p>
+    <a th:with="url=(@{|${baseUrl}/course-managements/list?registrationId=${registrationId}|})" th:href="${url}" th:text="#{email.course.registration.view}">
+      View Registration
+    </a>
+  </p>
+  <p th:text="#{email.course.registration.closing}">
+    Please review this registration form within 24-48 hours of this message.
+  </p>
+  <p class="mb-0"> Thanks, </p>
+  <p class="mt-0"><strong>The HUUB team</strong></p>
+</div>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717069378868-3" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('12c812b0-cd74-4624-8247-dbc3795abd2f'::uuid,'SEARCH_ALL_VENDORS','API'),
+             ('bf056c0c-adf0-46c2-adb3-5153d9683618'::uuid,'GET_OVERVIEW_BUDGET_VENDOR','API');
+
+            INSERT INTO public.authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','12c812b0-cd74-4624-8247-dbc3795abd2f'::uuid),
+             ('ROLE_PORTAL_HOST','12c812b0-cd74-4624-8247-dbc3795abd2f'::uuid),
+             ('ROLE_SYSTEM_ADMINISTRATOR','bf056c0c-adf0-46c2-adb3-5153d9683618'::uuid),
+             ('ROLE_PORTAL_HOST','bf056c0c-adf0-46c2-adb3-5153d9683618'::uuid);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

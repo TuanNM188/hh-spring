@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+  <div th:fragment="body-content">
+    <p th:text="#{email.cancel.appointment.greeting(${receiverName})}">Hello {receiverName},</p>
+    <p>
+      <span th:text="#{email.cancel.appointment.body(${senderName},${appointmentDateAndTime})}">
+        Your appointment with {senderName} on {appointmentDateAndTime} has been canceled.
+      </span>
+      <span th:text="#{email.cancel.appointment.link.body1}"> Please </span>
+      <strong>
+        <a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}" th:text="#{email.cancel.appointment.link.body}" class="link-custom">
+          chat with our team
+        </a>
+      </strong>
+      <span th:text="#{email.cancel.appointment.link.body2}"> now if you need additional scheduling assistance. </span>
+    </p>
+    <p>
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support5}"> Thanks, </span>
+      <br />
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support7}"> The HUUB team </span>
+    </p>
+  </div>
+</html>

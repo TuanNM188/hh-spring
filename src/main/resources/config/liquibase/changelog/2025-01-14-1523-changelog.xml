@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717632379562-3" author="TaiDoan">
+        <sql>
+            UPDATE "permission"
+            SET "name"='SEARCH_APPROVED_APPLICATIONS'
+            WHERE id='36167ae7-ae22-470a-b4d0-b18883a4157e'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

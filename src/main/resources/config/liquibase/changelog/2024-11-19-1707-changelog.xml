@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="172773919953-40" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, "name", "type")
+            VALUES ('eaf31843-0828-4862-a559-b981dd1aebbe', 'COMMUNITY_PARTNER_INVITE_STAFF', 'API'),
+                   ('ea28b1f5-f411-432a-a50f-ec4c979fdf3e', 'CHECK_EXISTS_COMMUNITY_PARTNER_STAFF_EMAIL', 'API'),
+                   ('2ef09cfa-38bd-448a-b557-5577cbea1b5d', 'MEMBER_PROFILE_GET_COMMUNITY_PARTNER_BY_ID', 'API'),
+                   ('08199ffb-4ef9-4a03-92dd-a96bc9501df9', 'MEMBER_PROFILE_UPDATE_COMMUNITY_PARTNER', 'API'),
+                   ('2e914256-0afe-4e62-8c46-beedd5cfa6af', 'MEMBER_PROFILE_GET_BOOKING_SETTING_BY_USER_ID', 'API'),
+                   ('1510e9bf-5589-4ffc-9db9-6d79b27ee1d6', 'MEMBER_PROFILE_SAVE_BOOKING_SETTING', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', 'eaf31843-0828-4862-a559-b981dd1aebbe'),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'ea28b1f5-f411-432a-a50f-ec4c979fdf3e'),
+                   ('ROLE_PORTAL_HOST', 'eaf31843-0828-4862-a559-b981dd1aebbe'),
+                   ('ROLE_PORTAL_HOST', 'ea28b1f5-f411-432a-a50f-ec4c979fdf3e'),
+                   ('ROLE_COMMUNITY_PARTNER', 'eaf31843-0828-4862-a559-b981dd1aebbe'),
+                   ('ROLE_COMMUNITY_PARTNER', 'ea28b1f5-f411-432a-a50f-ec4c979fdf3e'),
+                   ('ROLE_COMMUNITY_PARTNER', '2ef09cfa-38bd-448a-b557-5577cbea1b5d'),
+                   ('ROLE_COMMUNITY_PARTNER', '08199ffb-4ef9-4a03-92dd-a96bc9501df9'),
+                   ('ROLE_COMMUNITY_PARTNER', '2e914256-0afe-4e62-8c46-beedd5cfa6af'),
+                   ('ROLE_COMMUNITY_PARTNER', '1510e9bf-5589-4ffc-9db9-6d79b27ee1d6');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

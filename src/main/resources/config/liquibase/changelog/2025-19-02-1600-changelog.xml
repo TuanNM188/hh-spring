@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1739955254136-169" author="fvnDN_24">
+        <dropForeignKeyConstraint baseTableName="appointment_report_attachment"
+                                  constraintName="fk_appointment_report_attachment_on_appointment_report"/>
+    </changeSet>
+    <changeSet id="1739955254136-171" author="fvnDN_24">
+        <dropForeignKeyConstraint baseTableName="project_attachment" constraintName="fk_project_attachment_on_project"/>
+    </changeSet>
+    <changeSet id="1739955254136-172" author="fvnDN_24">
+        <dropForeignKeyConstraint baseTableName="project_report_attachment"
+                                  constraintName="fk_project_report_attachment_on_project_report"/>
+    </changeSet>
+    <changeSet id="1739955254136-173" author="fvnDN_24">
+        <dropForeignKeyConstraint baseTableName="project_update_attachment"
+                                  constraintName="fk_project_update_attachment"/>
+    </changeSet>
+    <changeSet id="1739955254136-185" author="fvnDN_24">
+        <dropTable cascadeConstraints="true" tableName="appointment_report_attachment"/>
+    </changeSet>
+    <changeSet id="1739955254136-187" author="fvnDN_24">
+        <dropTable cascadeConstraints="true" tableName="project_attachment"/>
+    </changeSet>
+    <changeSet id="1739955254136-188" author="fvnDN_24">
+        <dropTable cascadeConstraints="true" tableName="project_report_attachment"/>
+    </changeSet>
+    <changeSet id="1739955254136-189" author="fvnDN_24">
+        <dropTable cascadeConstraints="true" tableName="project_update_attachment"/>
+    </changeSet>
+
+</databaseChangeLog>

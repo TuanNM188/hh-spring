@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1741115337131-162" author="Hung Tran">
+        <addColumn tableName="invoice">
+            <column name="technical_assistance_submit_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1741115337131-163" author="Hung Tran">
+        <comment>Create sequence table to store sequence values</comment>
+        <createTable tableName="sequence_store">
+            <column name="sequence_name" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="current_value" type="bigint" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="increment_size" type="int" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Initialize invoice sequence -->
+    <changeSet id="1741115337131-164" author="Hung Tran">
+        <comment>Initialize invoice sequence with starting value 5000</comment>
+        <insert tableName="sequence_store">
+            <column name="sequence_name" value="invoice_sequence"/>
+            <column name="current_value" valueNumeric="4999"/>
+            <column name="increment_size" valueNumeric="1"/>
+            <column name="last_updated" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+
+    <!-- Create nextval function -->
+    <changeSet id="1741115337131-165" author="Hung Tran">
+        <comment>Create function to atomically get next value from sequence</comment>
+        <sql splitStatements="false">
+            CREATE OR REPLACE FUNCTION get_next_sequence_value(p_sequence_name VARCHAR)
+            RETURNS BIGINT AS $BODY$
+            DECLARE
+            v_next_value BIGINT;
+            BEGIN
+                -- Lock the row for update to prevent concurrent access
+            UPDATE sequence_store
+            SET current_value = current_value + increment_size,
+                last_updated = CURRENT_TIMESTAMP
+            WHERE sequence_name = p_sequence_name
+                RETURNING current_value INTO v_next_value;
+
+            -- If the sequence doesn't exist, create it
+            IF v_next_value IS NULL THEN
+                    INSERT INTO sequence_store (sequence_name, current_value, increment_size, last_updated)
+                    VALUES (p_sequence_name, 0, 1, CURRENT_TIMESTAMP)
+                    RETURNING current_value INTO v_next_value;
+            END IF;
+
+            RETURN v_next_value;
+            END;
+            $BODY$ LANGUAGE plpgsql;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

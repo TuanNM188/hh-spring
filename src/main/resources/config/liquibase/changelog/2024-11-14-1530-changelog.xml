@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="17925500832699-95" author="TuanNM">
+        <sql>
+            UPDATE question
+            SET question_type='RICH_TEXT'
+            WHERE id = '67b562b4-830a-47ee-9e01-ee7ce25e8777'::uuid::uuid;
+            UPDATE question
+            SET question_type='RICH_TEXT'
+            WHERE id = 'bb9235d3-9422-46ac-a1cd-5f7fff56c032'::uuid::uuid;
+            UPDATE question
+            SET question_type='RICH_TEXT'
+            WHERE id = '69b743f9-27f3-4b05-b02c-942ee007955f'::uuid::uuid;
+            UPDATE question
+            SET question_type='RICH_TEXT'
+            WHERE id = 'a10d4593-4acf-42df-8175-fa3c9f6f833c'::uuid::uuid;
+            UPDATE question
+            SET question_type='TEXT_AREA'
+            WHERE id = '4d9f5e6a-56f6-41b8-8b79-8ca62993e63d'::uuid::uuid;
+            UPDATE question
+            SET question_type='RICH_TEXT'
+            WHERE id = 'f78c82fd-4cd0-40d0-92e6-00d5035e4941'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+    <changeSet id="17925500732699-95" author="TuanNM">
+        <sql>
+            UPDATE question
+            SET question_code='PORTAL_ABOUT_SCREEN_CONFIGURATION_SOCIAL_URL'
+            WHERE id='4d9f5e6a-56f6-41b8-8b79-8ca62993e63d'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

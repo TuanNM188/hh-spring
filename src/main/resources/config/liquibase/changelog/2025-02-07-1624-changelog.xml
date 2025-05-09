@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="17982556809532-01" author="TuanNM">
+        <sql>
+            DELETE FROM menu_authority
+            WHERE authority_name='ROLE_SYSTEM_ADMINISTRATOR' AND menu_id='ffabb316-751c-49e2-9f67-ae76d68f632a'::uuid::uuid;
+            DELETE FROM menu_authority
+            WHERE authority_name='ROLE_PORTAL_HOST' AND menu_id='ffabb316-751c-49e2-9f67-ae76d68f632a'::uuid::uuid;
+            DELETE FROM public.menu
+            WHERE id='ffabb316-751c-49e2-9f67-ae76d68f632a'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+    <changeSet id="17982592809532-01" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('4900202c-c0f2-4562-a6ba-3bd951001b04'::uuid,'SEARCH_OVERVIEW_APPOINTMENT_MANAGEMENTS','API'),
+                   ('12e8902c-473a-4ff9-ba72-aaf3ac98b467'::uuid,'SEARCH_APPOINTMENT_MANAGEMENTS','API');
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_PORTAL_HOST','4900202c-c0f2-4562-a6ba-3bd951001b04'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','4900202c-c0f2-4562-a6ba-3bd951001b04'::uuid),
+                   ('ROLE_PORTAL_HOST','12e8902c-473a-4ff9-ba72-aaf3ac98b467'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','12e8902c-473a-4ff9-ba72-aaf3ac98b467'::uuid);
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="17992592809532-01" author="TuanNM">
+        <sql>
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','4900202c-c0f2-4562-a6ba-3bd951001b04'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','12e8902c-473a-4ff9-ba72-aaf3ac98b467'::uuid);
+        </sql>
+    </changeSet>
+    <changeSet id="1729913756958-74" author="TuanNM">
+        <sql>
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','4900202c-c0f2-4562-a6ba-3bd951001b04'::uuid);
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','12e8902c-473a-4ff9-ba72-aaf3ac98b467'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

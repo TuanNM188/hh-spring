@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1721977052993-26" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="content_type" type="VARCHAR(50)"/>
+            <column name="access_type" type="VARCHAR(50)"/>
+            <column name="expires_in" type="INT"/>
+            <column name="enrollment_deadline" type="DATETIME"/>
+            <column name="enrollee_limit" type="INT"/>
+            <column name="start_date" type="DATETIME"/>
+            <column name="end_date" type="DATETIME"/>
+            <column name="price" type="DECIMAL"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="description" type="TEXT"/>
+            <column name="hero_image" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-27" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library_portal">
+            <column name="learning_library_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_portal"/>
+            </column>
+            <column name="portal_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_portal"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-28" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library_speaker">
+            <column name="learning_library_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_speaker"/>
+            </column>
+            <column name="speaker_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_speaker"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-29" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library_step">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_step"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="priority_order" type="INT"/>
+            <column name="learning_library_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-30" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library_tag">
+            <column name="learning_library_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_tag"/>
+            </column>
+            <column name="tag_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_tag"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-31" author="FVNDN36 (generated)">
+        <createTable tableName="lesson">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_lesson"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="priority_order" type="INT"/>
+            <column name="learning_library_step_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-41" author="FVNDN36 (generated)">
+        <createTable tableName="speaker">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_speaker"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="avatar" type="TEXT"/>
+            <column name="bio" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-42" author="FVNDN36 (generated)">
+        <createTable tableName="tag">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tag"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721977052993-84" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_step"
+                                 constraintName="FK_LEARNING_LIBRARY_STEP_ON_LEARNING_LIBRARY"
+                                 referencedColumnNames="id" referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052993-85" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_step_id" baseTableName="lesson"
+                                 constraintName="FK_LESSON_ON_LEARNING_LIBRARY_STEP" referencedColumnNames="id"
+                                 referencedTableName="learning_library_step"/>
+    </changeSet>
+    <changeSet id="1721977052993-99" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052993-100" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_portal" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1721977052993-101" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="speaker_id" baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052993-102" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_speaker" referencedColumnNames="id"
+                                 referencedTableName="speaker"/>
+    </changeSet>
+    <changeSet id="1721977052993-103" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052993-104" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_tag" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+
+</databaseChangeLog>

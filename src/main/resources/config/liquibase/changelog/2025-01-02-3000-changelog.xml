@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="17206660919726-25" author="TAIDOAN">
+        <sql>
+            INSERT INTO public."permission" (id, "name", "type")
+            VALUES ('ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid, 'GET_ALL_NOTIFICATIONS_BY_USER', 'API'),
+                   ('f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid, 'MARK_AS_READ_NOTIFICATIONS', 'API'),
+                   ('d489e292-f472-487b-ba91-9bf3add1ef73'::uuid, 'NUM_UN_READ_NOTIFICATIONS', 'API'),
+                   ('2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid, 'MARK_ALL_AS_READ_NOTIFICATIONS', 'API'),
+                   ('4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid, 'DELETE_NOTIFICATION_BY_ID', 'API'),
+                   ('ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid, 'DELETE_NOTIFICATIONS', 'API');
+
+            INSERT INTO public.authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_PORTAL_HOST', 'ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', 'ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid),
+                   ('ROLE_BUSINESS_OWNER', 'ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', 'ace48f2d-8aa8-4cd0-aaf9-318c2788ff05'::uuid),
+                   ('ROLE_PORTAL_HOST', 'f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', 'f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid),
+                   ('ROLE_BUSINESS_OWNER', 'f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', 'f3c15061-f2d5-4876-91a6-4751b195ee93'::uuid),
+                   ('ROLE_PORTAL_HOST', 'd489e292-f472-487b-ba91-9bf3add1ef73'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'd489e292-f472-487b-ba91-9bf3add1ef73'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', 'd489e292-f472-487b-ba91-9bf3add1ef73'::uuid),
+                   ('ROLE_BUSINESS_OWNER', 'd489e292-f472-487b-ba91-9bf3add1ef73'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', 'd489e292-f472-487b-ba91-9bf3add1ef73'::uuid),
+                   ('ROLE_PORTAL_HOST', '2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid),
+                   ('ROLE_BUSINESS_OWNER', '2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', '2c02b63e-c97e-4c58-98ad-b982affc24c5'::uuid),
+                   ('ROLE_PORTAL_HOST', '4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid),
+                   ('ROLE_BUSINESS_OWNER', '4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', '4f1a86d4-3fc0-409f-89d2-c420c3fb06d7'::uuid),
+                   ('ROLE_PORTAL_HOST', 'ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', 'ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid),
+                   ('ROLE_BUSINESS_OWNER', 'ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR', 'ab1b35ba-4415-4567-9b1b-38f10928f6f6'::uuid);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

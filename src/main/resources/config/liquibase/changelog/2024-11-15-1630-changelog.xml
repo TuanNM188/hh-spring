@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719476647421-01" author="hnnguyen (generated)">
+        <renameColumn
+            newColumnName="allow_booking"
+            oldColumnName="allow_business_owner_booking"
+            tableName="jhi_user"
+        />
+
+        <addColumn tableName="jhi_user">
+            <column defaultValueBoolean="false" name="is_navigator" type="boolean"/>
+        </addColumn>
+
+    </changeSet>
+
+    <changeSet id="172773919953-04" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, "name", "type")
+            VALUES ('a63f8c68-ab77-4f06-8a1a-40bac8701c99', 'GET_ALL_COMMUNITY_PARTNER_META', 'API'),
+                   ('4cfa409c-1952-4270-9256-eb510beebc5a', 'GET_COMMUNITY_PARTNER_NAVIGATOR', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', 'a63f8c68-ab77-4f06-8a1a-40bac8701c99'),
+                   ('ROLE_PORTAL_HOST', 'a63f8c68-ab77-4f06-8a1a-40bac8701c99'),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '4cfa409c-1952-4270-9256-eb510beebc5a'),
+                   ('ROLE_PORTAL_HOST', '4cfa409c-1952-4270-9256-eb510beebc5a');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

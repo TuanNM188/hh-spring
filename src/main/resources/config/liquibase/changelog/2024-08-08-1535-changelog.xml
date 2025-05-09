@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1723106417031-37" author="FVNDN36 (generated)">
+        <createTable tableName="portal_host">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_portal_host"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="is_primary" type="BOOLEAN"/>
+            <column name="user_id" type="UUID"/>
+            <column name="invite_token" type="VARCHAR(255)"/>
+            <column name="invite_expire" type="DATETIME"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="portal_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1723106417031-96" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="portal_host"
+                                 constraintName="FK_PORTAL_HOST_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1723106417098-73" author="TuanNM">
+        <sql>
+            UPDATE feature
+            SET "name"='Portal Hosts',feature_code='PORTAL_HOSTS'
+            WHERE id='5e57c104-e283-4527-a7d3-fa31495c5c58'::uuid::uuid;
+
+            UPDATE jhi_authority
+            SET "name"='ROLE_PORTAL_HOST'
+            WHERE "name"='ROLE_CITY_HOST';
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

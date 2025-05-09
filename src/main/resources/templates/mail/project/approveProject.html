@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.project.approve.greeting(${businessOwnerFirstName})}">Hello {Advisor First Name},</p>
+  <p th:text="#{email.invitation.project.approve.body(${advisorFullName})}">You have received a project proposal from {0}. Please take a moment to review the proposal and approve or deny it.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${linkToProjectDetail}|})"
+          th:href="${linkToProjectDetail}"
+          th:text="#{email.invitation.project.approve.link}"
+        >View the project.</a
+        >
+      </span>
+  </p>
+  <p><span th:text="#{email.invitation.project.approve.body1(${navigatorFullName}, ${navigatorEmail})}">If you have any questions or need additional assistance with this proposal, email your navigator, {Navigator Full Name} at {navigator email}, or</span>
+    <span><a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"  th:text="#{email.invitation.project.approve.body2}">chat with our team</a> now.</span></p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+
+

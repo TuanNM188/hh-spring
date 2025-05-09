@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p class="surface-600" th:text="#{email.reminder.project.common.hello(${advisorFirstName})}">Hello {0},</p>
+  <p class="surface-600" th:text="#{email.reminder.project.30Days.after.completionDate.body(${projectName})}">
+      This is a final reminder to complete your project report for {Project Name}.
+  </p>
+  <p>
+    <strong class="surface-600" th:text="#{email.reminder.project.30Days.after.completionDate.body1}">
+      If we do not receive your report within the next 24 hours, this project will be closed and go unpaid.
+    </strong>
+  </p>
+  <p class="surface-600" th:text="#{email.reminder.project.common.complete.instruction1}">
+    Complete the required project report now to record your work by clicking the link below.
+  </p>
+  <p class="surface-600">
+      <span class="surface-600" >
+          <strong th:text="#{email.reminder.project.common.report.add}">Add Report:</strong>
+      </span>
+      <a style="color: #F97316 !important; font-weight: normal"
+         th:with="url=(@{|${linkToProjectReport}|})"
+         th:href="${url}"
+         th:text="${url}">
+        {0}
+      </a>
+  </p>
+  <p>
+      <span class="surface-600" th:text="#{email.reminder.project.common.questions}">
+        If you have any questions or need to update your project completion date, please email us at
+      </span>
+
+    <a style="color: #F97316 !important;" th:href="'mailto:' + #{email.reminder.project.common.contact}" th:text="#{email.reminder.project.common.contact}">
+      contact@myhuub.com
+    </a>
+  </p>
+  <p class="mb-0 surface-600" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong class="surface-600" th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>
+

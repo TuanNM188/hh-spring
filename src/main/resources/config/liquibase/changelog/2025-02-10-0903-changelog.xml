@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353756958-74" author="TuanNM">
+        <sql>
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','dab932ad-6ba1-4df9-86d2-e398ac124f55'::uuid); --TA Management
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','dab932ad-6ba1-4df9-86d2-e398ac124f55'::uuid);--TA Management
+            INSERT INTO public.menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','db9a0450-6b99-43ec-ab2f-486b52ed265e'::uuid);--Application Management
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','049512d8-fa8a-4a1b-90b7-a76bec17a0f0'::uuid); --Appointment Management
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','049512d8-fa8a-4a1b-90b7-a76bec17a0f0'::uuid); --Appointment Management
+            INSERT INTO public.menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','a4056326-a282-400e-bb55-7db07628f4f9'::uuid);--Application Management
+        </sql>
+    </changeSet>
+    <changeSet id="1929353826958-74" author="TuanNM">
+        <sql>
+            UPDATE technical_assistance_submit
+            SET status='SUBMITTED'
+            WHERE status = 'PENDING'
+        </sql>
+    </changeSet>
+    <changeSet id="1729353790958-74" author="TuanNM">
+        <sql>
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','e2bf2fa4-1c9a-4508-a19a-9a6c271ef69d'::uuid);
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','381e074c-8db6-4f11-b7af-e75a795efd63'::uuid);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

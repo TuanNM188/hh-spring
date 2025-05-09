@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1928259386476-15" author="TuanMN">
+        <addColumn tableName="appointment">
+            <column name="technical_assistance_submit_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1736929386476-141"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="technical_assistance_submit_id"
+                                 baseTableName="appointment"
+                                 constraintName="FK_APPOINTMENT_ON_TECHNICAL_ASSISTANCE_SUBMIT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technical_assistance_submit"/>
+    </changeSet>
+
+</databaseChangeLog>

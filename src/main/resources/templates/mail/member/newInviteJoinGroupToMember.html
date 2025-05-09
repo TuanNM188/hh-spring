@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <a
+        th:href="${memberUrl}"
+        th:text="${senderName}"
+    >senderName</a>
+    <span th:text="#{email.invite.join.group.body}">has invited you to join the group:</span>
+    <a
+        th:href="${referenceUrl}"
+        th:text="${groupName}"
+    >groupName</a>.
+  </p>
+  <div >
+    <p th:utext="${inviteMessage}">{invite message}</p>
+  </div>
+  <p>
+    <a
+       th:href="${referenceUrl}"
+       th:text="#{email.invite.join.group.body2}"
+    >Click here</a>
+    <span th:text="#{email.invite.join.group.body3}">to join the group.</span>
+  </p>
+</div>
+</html>

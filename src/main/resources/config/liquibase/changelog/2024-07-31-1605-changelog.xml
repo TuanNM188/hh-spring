@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595289508-27" author="Nghia Nguyen">
+        <sql>
+            INSERT INTO feature
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, "name", feature_code, router_link, is_dynamic, priority_order, parent_id, description)
+            VALUES('cb53089c-8d8f-49fc-917e-9faeb9b1a3af'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Learning Library', 'LEARNING_LIBRARY', '/learning-libraries', false, 1, NULL, NULL),
+                  ('cbd2eb0c-4215-4822-a683-0dc5eb3e1ad5'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'About', 'LEARNING_LIBRARY_ABOUT', NULL, false, 1, 'cb53089c-8d8f-49fc-917e-9faeb9b1a3af'::uuid, NULL),
+                  ('d3581c2e-04b3-494c-b8d9-3847a6907c76'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Speakers', 'LEARNING_LIBRARY_SPEAKERS', NULL, false, 2, 'cb53089c-8d8f-49fc-917e-9faeb9b1a3af'::uuid, NULL),
+                  ('ece9b329-db14-461b-bc6c-53146d46bf61'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Steps &amp; Lessons', 'LEARNING_LIBRARY_STEPS_LESSONS', NULL, false, 3, 'cb53089c-8d8f-49fc-917e-9faeb9b1a3af'::uuid, NULL);
+
+        </sql>
+    </changeSet>
+    <changeSet id="1772466095478-54" author="Nghia Nguyen">
+        <renameTable
+            oldTableName="lesson"
+            newTableName="learning_library_lesson"/>
+    </changeSet>
+    <changeSet id="1720667889278-44" author="Nghia Nguyen">
+        <dropColumn columnName="status" tableName="learning_library_lesson"/>
+    </changeSet>
+
+</databaseChangeLog>

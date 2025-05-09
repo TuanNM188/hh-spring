@@ -1,0 +1,29 @@
+plugins {
+    id "com.github.node-gradle.node"
+}
+
+if (project.hasProperty("nodeInstall")) {
+    node {
+        version = "20.14.0"
+        npmVersion = "10.8.1"
+        download = true
+    }
+
+    // Copy local node and npm to a fixed location for npmw
+    def deleteOldNpm = tasks.register("deleteOldNpm", Delete) {
+        delete 'build/node/lib/node_modules/npm'
+    }
+    def fixedNode = tasks.register("fixedNode", Copy) {
+        from nodeSetup
+        into 'build/node'
+        finalizedBy deleteOldNpm
+    }
+    tasks.named("nodeSetup").configure { finalizedBy fixedNode }
+
+    def fixedNpm = tasks.register("fixedNpm", Copy) {
+        from npmSetup
+        into 'build/node'
+    }
+    tasks.named("npmSetup").configure { finalizedBy fixedNpm }
+}
+

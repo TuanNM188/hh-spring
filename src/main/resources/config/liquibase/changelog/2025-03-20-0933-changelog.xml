@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1769350930933-01" author="linhxoanit">
+        <addColumn tableName="appointment">
+            <column name="invoice_id" type="uuid"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1769350930933-02" author="linhxoanit">
+        <addColumn tableName="project">
+            <column name="invoice_id" type="uuid"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1769350930933-03" author="linhxoanit">
+        <sql>
+            <![CDATA[UPDATE appointment SET invoice_id = i.id
+            FROM invoice i
+            JOIN invoice_detail id ON id.invoice_id = i.id
+            WHERE i.technical_advisor_id = appointment.technical_advisor_id
+            AND i.portal_id = appointment.portal_id
+            AND appointment.appointment_date >= id.service_period_start
+            AND appointment.appointment_date <= id.service_period_end
+            AND appointment."status" = 'INVOICED';]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="1769350930933-04" author="linhxoanit">
+        <sql>
+            <![CDATA[UPDATE project SET invoice_id = i.id
+            FROM invoice i
+            JOIN invoice_detail id ON id.invoice_id = i.id
+            WHERE i.technical_advisor_id = project.technical_advisor_id
+            AND i.portal_id = project.portal_id
+            AND project.completed_date >= id.service_period_start
+            AND project.completed_date <= id.service_period_end
+            AND project."status" = 'INVOICED';]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>

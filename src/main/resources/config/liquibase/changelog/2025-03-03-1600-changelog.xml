@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1738900527111-02" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('6afe8b76-c493-42c9-ba0d-8dc5d1fec8e4', 'UPLOAD_PROJECT_REPORT_ATTACHMENT', 'API'),
+                ('21a542bd-67d5-4fd7-ba0a-56d92d56f4ec', 'UPLOAD_PROJECT_ATTACHMENT', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_PORTAL_HOST', '6afe8b76-c493-42c9-ba0d-8dc5d1fec8e4'),
+                ('ROLE_COMMUNITY_PARTNER', '6afe8b76-c493-42c9-ba0d-8dc5d1fec8e4'),
+                ('ROLE_PORTAL_HOST', '21a542bd-67d5-4fd7-ba0a-56d92d56f4ec'),
+                ('ROLE_COMMUNITY_PARTNER', '21a542bd-67d5-4fd7-ba0a-56d92d56f4ec')
+            ;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

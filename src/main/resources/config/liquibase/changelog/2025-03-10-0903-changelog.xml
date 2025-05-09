@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729093996958-74" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id, "name", "type")
+            VALUES ('438b0999-fa87-4fa2-adeb-e025ff0576a3'::uuid, 'SEARCH_APPOINTMENT_PROJECT_REPORTS', 'API'),
+                   ('14691b48-583b-45e1-9c0a-dfa8dc680d5c'::uuid, 'SEARCH_INVOICE_AMOUNT_BY_ADVISORS', 'API'),
+                   ('144d3009-458d-492a-ac8f-d2539889d106'::uuid, 'SEARCH_APPOINTMENT_PROJECT_INVOICE_OVERVIEW', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', '438b0999-fa87-4fa2-adeb-e025ff0576a3'::uuid),
+                   ('ROLE_PORTAL_HOST', '438b0999-fa87-4fa2-adeb-e025ff0576a3'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '438b0999-fa87-4fa2-adeb-e025ff0576a3'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '14691b48-583b-45e1-9c0a-dfa8dc680d5c'::uuid),
+                   ('ROLE_PORTAL_HOST', '14691b48-583b-45e1-9c0a-dfa8dc680d5c'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '14691b48-583b-45e1-9c0a-dfa8dc680d5c'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '144d3009-458d-492a-ac8f-d2539889d106'::uuid),
+                   ('ROLE_PORTAL_HOST', '144d3009-458d-492a-ac8f-d2539889d106'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER', '144d3009-458d-492a-ac8f-d2539889d106'::uuid)
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

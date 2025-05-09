@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727934619953-100" author="hnnguyen (generated)">
+        <sql>
+            UPDATE menu SET position = 'CONFIG' WHERE position = 'BOTTOM';
+            UPDATE menu SET position = 'BOTTOM' WHERE position = 'TOP';
+            INSERT INTO menu(
+                id, created_by, created_date, last_modified_by, last_modified_date, is_delete, label, icon, router_link, priority_order, is_active, "position")
+            VALUES
+                ('8fdb35b8-9201-4f7c-bc59-c4d49aee5f28', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'Engagement Suite', 'engagement-suite', '/engagement-suites', 1, true, 'TOP'),
+                ('7aecd809-f434-4b25-b114-d4870400eda3', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'ES Dashboard', 'es-dashboard', '/es-dashboards', 2, true, 'TOP'),
+                ('b679de4a-4f2d-4ef9-820a-59af1ef19847', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'Business Owners', 'business-owners', '/business-owners', 3, true, 'TOP'),
+                ('dab932ad-6ba1-4df9-86d2-e398ac124f55', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'TA Management', 'ta-management', '/ta-managements', 4, true, 'TOP'),
+                ('554b5980-0298-4af6-9c81-be0017f6d716', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'Course Management', 'course-management', '/course-managements', 5, true, 'TOP'),
+                ('567f1990-dde5-410b-9f63-26d6dfc6b4aa', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'Surveys', 'surveys', '/surveys', 6, true, 'TOP'),
+                ('bac29c51-0229-478a-99a9-83afbd62fb24', 'admin@localhost.com', '2024-12-19 03:45:08.432', 'admin@localhost.com', '2024-12-19 03:45:08.432', false, 'Metrics &amp; Reports', 'metrics-reports', '/metrics-reports', 7, true, 'TOP');
+
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_PORTAL_HOST', '8fdb35b8-9201-4f7c-bc59-c4d49aee5f28'),
+                ('ROLE_PORTAL_HOST', '7aecd809-f434-4b25-b114-d4870400eda3'),
+                ('ROLE_PORTAL_HOST', 'b679de4a-4f2d-4ef9-820a-59af1ef19847'),
+                ('ROLE_PORTAL_HOST', 'dab932ad-6ba1-4df9-86d2-e398ac124f55'),
+                ('ROLE_PORTAL_HOST', '554b5980-0298-4af6-9c81-be0017f6d716'),
+                ('ROLE_PORTAL_HOST', '567f1990-dde5-410b-9f63-26d6dfc6b4aa'),
+                ('ROLE_PORTAL_HOST', 'bac29c51-0229-478a-99a9-83afbd62fb24');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

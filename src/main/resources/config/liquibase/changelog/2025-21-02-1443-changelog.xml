@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353996958-117" author="hnnguyen">
+        <sql>
+            DELETE
+            FROM menu_authority
+            WHERE menu_id = '04019514-9f5f-488d-8f34-d554b7ee96b3';
+
+            DELETE
+            FROM menu_authority
+            WHERE menu_id = '1a41268c-9898-4783-be33-0d5f99c352bc';
+
+            DELETE
+            FROM menu_authority
+            WHERE menu_id = '2586bab8-79a1-472f-a041-3b19c83267b1';
+
+            DELETE
+            FROM menu
+            WHERE id = '1a41268c-9898-4783-be33-0d5f99c352bc';
+
+            DELETE
+            FROM menu
+            WHERE id = '2586bab8-79a1-472f-a041-3b19c83267b1';
+
+            DELETE
+            FROM menu
+            WHERE id = '04019514-9f5f-488d-8f34-d554b7ee96b3';
+
+            UPDATE menu
+            SET priority_order = 4
+            WHERE id = 'bba20d11-09d0-49a7-8d24-3753df052044';
+
+            UPDATE menu
+            SET priority_order = 2
+            WHERE id = '049512d8-fa8a-4a1b-90b7-a76bec17a0f0';
+
+            UPDATE menu
+            SET priority_order = 1
+            WHERE id = 'db9a0450-6b99-43ec-ab2f-486b52ed265e';
+
+            UPDATE menu
+            SET priority_order = 4
+            WHERE id = '251905b4-2f68-44f7-ab2c-1d66e033865a';
+
+            UPDATE menu
+            SET label          = 'Surveys',
+                priority_order = 5
+            WHERE id = '567f1990-dde5-410b-9f63-26d6dfc6b4aa';
+
+            UPDATE menu
+            SET priority_order = 5
+            WHERE id = 'a3c5bc1f-0b86-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET priority_order = 3
+            WHERE id = 'a4056326-a282-400e-bb55-7db07628f4f9';
+
+            UPDATE menu
+            SET priority_order = 6
+            WHERE id = 'bac29c51-0229-478a-99a9-83afbd62fb24';
+
+            UPDATE menu
+            SET priority_order = 3
+            WHERE id = '20868ba4-a30e-43f9-9632-1ac87712baaa';
+
+            UPDATE menu
+            SET icon           = 'community-resources',
+                priority_order = 8
+            WHERE id = '1fb93603-e6f6-4ba6-acfb-23e87813c62f';
+
+            UPDATE menu
+            SET priority_order = 9
+            WHERE id = '0619a5d5-f8ea-4095-9826-5e81a644f9f9';
+
+            UPDATE menu
+            SET priority_order = 3
+            WHERE id = 'dab932ad-6ba1-4df9-86d2-e398ac124f55';
+
+            UPDATE menu
+            SET priority_order = 2
+            WHERE id = 'b679de4a-4f2d-4ef9-820a-59af1ef19847';
+
+            UPDATE menu
+            SET label          = 'Book an Advisor',
+                priority_order = 7
+            WHERE id = 'fdc0399a-38ce-4efb-afa4-f3c590c8b0c0';
+
+            UPDATE menu
+            SET priority_order = 6
+            WHERE id = 'a3c5bc1f-0b74-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET router_link    = '/es-dashboard',
+                priority_order = 1
+            WHERE id = '7aecd809-f434-4b25-b114-d4870400eda3';
+
+            UPDATE menu
+            SET priority_order = 1
+            WHERE id = '14f7d015-09ef-4c51-a0e4-ae56e9fbe65c';
+
+            UPDATE menu
+            SET priority_order = 1
+            WHERE id = '323805d8-86f8-4ef2-a13e-0356838220b2';
+
+            UPDATE menu
+            SET label          = 'Community Board',
+                priority_order = 2
+            WHERE id = '00c48af6-d1d6-49be-9a16-1609b5302ce3';
+
+            UPDATE menu
+            SET label          = 'Course &amp; Event Management',
+                priority_order = 4
+            WHERE id = '554b5980-0298-4af6-9c81-be0017f6d716';
+
+            UPDATE menu
+            SET priority_order = 1
+            WHERE id = '0a9692f3-8289-4374-ad80-5baf05ec0053';
+
+            UPDATE menu
+            SET priority_order = 1
+            WHERE id = '4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace';
+
+            UPDATE menu
+            SET priority_order = 5
+            WHERE id = '969b4b39-1ba6-43c4-8624-dcc42a4934e9';
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-120" author="hnnguyen">
+        <sql>
+            UPDATE menu
+            SET priority_order = 11
+            WHERE id = '5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9';
+
+            UPDATE menu
+            SET priority_order = 10
+            WHERE id = '2036f1d3-2004-49f9-a726-552647025897';
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-118" author="hnnguyen">
+        <sql>
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '554b5980-0298-4af6-9c81-be0017f6d716');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-119" author="hnnguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '68530e78-14c8-47dd-9197-92258e593efe'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c78909ab-9e5b-4e1c-b48e-744b13dd3d41'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '6d2ff91a-84d8-440c-8f76-dbeeb5c7e4e5'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '64787843-02c3-4d48-84b2-9c92bc7f2896');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-121" author="hnnguyen">
+        <sql>
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_TECHNICAL_ADVISOR', '7aecd809-f434-4b25-b114-d4870400eda3'),
+                ('ROLE_COMMUNITY_PARTNER', '7aecd809-f434-4b25-b114-d4870400eda3');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-122" author="hnnguyen">
+        <sql>
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_COMMUNITY_PARTNER', '554b5980-0298-4af6-9c81-be0017f6d716');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_COMMUNITY_PARTNER', '62c0c623-999f-4b8a-b57d-6b718ee2133a'),
+                ('ROLE_COMMUNITY_PARTNER', '68530e78-14c8-47dd-9197-92258e593efe'),
+                ('ROLE_COMMUNITY_PARTNER', 'c78909ab-9e5b-4e1c-b48e-744b13dd3d41'),
+                ('ROLE_COMMUNITY_PARTNER', '6d2ff91a-84d8-440c-8f76-dbeeb5c7e4e5'),
+                ('ROLE_COMMUNITY_PARTNER', '64787843-02c3-4d48-84b2-9c92bc7f2896');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-123" author="hnnguyen">
+        <sql>
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_COMMUNITY_PARTNER', 'bac29c51-0229-478a-99a9-83afbd62fb24');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1718089739941-20" author="hnnguyen">
+        <addColumn tableName="menu">
+            <column name="menu_code" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1718089739941-21" author="hnnguyen">
+        <sql>
+            UPDATE menu
+            SET menu_code = 'VENDORS'
+            WHERE id = 'bba20d11-09d0-49a7-8d24-3753df052044';
+
+            UPDATE menu
+            SET menu_code = 'COMMUNITY_BOARD'
+            WHERE id = '00c48af6-d1d6-49be-9a16-1609b5302ce3';
+
+            UPDATE menu
+            SET menu_code = 'MEMBERS'
+            WHERE id = '0619a5d5-f8ea-4095-9826-5e81a644f9f9';
+
+            UPDATE menu
+            SET menu_code = 'TA_SURVEYS'
+            WHERE id = '969b4b39-1ba6-43c4-8624-dcc42a4934e9';
+
+            UPDATE menu
+            SET menu_code = 'SURVEYS'
+            WHERE id = '567f1990-dde5-410b-9f63-26d6dfc6b4aa';
+
+            UPDATE menu
+            SET menu_code = 'TA_MANAGEMENT'
+            WHERE id = 'dab932ad-6ba1-4df9-86d2-e398ac124f55';
+
+            UPDATE menu
+            SET menu_code = 'COURSE_EVENT_MANAGEMENT'
+            WHERE id = '554b5980-0298-4af6-9c81-be0017f6d716';
+
+            UPDATE menu
+            SET menu_code = 'MY_PORTAL'
+            WHERE id = '14f7d015-09ef-4c51-a0e4-ae56e9fbe65c';
+
+            UPDATE menu
+            SET menu_code = 'BOOK_AN_ADVISOR'
+            WHERE id = 'fdc0399a-38ce-4efb-afa4-f3c590c8b0c0';
+
+            UPDATE menu
+            SET menu_code = 'ALL_PORTALS'
+            WHERE id = '0a9692f3-8289-4374-ad80-5baf05ec0053';
+
+            UPDATE menu
+            SET menu_code = 'SUMMARIES'
+            WHERE id = '28c2ef70-cca9-406b-8de6-a81eeb5e0ffe';
+
+            UPDATE menu
+            SET menu_code = 'APPLICATION_MANAGEMENT'
+            WHERE id = 'db9a0450-6b99-43ec-ab2f-486b52ed265e';
+
+            UPDATE menu
+            SET menu_code = 'APPLY_FOR_1_1_SUPPORT'
+            WHERE id = 'a3c5bc1f-0b74-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET menu_code = 'EXPORTS'
+            WHERE id = '57f62aaa-5c47-4ab0-96fe-510347fec050';
+
+            UPDATE menu
+            SET menu_code = 'SYSTEM_CONFIG'
+            WHERE id = '4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace';
+
+            UPDATE menu
+            SET menu_code = 'ENGAGEMENT'
+            WHERE id = '493f6e16-ad3b-433e-8b8f-ee347f6e7561';
+
+            UPDATE menu
+            SET menu_code = 'LEARNING_LIBRARY'
+            WHERE id = '20868ba4-a30e-43f9-9632-1ac87712baaa';
+
+            UPDATE menu
+            SET menu_code = 'PROJECT_MANAGEMENT'
+            WHERE id = 'a4056326-a282-400e-bb55-7db07628f4f9';
+
+            UPDATE menu
+            SET menu_code = 'EVENT_CALENDAR'
+            WHERE id = '251905b4-2f68-44f7-ab2c-1d66e033865a';
+
+            UPDATE menu
+            SET menu_code = 'TECHNICAL_ASSISTANCE_DATA'
+            WHERE id = 'a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e';
+
+            UPDATE menu
+            SET menu_code = 'DEMOGRAPHICS'
+            WHERE id = '1ab55dc0-d651-46ce-bcaf-e11cde2c9235';
+
+            UPDATE menu
+            SET menu_code = 'METRICS_REPORTS'
+            WHERE id = 'bac29c51-0229-478a-99a9-83afbd62fb24';
+
+            UPDATE menu
+            SET menu_code = 'APPOINTMENT_MANAGEMENT'
+            WHERE id = '049512d8-fa8a-4a1b-90b7-a76bec17a0f0';
+
+            UPDATE menu
+            SET menu_code = 'COMMUNITY_RESOURCES'
+            WHERE id = '1fb93603-e6f6-4ba6-acfb-23e87813c62f';
+
+            UPDATE menu
+            SET menu_code = 'ABOUT'
+            WHERE id = '5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9';
+
+            UPDATE menu
+            SET menu_code = 'FUNDING'
+            WHERE id = 'a3c5bc1f-0b86-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET menu_code = 'ES_DASHBOARD'
+            WHERE id = '7aecd809-f434-4b25-b114-d4870400eda3';
+
+            UPDATE menu
+            SET menu_code = 'TECHNICAL_ADVISORS'
+            WHERE id = '2036f1d3-2004-49f9-a726-552647025897';
+
+            UPDATE menu
+            SET menu_code = 'BUSINESS_OWNERS'
+            WHERE id = 'b679de4a-4f2d-4ef9-820a-59af1ef19847';
+
+            UPDATE menu
+            SET menu_code = 'BO_MY_PORTAL'
+            WHERE id = '323805d8-86f8-4ef2-a13e-0356838220b2';
+
+
+        </sql>
+    </changeSet>
+    <changeSet id="1729350938394-05" author="Linh Nguyen">
+        <sql>
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",icon,router_link,priority_order,is_active,"position", "menu_code")
+            VALUES ('e79240d0-4020-4b11-b2c3-07b2fca71e64'::uuid,'admin@localhost.com','2024-10-01 03:45:08.432','admin@localhost.com','2024-10-01 03:45:08.432',false,'Manage 1:1 Support','manage-1-1-support','/manage-1-1-support',6,true,'BOTTOM','MANAGE_FOR_1_1_SUPPORT');
+        </sql>
+    </changeSet>
+    <changeSet id="1729350938394-06" author="Linh Nguyen">
+        <sql>
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_BUSINESS_OWNER','e79240d0-4020-4b11-b2c3-07b2fca71e64'::uuid);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

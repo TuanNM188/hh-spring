@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="171942379562-127" author="TaiTran">
+        <addColumn tableName="project">
+            <column name="category_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="171000379562-127" author="TaiTran">
+        <modifyDataType tableName="project" columnName="estimated_hours_needed" newDataType="FLOAT"/>
+    </changeSet>
+
+    <changeSet id="171942379563-148" author="TaiTran">
+        <addColumn tableName="project_attachment">
+            <column name="icon" type="VARCHAR(255)"/>
+            <column name="real_name" type="VARCHAR(255)"/>
+            <column name="size" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1719424100562-128" author="TaiTran">
+        <addColumn tableName="project_report_attachment">
+            <column name="icon" type="VARCHAR(255)"/>
+            <column name="real_name" type="VARCHAR(255)"/>
+            <column name="size" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="171942369594-12" author="TaiTran">
+        <createTable tableName="project_update">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="description" type="TEXT"/>
+
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="project_update"
+            baseColumnNames="project_id"
+            referencedTableName="project"
+            referencedColumnNames="id"
+            constraintName="fk_project_update_project"/>
+
+        <addForeignKeyConstraint
+            baseTableName="project_update"
+            baseColumnNames="user_id"
+            referencedTableName="jhi_user"
+            referencedColumnNames="id"
+            constraintName="fk_project_update_user"/>
+    </changeSet>
+
+    <!-- Create ProjectUpdateAttachment Table -->
+    <changeSet id="1719423710564-127" author="TaiTran">
+        <createTable tableName="project_update_attachment">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_update_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="path" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="suffix" type="VARCHAR(255)"/>
+            <column name="icon" type="VARCHAR(255)"/>
+            <column name="real_name" type="VARCHAR(255)"/>
+            <column name="size" type="VARCHAR(255)"/>
+
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="project_update_attachment"
+            baseColumnNames="project_update_id"
+            referencedTableName="project_update"
+            referencedColumnNames="id"
+            constraintName="fk_project_update_attachment"/>
+    </changeSet>
+
+    <!-- Create Extension Request Project Table -->
+
+    <changeSet id="171042379564-126" author="Tai Tran">
+        <createTable tableName="project_extension_request">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_completion_date" type="TIMESTAMP"/>
+            <column name="request_explanation" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(50)"/>
+
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="project_extension_request"
+            baseColumnNames="project_id"
+            referencedTableName="project"
+            referencedColumnNames="id"
+            constraintName="fk_project_extension_request_project"/>
+    </changeSet>
+</databaseChangeLog>

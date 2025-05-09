@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-73" author="hnnguyen">
+        <sql>
+            INSERT INTO menu(
+                id, created_by, created_date, last_modified_by, last_modified_date, is_delete, label, icon, router_link, priority_order, is_active, "position")
+            VALUES
+                ('04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Dashboard', 'dashboard', '/dashboard', 1, true, 'TOP'),
+                ('0619a5d5-f8ea-4095-9826-5e81a644f9f9'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Members', 'members', '/members', 2, true, 'TOP'),
+                ('0a9692f3-8289-4374-ad80-5baf05ec0053'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'All Portals', 'city-portal', '/portals', 3, true, 'TOP'),
+                ('14f7d015-09ef-4c51-a0e4-ae56e9fbe65c'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'My Portal', 'city-portal', '/portals/settings/{portalId}', 3, true, 'TOP'),
+                ('1a41268c-9898-4783-be33-0d5f99c352bc'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Community Partners', 'community-partners', '/community-partners', 4, true, 'TOP'),
+                ('1fb93603-e6f6-4ba6-acfb-23e87813c62f'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Community Resources', 'community-partners', '/community-resources', 5, true, 'TOP'),
+                ('2036f1d3-2004-49f9-a726-552647025897'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Technical Advisors', 'technical-advisors', '/technical-advisors', 6, true, 'TOP'),
+                ('20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Learning Library', 'learning-library', '/learning-library', 7, true, 'TOP'),
+                ('251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Event Calendar', 'event-calendar', '/event-calendar', 8, true, 'TOP'),
+                ('2586bab8-79a1-472f-a041-3b19c83267b1'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Reports', 'reports', '/reports', 9, true, 'TOP'),
+                ('4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'System Config', 'system-configs', '/system-configs', 10, true, 'TOP'),
+                ('5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid, 'admin@localhost.com', '2024-10-01 03:45:08.432', 'admin@localhost.com', '2024-10-01 03:45:08.432', false, 'Settings', 'settings', '/settings', 1, true, 'BOTTOM');
+
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '0619a5d5-f8ea-4095-9826-5e81a644f9f9'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '0a9692f3-8289-4374-ad80-5baf05ec0053'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '1a41268c-9898-4783-be33-0d5f99c352bc'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '1fb93603-e6f6-4ba6-acfb-23e87813c62f'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '2036f1d3-2004-49f9-a726-552647025897'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '251905b4-2f68-44f7-ab2c-1d66e033865a'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '2586bab8-79a1-472f-a041-3b19c83267b1'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace'::uuid),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid),
+
+                ('ROLE_PORTAL_HOST', '04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid),
+                ('ROLE_PORTAL_HOST', '0619a5d5-f8ea-4095-9826-5e81a644f9f9'::uuid),
+                ('ROLE_PORTAL_HOST', '14f7d015-09ef-4c51-a0e4-ae56e9fbe65c'::uuid),
+                ('ROLE_PORTAL_HOST', '20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid),
+                ('ROLE_PORTAL_HOST', '2036f1d3-2004-49f9-a726-552647025897'::uuid),
+                ('ROLE_PORTAL_HOST', '5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid),
+
+                ('ROLE_COMMUNITY_PARTNER', '04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid),
+                ('ROLE_COMMUNITY_PARTNER', '20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid),
+                ('ROLE_COMMUNITY_PARTNER', '5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid),
+
+                ('ROLE_TECHNICAL_ADVISOR', '04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid),
+                ('ROLE_TECHNICAL_ADVISOR', '20868ba4-a30e-43f9-9632-1ac87712baaa'::uuid),
+                ('ROLE_TECHNICAL_ADVISOR', '5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid),
+
+                ('ROLE_BUSINESS_OWNER', '04019514-9f5f-488d-8f34-d554b7ee96b3'::uuid),
+                ('ROLE_BUSINESS_OWNER', '5bcf768f-1d9b-460e-ad51-068eede72b9a'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

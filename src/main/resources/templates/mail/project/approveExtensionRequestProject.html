@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.project.extension.approved.greeting(${userName})}">Hello {0},</p>
+  <p th:text="#{email.invitation.project.extension.approved.body(${projectName}, ${newCompletionDate})}">The extension request for the project {Project Name} has been approved. The new estimated completion date is {new completion date}.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${linkToProjectDetail}|})"
+          th:href="${linkToProjectDetail}"
+          th:text="#{email.invitation.project.extension.approved.link}"
+        >View Project Proposal</a
+        >
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+
+
+

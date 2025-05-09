@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718594838875-60" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET description = '&lt;span&gt;1=I may need to close, 5=Not sure, 10=Great&lt;/span&gt;' WHERE id = 'c4e36b4d-317c-4038-8964-378fdc47639b';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

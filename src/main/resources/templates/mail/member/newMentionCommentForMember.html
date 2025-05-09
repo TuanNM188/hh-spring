@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+    <p>
+        <a
+            th:href="${memberUrl}"
+            th:text="${senderName}"
+        >senderName</a>
+        <span th:text="#{email.direct.comment.mention.body}">
+            mentioned you in a comment:
+        </span>
+    </p>
+    <div >
+        <p th:utext="${description}">description</p>
+    </div>
+</div>
+</html>

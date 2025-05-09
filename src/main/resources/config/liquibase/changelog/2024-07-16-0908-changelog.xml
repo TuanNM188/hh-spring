@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720666099904-25" author="TuanNM">
+        <sql>
+            UPDATE feature
+            SET  router_link='/portals/business-owners'
+            WHERE id='94094ea7-8cc5-4577-a77c-d286ae1c5bfa'::uuid;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1720666099674-25" author="TuanNM">
+        <modifyDataType tableName="calendar_integration" columnName="calendar_ref_id" newDataType="TEXT"/>
+    </changeSet>
+</databaseChangeLog>

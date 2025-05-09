@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718595838849-10" author="TuanNM">
+        <sql>
+            INSERT INTO question
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete,  question_code,form_code,question_type, question,  is_require, group_code , parent_id , option_type, priority_order)
+            VALUES
+                -- QUESTION
+                ('18c926ad-edc0-43fc-bb78-99cce31a4615'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_LANGUAGE_SPOKEN','DEMOGRAPHICS','DROPDOWN_MULTIPLE_CHOICE', 'What languages do you speak?', true, 'INFORMATION_AND_IDENTITY', null, 'LANGUAGE',1),
+                ('3340cfee-1c35-4e01-bb67-b794fd8aa3ab'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_OTHER_LANGUAGE_SPOKEN','DEMOGRAPHICS','TOGGLE_TEXT', 'What other language(s) do you speak?', false, 'INFORMATION_AND_IDENTITY', '18c926ad-edc0-43fc-bb78-99cce31a4615'::uuid, null, 2),
+                ('7a4aaad4-408d-4d46-adc2-1cf6ca956c3b'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_ETHNICITY','DEMOGRAPHICS','DROPDOWN_SINGLE_CHOICE', 'How do describe your ethnicity?', true, 'INFORMATION_AND_IDENTITY', null, 'ANSWER_OPTION', 3),
+                ('9544b596-e79e-432b-af03-8b3793478ab7'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_OTHER_ETHNICITY','DEMOGRAPHICS','TOGGLE_TEXT', 'What other ethnicity do you identify as?', false, 'INFORMATION_AND_IDENTITY', '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b'::uuid, null, 4),
+                ('490f9e39-ef61-45fc-99bd-299963b6f337'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_GENDER_IDENTITY','DEMOGRAPHICS','DROPDOWN_SINGLE_CHOICE', 'What gender do you identify as?', true, 'INFORMATION_AND_IDENTITY', null, 'ANSWER_OPTION', 5),
+                ('808a5023-3c80-4004-8469-c323475b7cac'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_OTHER_GENDER_IDENTITY','DEMOGRAPHICS','TOGGLE_TEXT', 'What other gender do you identify as? ', false, 'INFORMATION_AND_IDENTITY', '490f9e39-ef61-45fc-99bd-299963b6f337'::uuid, null, 6),
+                ('9c14850f-4e39-4921-8e84-24c29dc4c481'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_MILITARY_AFFILIATION','DEMOGRAPHICS','DROPDOWN_SINGLE_CHOICE', 'Do you have any military affiliation?', true, 'PERSONAL_CHARACTERISTICS', null, 'ANSWER_OPTION',7),
+                ('7f91a8da-300a-4317-8047-f1c120cba848'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_LGBTQ_IDENTIFICATION','DEMOGRAPHICS','DROPDOWN_SINGLE_CHOICE', 'Do you identify as LGBTQ+?', true, 'PERSONAL_CHARACTERISTICS', null, 'ANSWER_OPTION', 8),
+                ('90767a7c-fee8-4235-badc-fab40fd64a7d'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_DISABILITY_STATUS','DEMOGRAPHICS','DROPDOWN_SINGLE_CHOICE', 'Do you consider yourself to be an individual with a disability or disabilities?', true, 'PERSONAL_CHARACTERISTICS', null,'ANSWER_OPTION', 9),
+                ('37619e8f-5f25-426a-87b8-8bc070960c25'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  'QUESTION_CONSULTING_RATES','DEMOGRAPHICS','RADIOBUTTON', 'How much do you typically charge per hour for consulting?', true, 'CONSULTING_FEES', null,'ANSWER_OPTION', 10);
+
+
+            INSERT INTO answer_option
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_id, answer, priority_order)
+            VALUES
+                -- QUESTION_ETHNICITY
+                ('e2d52438-2a37-467b-8df0-f5d982385134'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Hispanic, Latino or Spanish origin', 1),
+                ('bc1face1-c19a-479e-8430-20aad8489d51'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Native American or Alaska Native', 2),
+                ('a35930aa-e7a1-4fc0-ac3b-34f7c43c50bd'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Asian/Pacific Islander', 3),
+                ('0792b403-fb4a-42e3-b642-c8c19bce366b'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Middle Eastern', 4),
+                ('e9a111a2-e708-4ec5-b013-d4c15059b59a'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Black or African American', 5),
+                ('057ad8b3-3057-4ade-a918-2ed2b9b0a4ca'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'I Native Hawaiian or other Pacific Islander', 6),
+                ('896909bf-db12-4cc0-80c7-152965c10f77'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'White/Caucasian', 7),
+                ('8ffab2e4-a698-4fe8-b193-c80a81944af2'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7a4aaad4-408d-4d46-adc2-1cf6ca956c3b', 'Do not wish to answer', 8),
+                -- QUESTION_GENDER_IDENTITY
+                ('665352b2-eef5-403e-8a9f-5fa5a4730b82'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '490f9e39-ef61-45fc-99bd-299963b6f337', 'Female', 1),
+                ('d08ada76-e2d4-42c9-ad98-444fd176ec65'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '490f9e39-ef61-45fc-99bd-299963b6f337', 'Non-binary/third gender', 2),
+                ('f27faf0c-67e8-4226-99be-322ac7e29262'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '490f9e39-ef61-45fc-99bd-299963b6f337', 'Male', 3),
+                ('2e52fcfb-1b5a-42c1-b077-e189bef55bf8'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '490f9e39-ef61-45fc-99bd-299963b6f337', 'Prefer not to say', 4),
+                -- QUESTION_MILITARY_AFFILIATION
+                ('b90951a2-ca90-4c34-98b4-0629cc9be755'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Active Duty', 1),
+                ('325c5908-5f7a-4d40-ac6d-c183a98e8f3c'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Military Member', 2),
+                ('ad15faa5-9695-482b-b8b4-db044863f0b7'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Military Spouse', 3),
+                ('dd444e02-7db1-4165-a9cc-c244ac9b1b19'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Veteran', 4),
+                ('a2d4e724-702b-4e53-9ff2-8a5258468306'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Other', 5),
+                ('2a58b445-a330-4637-a179-33274926b9db'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'Prefer not to answer', 6),
+                --QUESTION_YES_NO
+                ('7f23d466-a7e3-431c-b5bd-eff2cb7e18b9'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7f91a8da-300a-4317-8047-f1c120cba848','Yes', 1),
+                ('d1b3f8e5-e85f-4afe-aef6-db6f445021f7'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7f91a8da-300a-4317-8047-f1c120cba848','No', 2),
+                ('d0fd1073-5982-4b26-957b-47ad08230c2f'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '7f91a8da-300a-4317-8047-f1c120cba848','Prefer not to answer', 3),
+                -- QUESTION_YES_NO
+                ('13dfb28e-42f8-496d-841f-1b07168e393b'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '90767a7c-fee8-4235-badc-fab40fd64a7d','Yes', 1),
+                ('8b084a56-f9a9-4973-9654-5ff0a42406ce'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '90767a7c-fee8-4235-badc-fab40fd64a7d','No', 2),
+                ('2115227f-1262-4b5a-b5b9-359cd1b78afe'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '90767a7c-fee8-4235-badc-fab40fd64a7d','Prefer not to answer', 3),
+                -- QUESTION_CONSULTING_RATES
+                ('a28435a8-ab02-42de-b41c-ba482c6f9735'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$25-$49', 1),
+                ('c6426c4e-49e7-40d1-ac38-d5c401b34d55'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$150-$199', 2),
+                ('688c567a-197f-497b-ba63-b8df13314ec3'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$50-$99', 3),
+                ('f57c98ae-d23b-4738-a286-132b7feb5644'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$200-$499', 4),
+                ('94180414-ebab-4e2a-833a-03efb06ba5dd'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$100-$149', 5),
+                ('ab7a74ce-9075-44d0-a180-4591bf290537'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '37619e8f-5f25-426a-87b8-8bc070960c25','$500+', 6);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

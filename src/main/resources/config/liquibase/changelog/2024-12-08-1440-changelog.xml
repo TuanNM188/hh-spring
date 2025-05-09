@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619853-23" author="hnnguyen (generated)">
+        <createTable tableName="learning_library_registration">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_learning_library_registration"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="description" type="TEXT"/>
+            <column name="registration_status" type="VARCHAR(50)"/>
+            <column name="registration_date" type="DATETIME"/>
+            <column name="user_id" type="UUID"/>
+            <column name="learning_library_id" type="UUID"/>
+            <column name="survey_form_answer_id" type="UUID"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="learning_library_id"
+                                 baseTableName="learning_library_registration"
+                                 constraintName="FK_LEARNING_LIBRARY_REGISTRATION_ON_LEARNING_LIBRARY"
+                                 referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+
+        <addForeignKeyConstraint baseColumnNames="survey_form_answer_id"
+                                 baseTableName="learning_library_registration"
+                                 constraintName="FK_LEARNING_LIBRARY_REGISTRATION_ON_SURVEY_FORM_ANSWER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="survey_form_answer"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="learning_library_registration"
+                                 constraintName="FK_LEARNING_LIBRARY_REGISTRATION_ON_USER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1727755619853-24" author="hnnguyen (generated)">
+        <addColumn tableName="learning_library">
+            <column name="number_of_registered" type="INT"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

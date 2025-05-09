@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717947818121-3" author="Nghia Nguyen">
+        <addColumn tableName="funding">
+            <column name="funder_id" type="UUID"/>
+        </addColumn>
+        <dropColumn columnName="funder_name" tableName="funding"/>
+        <dropColumn columnName="funder_email" tableName="funding"/>
+        <modifyDataType tableName="funding" columnName="amount" newDataType="DECIMAL"/>
+    </changeSet>
+    <changeSet id="1720177785891-21" author="Nghia Nguyen">
+        <createTable tableName="funder">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_funder"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="funder_url" type="VARCHAR(1000)"/>
+            <column name="description" type="TEXT"/>
+            <column name="image_url" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720621099278-90" author="Nghia Nguyen">
+        <addForeignKeyConstraint baseColumnNames="funder_id" baseTableName="funding"
+                                 constraintName="FK_FUNDER_ON_FUNDING" referencedColumnNames="id"
+                                 referencedTableName="funder"/>
+    </changeSet>
+
+</databaseChangeLog>

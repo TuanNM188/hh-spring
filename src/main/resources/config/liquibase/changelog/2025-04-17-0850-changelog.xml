@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719807417599-56" author="linh nguyen">
+        <createTable tableName="log_cron_job_entries">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_log_cron_job_entries"/>
+            </column>
+            <column name="method_name" type="VARCHAR(255)"/>
+            <column name="service_name" type="VARCHAR(255)"/>
+            <column name="log_status" type="VARCHAR(50)"/>
+            <column name="problem" type="VARCHAR(2000)"/>
+            <column name="timestamp" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

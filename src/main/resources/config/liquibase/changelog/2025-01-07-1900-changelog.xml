@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595272808-100" author="TuanNM">
+        <addColumn tableName="technical_assistance_submit">
+            <column name="approval_date"
+                    type="DATETIME"/>
+            <column name="approver_id"
+                    type="UUID"/>
+            <column name="reason"
+                    type="VARCHAR(255)"/>
+            <column name="assign_award_hours"
+                    type="BIGINT"/>
+            <column name="assign_vendor_id"
+                    type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="17283995272808-100" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id, "name", "type")
+            VALUES ('36167ae7-ae22-470a-b4d0-b18883a4157e'::uuid, 'SEARCH_PENDING_APPLICATIONS', 'API'),
+                   ('e2bf2fa4-1c9a-4508-a19a-9a6c271ef69d'::uuid, 'SEARCH_ALL_APPLICATIONS', 'API'),
+                   ('98c9048e-3067-4e16-9475-a2e791cf31e1'::uuid, 'GET_DETAIL_APPLICATION_BY_ID', 'API'),
+                   ('4d4ade15-956b-419f-9a10-406149229d4c'::uuid, 'APPROVAL_APPLICATION', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', '36167ae7-ae22-470a-b4d0-b18883a4157e'::uuid),
+                   ('ROLE_PORTAL_HOST', '36167ae7-ae22-470a-b4d0-b18883a4157e'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'e2bf2fa4-1c9a-4508-a19a-9a6c271ef69d'::uuid),
+                   ('ROLE_PORTAL_HOST', 'e2bf2fa4-1c9a-4508-a19a-9a6c271ef69d'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '98c9048e-3067-4e16-9475-a2e791cf31e1'::uuid),
+                   ('ROLE_PORTAL_HOST', '98c9048e-3067-4e16-9475-a2e791cf31e1'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '4d4ade15-956b-419f-9a10-406149229d4c'::uuid),
+                   ('ROLE_PORTAL_HOST', '4d4ade15-956b-419f-9a10-406149229d4c'::uuid);
+        </sql>
+    </changeSet>
+    <changeSet id="1728375272808-100" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id, "name", "type")
+            VALUES ('381e074c-8db6-4f11-b7af-e75a795efd63'::uuid, 'GET_OVERVIEW_TECHNICAL_ASSISTANCE', 'API'),
+                   ('4c4ddb1e-c4ca-4ed9-8a96-1c09f4b101bf'::uuid, 'GET_LIST_VENDORS_FOR_TA_OVERVIEW', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', '381e074c-8db6-4f11-b7af-e75a795efd63'::uuid),
+                   ('ROLE_PORTAL_HOST', '381e074c-8db6-4f11-b7af-e75a795efd63'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '4c4ddb1e-c4ca-4ed9-8a96-1c09f4b101bf'::uuid),
+                   ('ROLE_PORTAL_HOST', '4c4ddb1e-c4ca-4ed9-8a96-1c09f4b101bf'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

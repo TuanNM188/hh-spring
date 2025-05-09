@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-65" author="hnnguyen">
+        <createTable tableName="menu">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_menu"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="label" type="VARCHAR(255)"/>
+            <column name="icon" type="VARCHAR(255)"/>
+            <column name="router_link" type="VARCHAR(1000)"/>
+            <column name="priority_order" type="INT"/>
+            <column defaultValueBoolean="true" name="is_active" type="boolean"/>
+            <column name="position" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1727755619953-76" author="hnnguyen">
+        <createTable tableName="menu_authority">
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_menu_authority"/>
+            </column>
+            <column name="menu_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_menu_authority"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

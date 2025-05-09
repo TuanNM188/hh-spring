@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.applications.business.owner.approved.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <span>
+  You've been approved
+  </span>
+  <span th:text="#{email.applications.business.owner.approved.body(${hoursAward}, ${vendorName})}">
+   {0} hours of 1-on-1 business support with {1} through the HUUB!
+</span>
+  <br/>
+  <p th:text="#{email.applications.business.owner.approved.body2(${navigatorName})}">
+    Your navigator, {0}, will review your application and send you advisor recommendations soon.
+  </p>
+  <p th:text="#{email.applications.business.owner.approved.body3(${navigatorEmail})}">
+    You can contact them directly at {0} if you have immediate questions.
+  </p>
+  <p>
+<span th:text="#{email.applications.business.owner.approved.support1}">
+  To your success,
+</span>
+    <br/>
+    <strong th:text="#{email.applications.business.owner.approved.support2}">
+      The HUUB Team
+    </strong>
+  </p>
+  <span th:text="#{email.applications.business.owner.approved.support3}">
+  Need additional booking support?
+</span>
+  <span>
+   <a th:with="url=(@{|${liveChat}|})" th:href="${url}"
+      th:text="#{email.applications.business.owner.approved.support4}">Chat with our team now.</a>
+</span>
+</div>

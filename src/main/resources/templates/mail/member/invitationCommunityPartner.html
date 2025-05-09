@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.community.partner.invite.greeting(${receiverName})}">
+    Hi {0},
+  </p>
+  <p th:text="#{email.invitation.community.partner.invite.body1}">
+    We are excited to invite you to join the HUUB platform as a Community Partner.
+  </p>
+  <p th:text="#{email.invitation.community.partner.invite.body2}">
+    Through the platform, we seek to connect small businesses to trusted resource partners who support entrepreneurs in
+    their local communities. We offer free accounts to community partner organizations and, through our platform,
+    provide referrals and opportunities to have your events highlighted.
+  </p>
+  <p th:text="#{email.invitation.community.partner.invite.body3}">
+    You are currently linked the following portals:
+  </p>
+  <div th:each="portal : ${portals}">
+      <span>portal : </span>
+      <span th:text="${portal.portalName}"><strong></strong></span>
+      <span> - </span>
+      <span th:text="${portal.clientAppUrl}"></span>
+  </div>
+  <p>
+      <span th:text="#{email.invitation.community.partner.invite.support1}">
+      To get started, please follow the link below to set up your account:
+      </span>
+    <br />
+    <span>
+      <a th:with="url=(@{|${portals[0].clientAppUrl}/auth/set-password/${token}?type=${activeType}|})" th:href="${url}"
+         th:text="#{email.invitation.setup}">Setup Your Account</a>
+      </span>
+  </p>
+  <p>
+      <span th:text="#{email.invitation.community.partner.invite.support2}">
+      Once your account is set up, you can switch between the communities within the platform to seamlessly access any additional portals linked to your account.
+      </span>
+  </p>
+  <p class="mb-0">
+      <span th:text="#{email.invitation.community.partner.invite.support3(${supportEmail})}">
+      If you have any questions or need assistance during the setup process, our support team is here to help.
+      </span>
+    <a class="link-custom"
+       th:href="#{email.footer.chat.team.href}"
+       th:text="#{email.footer.chat.team.text}"
+    >Chat with our team now.</a>
+  </p>
+  <p class="mt-0">
+      <span th:text="#{email.invitation.community.partner.invite.support4}">
+      We look forward to welcoming you as a Community Partner and working together to support small businesses.
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.community.partner.invite.support5}">
+    Sincerely,
+  </p>
+  <p class="mt-0 mb-0">
+    <strong th:text="#{email.invitation.community.partner.invite.support6}"> The HUUB Team </strong>
+
+  </p>
+  <p class="mt-0" th:text="#{email.invitation.community.partner.invite.support7(${supportEmail})}"></p>
+</div>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1769350938176-01" author="linhxoanit">
+        <modifyDataType tableName="invoice" columnName="file_name" newDataType="VARCHAR(255)"/>
+    </changeSet>
+    <changeSet id="1769350938176-02" author="linhxoanit">
+        <addColumn tableName="invoice_detail">
+            <column name="is_appointment" type="boolean"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1769350938176-03" author="linhxoanit">
+        <sql>
+            update invoice_detail set is_appointment = true where description like '%Appointment -%';
+            update invoice_detail set is_appointment = false where description like '%Project -%';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

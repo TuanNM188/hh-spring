@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="1738900529599-002" author="TaiTran">
+        <sql>
+--             CREATE_PROJECT_UPDATE
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_BUSINESS_OWNER', '6c62c5e5-9a90-4446-b5dc-687324407482'),
+                ('ROLE_TECHNICAL_ADVISOR', '6c62c5e5-9a90-4446-b5dc-687324407482');
+            INSERT INTO authority_permissions (authority_name, permission_id)
+--                 CREATE_PROJECT_EXTENSION_REQUEST
+            VALUES
+                ('ROLE_BUSINESS_OWNER', '8a6e3249-681a-4bfd-9b5a-2391ce20a6be');
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                --                 APPROVE_PROJECT_EXTENSION_REQUEST
+                ('ROLE_BUSINESS_OWNER', '58ed536d-67e7-49dc-b003-2565cf410606'),
+                --                 DENY_PROJECT_EXTENSION_REQUEST
+                ('ROLE_BUSINESS_OWNER', 'd17108c9-d8cd-4685-8ed7-b71561367329')
+            ;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

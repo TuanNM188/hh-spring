@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1733820168623-134" author="hnnguyen">
+        <dropForeignKeyConstraint baseTableName="learning_library_registration"
+                                  constraintName="fk_learning_library_registration_on_survey_form_answer"/>
+    </changeSet>
+    <changeSet id="1733820168623-135" author="hnnguyen">
+        <dropForeignKeyConstraint baseTableName="survey_form_answer"
+                                  constraintName="fk_survey_form_answer_on_survey_form"/>
+    </changeSet>
+    <changeSet id="1733820168623-107" author="hnnguyen">
+        <createTable tableName="learning_library_registration_detail">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="pk_learning_library_registration_detail"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="survey_data" type="TEXT"/>
+            <column name="pdf_url" type="VARCHAR(1000)"/>
+            <column name="learning_status" type="VARCHAR(50)"/>
+            <column name="lesson_id" type="UUID"/>
+            <column name="learning_library_registration_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1733820168623-108" author="hnnguyen">
+        <addColumn tableName="learning_library_registration">
+            <column name="pdf_url" type="VARCHAR(1000)"/>
+            <column name="survey_data" type="TEXT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1733820168623-110" author="hnnguyen">
+        <addColumn tableName="learning_library">
+            <column name="survey_json" type="TEXT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1733820168623-138" author="hnnguyen">
+        <dropTable cascadeConstraints="true" tableName="survey_form"/>
+    </changeSet>
+    <changeSet id="1733820168623-139" author="hnnguyen">
+        <dropTable cascadeConstraints="true" tableName="survey_form_answer"/>
+    </changeSet>
+    <changeSet id="1733820168623-142" author="hnnguyen">
+        <dropColumn columnName="survey_form_answer_id" tableName="learning_library_registration"/>
+    </changeSet>
+    <changeSet id="1733904160301-112" author="hnnguyen">
+        <addColumn tableName="learning_library_registration">
+            <column name="last_activity_date" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

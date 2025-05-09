@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="172773919953-11" author="hnnguyen (generated)">
+        <sql>
+            UPDATE question SET priority_order_for_member_form = 8 WHERE id = 'baf66e03-ba69-47bf-8b05-8dd4825419a5';
+            UPDATE question SET priority_order_for_member_form = 7 WHERE id = '82893d2a-8790-4dc5-a9fc-35b41f4bc2a4';
+            UPDATE question SET column_size_for_member_form = 6 WHERE id = '0ae56733-2982-430d-87f2-947beda5698f';
+            UPDATE question SET column_size_for_member_form = 4 WHERE id = '0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53';
+            UPDATE question SET column_size_for_member_form = 10 WHERE id = '0ae00744-bb4e-4272-b886-f334ba7d0fe3';
+
+            UPDATE question SET column_size_for_member_form = 12, priority_order_for_member_form = 9 WHERE id = 'f2a0b130-0c6c-415d-800e-0a46d3b4c2dd';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 11 WHERE id = '2414044e-166d-4cfd-b8aa-ba488fc0682a';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

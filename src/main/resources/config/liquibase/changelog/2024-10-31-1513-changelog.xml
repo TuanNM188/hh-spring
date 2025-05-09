@@ -1,0 +1,131 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1730364538042-21"
+               author="TuanNM">
+        <createTable tableName="conversation">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_conversation"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="conversation_type" type="VARCHAR(50)"/>
+            <column name="conversation_status" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1730364538042-22"
+               author="TuanNM">
+        <createTable tableName="conversation_user">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_conversation_user"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="nickname" type="VARCHAR(255)"/>
+            <column name="conversation_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="status" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1730364538042-42"
+               author="TuanNM">
+        <createTable tableName="notification">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_notification"/>
+            </column>
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="user_id" type="UUID"/>
+            <column name="content" type="TEXT"/>
+            <column name="notification_type" type="VARCHAR(255)"/>
+            <column name="reference_url" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_read" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1730364538042-123"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="conversation_id"
+                                 baseTableName="conversation_user"
+                                 constraintName="FK_CONVERSATION_USER_ON_CONVERSATION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="conversation"/>
+    </changeSet>
+    <changeSet id="1730364538042-124"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="conversation_user"
+                                 constraintName="FK_CONVERSATION_USER_ON_USER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+
+    <changeSet id="1731307130890-13"
+               author="TuanNM">
+        <createTable tableName="blocked_user">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_blocked_user"/>
+            </column>
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+            <column name="blocker_id"
+                    type="UUID"/>
+            <column name="blocked_id"
+                    type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1731307130890-118"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="blocked_id"
+                                 baseTableName="blocked_user"
+                                 constraintName="FK_BLOCKED_USER_ON_BLOCKED"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1731307130890-119"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="blocker_id"
+                                 baseTableName="blocked_user"
+                                 constraintName="FK_BLOCKED_USER_ON_BLOCKER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+
+</databaseChangeLog>

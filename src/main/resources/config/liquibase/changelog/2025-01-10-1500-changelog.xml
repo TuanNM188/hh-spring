@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1736493516054-100" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('624ff57a-7a65-4131-8ff5-7a7a65a13136', 'SEARCH_SURVEY_RESPONSES_LIST', 'API');
+        </sql>
+    </changeSet>
+    <changeSet id="1736493516054-101" author="huytruong (generated)">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '624ff57a-7a65-4131-8ff5-7a7a65a13136'),
+                ('ROLE_PORTAL_HOST', '624ff57a-7a65-4131-8ff5-7a7a65a13136');
+        </sql>
+    </changeSet>
+    <changeSet id="1736493516055-01" author="Linh Nguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('abc6ed8b-1efe-4872-87e0-4f513383a491', 'TA_SURVEY_OVERVIEW', 'API');
+        </sql>
+    </changeSet>
+    <changeSet id="1736493516055-02" author="Linh Nguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'abc6ed8b-1efe-4872-87e0-4f513383a491'),
+                ('ROLE_PORTAL_HOST', 'abc6ed8b-1efe-4872-87e0-4f513383a491'),
+                ('ROLE_COMMUNITY_PARTNER', 'abc6ed8b-1efe-4872-87e0-4f513383a491');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

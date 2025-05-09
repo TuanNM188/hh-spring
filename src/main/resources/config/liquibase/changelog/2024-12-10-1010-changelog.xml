@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619853-100" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('28c25afb-a68e-49b6-a95a-a5015587a851', 'REGISTER_LEARNING_LIBRARY', 'API'),
+                ('62c0c623-999f-4b8a-b57d-6b718ee2133a', 'REVIEW_LEARNING_LIBRARY_REGISTRATION', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '28c25afb-a68e-49b6-a95a-a5015587a851'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '62c0c623-999f-4b8a-b57d-6b718ee2133a'),
+                ('ROLE_PORTAL_HOST', '28c25afb-a68e-49b6-a95a-a5015587a851'),
+                ('ROLE_PORTAL_HOST', '62c0c623-999f-4b8a-b57d-6b718ee2133a'),
+                ('ROLE_TECHNICAL_ADVISOR', '28c25afb-a68e-49b6-a95a-a5015587a851'),
+                ('ROLE_COMMUNITY_PARTNER', '28c25afb-a68e-49b6-a95a-a5015587a851'),
+                ('ROLE_BUSINESS_OWNER', '28c25afb-a68e-49b6-a95a-a5015587a851');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

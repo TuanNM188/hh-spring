@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717812378868-11" author="LinhNguyen">
+        <addColumn tableName="community_board_post">
+            <column name="plain_content" type="TEXT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1717812378868-12" author="LinhNguyen">
+        <addColumn tableName="community_board_comment">
+            <column name="plain_content" type="TEXT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1717812378868-15" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_comment SET plain_content = LOWER(regexp_replace(regexp_replace(content, '&lt;[^&gt;]+&gt;', '', 'g'), '[\x00-\x1F\x7F\u200B-\u200F\u2028\u2029\uFEFF]', '', 'g')) WHERE 1=1;
+        </sql>
+        <sql>
+            UPDATE community_board_post SET plain_content = LOWER(regexp_replace(regexp_replace(content, '&lt;[^&gt;]+&gt;', '', 'g'), '[\x00-\x1F\x7F\u200B-\u200F\u2028\u2029\uFEFF]', '', 'g')) WHERE 1=1;
+        </sql>
+    </changeSet>
+    <changeSet id="1717812378868-16" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_comment SET content = LOWER(regexp_replace(content, '[\x00-\x1F\x7F\u200B-\u200F\u2028\u2029\uFEFF]', '', 'g')) WHERE 1=1;
+        </sql>
+        <sql>
+            UPDATE community_board_post SET content = LOWER(regexp_replace(content, '[\x00-\x1F\x7F\u200B-\u200F\u2028\u2029\uFEFF]', '', 'g')) WHERE 1=1;
+        </sql>
+    </changeSet>
+    <changeSet id="1717812378868-17" author="LinhNguyen">
+        <addColumn tableName="community_board_file">
+            <column name="owner_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1717812378868-18" author="LinhNguyen">
+        <sql>
+            UPDATE community_board_file f SET owner_id = u.id FROM jhi_user u WHERE u.email = f.created_by;
+        </sql>
+    </changeSet>
+    <changeSet id="1717812378868-23" author="LinhNguyen">
+        <update tableName="community_board_comment">
+            <column name="plain_content" valueComputed="REPLACE(plain_content, '&amp;nbsp;', ' ')"/>
+        </update>
+    </changeSet>
+    <changeSet id="1717812378868-24" author="LinhNguyen">
+        <update tableName="community_board_post">
+            <column name="plain_content" valueComputed="REPLACE(plain_content, '&amp;nbsp;', ' ')"/>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

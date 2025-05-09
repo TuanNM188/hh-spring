@@ -1,0 +1,235 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: https://www.jhipster.tech/profiles/
+# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  level:
+    ROOT: DEBUG
+    tech.jhipster: DEBUG
+    org.hibernate.SQL: DEBUG
+    com.formos.huub: DEBUG
+    com.amazonaws.util:
+      EC2MetadataUtils: error
+
+spring:
+  config:
+    import: quartz.yml
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+      enabled: true
+  devtools:
+    restart:
+      enabled: false
+      additional-exclude: static/**
+    livereload:
+      enabled: false # we use Webpack dev server + BrowserSync for livereload
+  jackson:
+    serialization:
+      indent-output: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: admin
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  liquibase:
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    contexts: dev, faker
+  mail:
+    host: mail.formos.com
+    port: 587
+    username: exceptions.mailer@formos.com
+    password: eacellyfer
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+  messages:
+    cache-duration: PT1S # 1 second, see the ISO 8601 standard
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+  tomcat:
+    max-swallow-size: 1GB
+    max-http-form-post-size: 1GB
+  max-http-request-header-size: 1MB
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+  cache: # Cache configuration
+    ehcache: # Ehcache configuration
+      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
+      max-entries: 100 # Number of objects in each cache entry
+  # CORS is only enabled by default with the "dev" profile
+  cors:
+    # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
+    allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000,http://localhost:4200'
+    # Enable CORS when running in GitHub Codespaces
+    allowed-origin-patterns: 'https://*.githubpreview.dev'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params'
+    allow-credentials: true
+    max-age: 1800
+  security:
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
+        base64-secret: N2E3NDQ0YjIxOTY0NjY0MmEwZDg2YTQ2MWU3Yjc4ZjIwYWYwODEzZGRhZWY1ZWMyOWJjZTE1MzNmN2VjZmMzNjA2YzgwMjIzNDE2YjQ4YzY3ZjE2MWIzYTc4ODgzZGZiNDk5ZDEzMDMxMDRiYjY4MWQ5Y2NlZjBjMGQ3NjUyZDc=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+        token-validity-in-seconds-for-remember-me: 2592000
+  mail: # specific JHipster mail property, for standard properties see MailProperties
+    base-url: http://127.0.0.1:8080
+  logging:
+    use-json-format: false # By default, logs are not in Json format
+    logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+      enabled: false
+      host: localhost
+      port: 5000
+      ring-buffer-size: 512
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# application:
+application:
+  reset-password:
+    reset-key-validity-in-seconds: 3600
+  invite-technical-advisor:
+    invite-token-validity-in-seconds: 7776000
+  client-app:
+    base-url: http://localhost:4200/#
+    base-url-portal: http://%s.localhost:4200/#
+    base-custom-url-portal: '%s/#'
+  customer-care:
+    join-huub-support: contact@myhuub.com
+    join-huub-live-chat: https://direct.lc.chat/12091353/
+
+client-app:
+  base-url: http://192.168.254.34:2028/#
+
+springdoc:
+  show-login-endpoint: true
+  swagger-ui:
+    urls-primary-name: springdocDefault
+swagger:
+  sever:
+    name: Huub
+    title: Huub API
+    version: 3.0
+    description: Open API documentation
+  url:
+    dev: http://localhost:8080
+    prod: http://com.formos.huub:8080
+
+#AWS properties
+image:
+  sizeOfAvatar: 200
+cloud:
+  region: ap-southeast-1
+  stack:
+    auto: false
+  credentials:
+    accessKey: AKIAZI2LFPUTESNU4GNU
+    secretKey: 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
+  bucket:
+    name: huub-local
+  preSigned:
+    url-expiration: 120 #seconds
+  provider: aws
+  cloudfront-url: https://huub-local.s3.ap-southeast-1.amazonaws.com
+google:
+  clientId: 636662503237-bmb03ij1vm67h15rroq9mpv4vufrc1ku.apps.googleusercontent.com
+  clientSecret: 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
+  calendarId: primary
+  redirectUri: http://localhost:8080/api/oauth2/google/callback
+microsoft:
+  client-id: d7f6e4da-3de7-4398-b202-e990cc76b1f3
+  client-secret: Pfs8Q~0BnbsoxafbYrDl9Kac8NzOJCUdHU5otbc1
+  redirect-uri: http://localhost:8080/api/oauth2/microsoft/callback
+  authority: https://login.microsoftonline.com/common
+  scopes: user.read Calendars.ReadBasic Calendars.Read Calendars.ReadWrite openid profile offline_access
+facebook:
+  client-id: 951809556773078
+  client-secret: 6a5207bed77c92d44882fa4537220780
+  redirect-uri: http://localhost:8080/api/oauth2/facebook/callback
+eventbrite:
+  single-event-url: https://www.eventbriteapi.com/v3/events/%s
+  venue-detail-url: https://www.eventbriteapi.com/v3/venues/%s
+  organizer-url: https://www.eventbriteapi.com/v3/organizers/%s
+  event-attendees-url: https://www.eventbriteapi.com/v3/events/%s/attendees
+  attendee-url: https://www.eventbriteapi.com/v3/events/%s/attendees/%s
+  organizer-events-url: https://www.eventbriteapi.com/v3/organizers/%s/events?status=live
+  organizations-url: https://www.eventbriteapi.com/v3/users/me/organizations/
+  organization-events-url: https://www.eventbriteapi.com/v3/organizations/%s/events?status=live
+  api-token: 5BC24C6F7ENDSK7OGFE6
+active-campaign:
+  base-url: https://{accountName}.api-us1.com/api/{apiVersion}
+  account-name: formos1729272668
+  api-version: 3
+  access-key: 1127f570d054e150b11d15a7716e746531c42633b5cedf7dbfc8fde167c9511a311f3542
+firebase:
+  service-account-path: classpath:config/firebase/firebase-adminsdk-dev.json
+  real-time-database-url: https://app-chat-b74cb-default-rtdb.firebaseio.com
+  token:
+    max-claims-size: 1000
+    rate-limit:
+      tokens: 100 # tokens per hour
+schedule:
+  sync:
+    retry-times: 3
+  timezone: America/Los_Angeles
+  remove-event-in-seconds: 2592000
+  update-status-program-term:
+    cron-job: 0 0 0 * * *
+metabase:
+  site-url: http://192.168.254.44:2027
+  secret-key: 1727718ecfe4d64335bda52f148ce734d7d2016f87a59add46567ce96dff023d
+custom-domain:
+  primary-domain: localhost:4200
+  treat-www-as-subdomain: true
+
+sendgrid:
+  key: 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
+  sender: noreply@formos-dn.online
+  display-name: Huub System
+
+twilio:
+  account-sid:
+  auth-token:
+  phone-number:
+
+webhook-key:
+  eventbrite: X7GJ9P2LMN5YQWERTYUI
+
+system-configuration:
+  mailSlack: chi.tran@formos.com

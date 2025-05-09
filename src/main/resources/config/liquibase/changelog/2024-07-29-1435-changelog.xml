@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717942378894-4" author="FVNDN36 (generated)">
+        <addColumn tableName="learning_library">
+            <column name="category_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1722241677461-84" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="learning_library"
+                                 constraintName="FK_LEARNING_LIBRARY_ON_CATEGORY" referencedColumnNames="id"
+                                 referencedTableName="category"/>
+    </changeSet>
+
+    <changeSet id="1721977052746-99" author="TuanNM">
+        <dropForeignKeyConstraint  baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_learning_library" />
+    </changeSet>
+    <changeSet id="1721977052746-100" author="TuanNM">
+        <dropForeignKeyConstraint baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_portal" />
+    </changeSet>
+    <changeSet id="1721977052746-101" author="TuanNM">
+        <dropForeignKeyConstraint  baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_learning_library" />
+    </changeSet>
+    <changeSet id="1721977052746-102" author="TuanNM">
+        <dropForeignKeyConstraint baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_speaker" />
+    </changeSet>
+    <changeSet id="1721977052746-103" author="TuanNM">
+        <dropForeignKeyConstraint  baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_learning_library"
+                                 />
+    </changeSet>
+    <changeSet id="1721977052746-104" author="TuanNM">
+        <dropForeignKeyConstraint
+                                    baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_tag" />
+    </changeSet>
+
+    <changeSet id="1721977052824-99" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1721977052824-100" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_portal"
+                                 constraintName="fk_lealibpor_on_portal" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052824-101" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="speaker_id" baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="speaker"/>
+    </changeSet>
+    <changeSet id="1721977052824-102" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_speaker"
+                                 constraintName="fk_lealibspe_on_speaker" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+    <changeSet id="1721977052824-103" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_learning_library" referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+    </changeSet>
+    <changeSet id="1721977052824-104" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="learning_library_tag"
+                                 constraintName="fk_lealibtag_on_tag" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+</databaseChangeLog>

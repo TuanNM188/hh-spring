@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1736323657121-100" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('015fd4ad-79b9-4fd8-9fd4-ad79b96fd8a2', 'CREATE_SURVEY', 'API'),
+                ('5554c8c1-64af-4cf8-94c8-c164afdcf845', 'UPDATE_SURVEY_DETAIL', 'API');
+        </sql>
+    </changeSet>
+    <changeSet id="1736323657121-101" author="huytruong (generated)">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '015fd4ad-79b9-4fd8-9fd4-ad79b96fd8a2'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '5554c8c1-64af-4cf8-94c8-c164afdcf845'),
+                ('ROLE_PORTAL_HOST', '015fd4ad-79b9-4fd8-9fd4-ad79b96fd8a2'),
+                ('ROLE_PORTAL_HOST', '5554c8c1-64af-4cf8-94c8-c164afdcf845');
+        </sql>
+    </changeSet>
+    <changeSet id="1736323657121-102" author="huytruong (generated)">
+        <sql>
+            ALTER TABLE survey
+                ALTER COLUMN is_active SET DEFAULT true;
+        </sql>
+    </changeSet>
+    <changeSet id="1736323657121-103" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('21eb460f-857c-4ead-ab46-0f857c1ead97', 'DUPLICATE_SURVEY', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '21eb460f-857c-4ead-ab46-0f857c1ead97'),
+                ('ROLE_PORTAL_HOST', '21eb460f-857c-4ead-ab46-0f857c1ead97');
+        </sql>
+    </changeSet>
+    <changeSet id="1736323657121-104" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('e51bd411-0e1c-4831-9bd4-110e1c1831b3', 'DOWNLOAD_SURVEY_RESPONSES', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'e51bd411-0e1c-4831-9bd4-110e1c1831b3'),
+                ('ROLE_PORTAL_HOST', 'e51bd411-0e1c-4831-9bd4-110e1c1831b3');
+        </sql>
+    </changeSet>
+    <changeSet id="1736323657121-105" author="huytruong (generated)">
+        <sql>
+            UPDATE menu SET label='Portal Surveys', router_link='/surveys/list' WHERE  id='567f1990-dde5-410b-9f63-26d6dfc6b4aa';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

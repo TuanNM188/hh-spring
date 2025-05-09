@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729963938334-74" author="TuanNM">
+       <sql>
+           INSERT INTO public.authority_permissions (authority_name,permission_id)
+           VALUES ('ROLE_TECHNICAL_ADVISOR','171c81d0-c0bb-493e-85a3-3bd9aea51443'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','ef5d3d25-a148-49e8-801e-19df6a5d342b'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','8fa05f8a-7944-4eaf-9741-39e49f78dcae'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','3eab04cc-84d9-441b-a55f-5e0dcbaab93b'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','01e46eff-fea6-4af3-ad91-84edaad0900b'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','eff99c59-a767-4b79-a4b9-b74798722898'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','e984bbc8-2789-4b9a-ba7b-3d8a251949ad'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','e98dec48-38bf-486a-baf3-b233e6132428'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','f55e03d4-86e6-41e4-a1b7-01adf6e62c6d'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','364a9ded-360e-4ce5-9216-7429c4c70478'::uuid),
+                  ('ROLE_TECHNICAL_ADVISOR','e43bdfc0-8c4e-4076-918e-1ee1e8159db6'::uuid);
+       </sql>
+    </changeSet>
+</databaseChangeLog>

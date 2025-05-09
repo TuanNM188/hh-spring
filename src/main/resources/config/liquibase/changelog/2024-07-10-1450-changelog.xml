@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595209808-19" author="TuanNM">
+        <sql>
+            INSERT INTO public.feature
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, "name", feature_code, router_link, is_dynamic, priority_order, parent_id, description)
+            VALUES('3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Portals', 'PORTALS', '/portals', false, 1, NULL, NULL),
+            ('bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Setting', 'PORTALS_SETTING', '/portals/setting', false, 1, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('f92a28c2-96d4-4a4e-abab-11eac4a5966b'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Grants', 'PORTALS_GRANTS', '/portals/grants', false, 2, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('94094ea7-8cc5-4577-a77c-d286ae1c5bfa'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Business Owners', 'PORTALS_BUSINESS_OWNERS', '/portals/business-owner', false, 3, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('2cfc6df9-2e3f-404b-bd90-a97a9063802d'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Community Partners', 'PORTALS_COMMUNITY_PARTNERS', '/portals/community-owner', false, 4, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('5c8231aa-0779-4385-bd64-c359c61e9c46'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Work Packages', 'PORTALS_WORK_PACKAGES', '/portals/work-packages', false, 5, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('f1c15304-e075-40cd-8138-bab3ce05ee58'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Learning Library', 'PORTALS_LEARNING_LIBRARY', '/portals/learning-library', true, 6, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, 'Learning Library'),
+            ('5e994fbb-c48f-4837-8705-b39c9642607d'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Calendar &amp; Events', 'PORTALS_CALENDAR_AND_EVENTS', '/portals/calendar-event', true, 7, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, 'Events Calendar'),
+            ('fa509f5b-2c83-4c15-a9f8-827b4bfd3e68'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Reports', 'PORTALS_REPORTS', '/portals/reports', false, 8, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('89efcf83-9e1c-4dce-8ce4-0c900ce91d29'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Messaging', 'PORTALS_MESSAGING', '/portals/messaging', false, 9, '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, NULL),
+            ('aa59b4c0-31b9-4037-b3e9-445f7f52ae50'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'About', 'ABOUTS', NULL, false, 1, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, 'Community About Page'),
+            ('ab8d8bbf-acd1-475b-8566-98eed10b4d90'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Features', 'FEATURES', NULL, false, 2, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, NULL),
+            ('7d9f3b89-e5b6-4543-8ed7-872b2888751c'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Program Details', 'PROGRAM_DETAILS', NULL, true, 3, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, 'Technical Assistance Programs'),
+            ('b25f607d-e279-4cfb-a747-7b0620c5ab70'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Customize', 'CUSTOMIZE', NULL, false, 4, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, NULL),
+            ('4016486c-b8ec-409a-a9ab-deb5596b6ec5'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Locations', 'LOCATIONS', NULL, false, 5, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, NULL),
+            ('fca2a297-3e1e-46db-8a62-9b1b7411670e'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Community Boards', 'COMMUNITY_BOARDS', NULL, true, 6, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, 'Community Boards'),
+            ('5e57c104-e283-4527-a7d3-fa31495c5c58'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Team', 'TEAM', NULL, false, 7, 'bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid, NULL),
+            ('fd210bad-e471-49f0-97bd-5e4feca0b265'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Community Resources', 'COMMUNITY_RESOURCE', NULL, true, 1, NULL, 'Community Resources'),
+            ('f1507fed-428e-4715-a40e-93800a5d2b82'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Funding Directory', 'FUNDING_DIRECTORY', NULL, true, 1, NULL, 'Funding Directory');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

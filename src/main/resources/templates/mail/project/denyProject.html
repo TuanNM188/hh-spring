@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.project.deny.greeting(${advisorFirstName})}">Hello {advisorFirstName},</p>
+  <p th:utext="#{email.invitation.project.deny.body(${businessOwnerFullName})}">Your project proposal with {Business Owner Full Name} has been denied.</p>
+  <p>
+    <span th:text="#{email.invitation.project.deny.body1}">If you have any questions or need additional information regarding this proposal, email the business owner's navigator,</span>
+    <span th:text="#{email.invitation.project.deny.body2(${navigatorFullName}, ${navigatorEmail})}">{0} at {1}, or chat with our team now.</span>
+    <span><a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"  th:text="#{email.invitation.project.deny.body3}">chat with our team now.</a></span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+
+

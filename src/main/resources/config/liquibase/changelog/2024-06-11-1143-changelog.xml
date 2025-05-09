@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718089739941-2" author="TuanNM">
+        <createTable tableName="cities">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cities"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="ex_id" type="UUID"/>
+            <column name="platform_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="primary_logo" type="TEXT"/>
+            <column name="secondary_logo" type="TEXT"/>
+            <column name="primary_color" type="VARCHAR(255)"/>
+            <column name="secondary_color" type="VARCHAR(255)"/>
+            <column name="favicon" type="TEXT"/>
+            <column name="about_page_content" type="TEXT"/>
+            <column name="community_partners_email" type="VARCHAR(255)"/>
+            <column name="contract_year_start_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contract_year_end_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1718089739941-3" author="TuanNM">
+        <createTable tableName="organizations">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_organizations"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="ex_id" type="UUID"/>
+            <column name="organization_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="contact_email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1718089739941-4" author="TuanNM">
+        <createTable tableName="technical_advisors">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_technical_advisors"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="ex_id" type="UUID"/>
+            <column name="specialty" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="education" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bio" type="TEXT"/>
+            <column name="headshot" type="VARCHAR(255)"/>
+            <column name="personal_website" type="VARCHAR(255)"/>
+            <column name="time_zone" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="languages_spoken" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="industries_served" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tools_used" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organization_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1718089739941-5" author="TuanNM">
+        <addColumn tableName="jhi_user">
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="notification_preferences" type="VARCHAR(50)"/>
+            <column name="phone_number" type="VARCHAR(20)"/>
+            <column name="profile_picture" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1718089739941-9" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="technical_advisors"
+                                 constraintName="FK_TECHNICAL_ADVISORS_ON_ORGANIZATION" referencedColumnNames="id"
+                                 referencedTableName="organizations"/>
+    </changeSet>
+    <changeSet id="1718089739941-10" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="technical_advisors"
+                                 constraintName="FK_TECHNICAL_ADVISORS_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1718089739941-1" author="TuanNM">
+        <modifyDataType columnName="email" newDataType="VARCHAR(254)" tableName="jhi_user"/>
+    </changeSet>
+
+</databaseChangeLog>

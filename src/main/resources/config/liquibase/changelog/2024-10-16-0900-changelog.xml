@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1729237256915-23" author="TuanNM">
+        <createTable tableName="follow">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_follow"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="follower_id" type="UUID"/>
+            <column name="followed_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1729237256915-102" author="TuanNM">
+        <addUniqueConstraint columnNames="follower_id, followed_id" constraintName="uc_cc2ab3de5172a8658bbd64aa7"
+                             tableName="follow"/>
+    </changeSet>
+    <changeSet id="1729237256915-120" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="followed_id" baseTableName="follow"
+                                 constraintName="FK_FOLLOW_ON_FOLLOWED" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1729237256915-121" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="follower_id" baseTableName="follow"
+                                 constraintName="FK_FOLLOW_ON_FOLLOWER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1729095416696-141" author="TuanNM">
+        <sql>
+        INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','b64106b8-48b2-4771-b94b-3964f6db32c6'::uuid),
+             ('ROLE_COMMUNITY_PARTNER','b64106b8-48b2-4771-b94b-3964f6db32c6'::uuid),
+             ('ROLE_BUSINESS_OWNER','b64106b8-48b2-4771-b94b-3964f6db32c6'::uuid),
+             ('ROLE_TECHNICAL_ADVISOR','b54ad851-12f8-4fb9-a2be-0fa7aafa2752'::uuid),
+             ('ROLE_COMMUNITY_PARTNER','b54ad851-12f8-4fb9-a2be-0fa7aafa2752'::uuid),
+             ('ROLE_BUSINESS_OWNER','b54ad851-12f8-4fb9-a2be-0fa7aafa2752'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

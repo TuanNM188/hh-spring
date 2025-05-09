@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1736227812725-100" author="huytruong (generated)">
+        <createTable tableName="survey">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_survey"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="portal_id" type="UUID"/>
+            <column name="is_active" type="BOOLEAN"/>
+            <column name="survey_json" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1736227812725-101" author="huytruong (generated)">
+        <createTable tableName="survey_responses">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_survey_responses"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="user_id" type="UUID"/>
+            <column name="submission_date" type="DATETIME"/>
+            <column name="survey_id" type="UUID"/>
+            <column name="survey_data" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1736227812725-102" author="huytruong (generated)">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="survey"
+                                 constraintName="FK_SURVEY_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1736227812725-103" author="huytruong (generated)">
+        <addForeignKeyConstraint baseColumnNames="survey_id" baseTableName="survey_responses"
+                                 constraintName="FK_SURVEY_RESPONSES_ON_SURVEY" referencedColumnNames="id"
+                                 referencedTableName="survey"/>
+    </changeSet>
+    <changeSet id="1736227812725-104" author="huytruong (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="survey_responses"
+                                 constraintName="FK_USER_RESPONSES_SURVEY"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1736227812725-105" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('c7eb63d9-3d96-4f40-ab63-d93d961f404e', 'SEARCH_SURVEY_LIST', 'API');
+        </sql>
+    </changeSet>
+    <changeSet id="1736227812725-106" author="huytruong (generated)">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c7eb63d9-3d96-4f40-ab63-d93d961f404e'),
+                ('ROLE_PORTAL_HOST', 'c7eb63d9-3d96-4f40-ab63-d93d961f404e');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

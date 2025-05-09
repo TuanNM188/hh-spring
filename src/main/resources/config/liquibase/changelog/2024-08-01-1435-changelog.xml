@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1722499045011-29" author="FVNDN36 (generated)">
+        <createTable tableName="learning_library_section">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_learning_library_section"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="section_type" type="VARCHAR(50)"/>
+            <column name="position" type="INT"/>
+            <column name="contents" type="json"/>
+            <column name="learning_library_lesson_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1722499045011-87" author="FVNDN36 (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_lesson_id" baseTableName="learning_library_section"
+                                 constraintName="FK_LEARNING_LIBRARY_SECTION_ON_LEARNING_LIBRARY_LESSON"
+                                 referencedColumnNames="id" referencedTableName="learning_library_lesson"/>
+    </changeSet>
+
+</databaseChangeLog>

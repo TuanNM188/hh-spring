@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595209886-87" author="hnnguyen (generated)">
+        <createTable tableName="user_learning_library">
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_learning_library"/>
+            </column>
+            <column name="learning_library_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_learning_library"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_taken" type="boolean"/>
+            <column defaultValueBoolean="false" name="is_bookmark" type="boolean"/>
+            <column name="rating" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720595209886-67" author="hnnguyen (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_learning_library"
+                                 constraintName="FK_USER_LEARNING_LIBRARY_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1720595209886-68" author="hnnguyen (generated)">
+        <addForeignKeyConstraint baseColumnNames="learning_library_id" baseTableName="user_learning_library"
+                                 constraintName="FK_USER_LEARNING_LIBRARY_ON_LEARNING_LIBRARY" referencedColumnNames="id"
+                                 referencedTableName="learning_library"/>
+    </changeSet>
+
+</databaseChangeLog>

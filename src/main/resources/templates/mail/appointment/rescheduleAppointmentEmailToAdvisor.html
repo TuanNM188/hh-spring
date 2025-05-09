@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.reschedule.advisor.appointment.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.reschedule.advisor.appointment.body(${businessOwnerName})}">
+    The details for your appointment with {Business Owner Full Name} have changed.
+  </p>
+  <p th:text="#{email.reschedule.advisor.appointment.body2(${appointmentDateAndTime})}">
+    Your appointment is now scheduled for {Appointment date and time}.
+  </p>
+  <p>
+  <span th:text="#{email.reschedule.advisor.appointment.body3}">
+    As a reminder, you'll be meeting with each other virtually using this link:
+  </span>
+    <a th:with="url=(@{|${advisorMeetingLink}|})"
+       th:href="${url}"
+       th:text="#{email.reschedule.advisor.appointment.body.meetingLink}">Advisor Meeting Link</a>
+  </p>
+  <p>
+  <span th:text="#{email.reschedule.advisor.appointment.body4(${appointmentDateAndTime})}">
+    Your appointment is scheduled for {Appointment date and time}.
+  </span>
+    <br>
+    <a th:with="url=(@{|${baseUrl}${appointmentDetailUrl}|})"
+       th:href="${url}"
+       th:text="#{email.reschedule.advisor.appointment.body.appointmentUrl}">View Business Owner Profile</a>
+  </p>
+  <p class="mb-0"><strong th:text="#{email.reschedule.advisor.appointment.body5}">
+    Need to adjust this appointment?</strong>
+  </p>
+  <p class="mt-0" th:text="#{email.reschedule.advisor.appointment.body6(${portalName})}">
+    Manage your appointments via your dashboard in the {Portal Name}. You must contact the business owner directly to
+    coordinate any scheduling changes.
+  </p>
+  <p>
+    <strong style="color: red;" th:text="#{email.reschedule.advisor.appointment.body7}">Cancelation Policy:</strong>
+    <span th:text="#{email.reschedule.advisor.appointment.body8}">All bookings are confirmed immediately, and any cancelations must be made at least 24 hours before the session date. Rescheduling appointments must occur at least 2 hours before the scheduled session date and time. Please</span>
+    <a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"
+       th:text="#{email.reschedule.advisor.appointment.body9}">chat with our team now</a>
+    <span th:text="#{email.reschedule.advisor.appointment.body10}">if you need scheduling assistance. Repeated and frequent cancelations or rescheduling can result in removal from the advisor network.</span>
+  </p>
+<p>
+  <span th:text="#{email.reschedule.advisor.appointment.support1}">
+    Thanks,
+  </span>
+  <br/>
+  <strong th:text="#{email.reschedule.advisor.appointment.support2}">
+    The HUUB Team
+  </strong>
+</p>
+</div>
+</html>

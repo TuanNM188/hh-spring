@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1734061430894-01" author="LinhNguyen">
+        <createTable tableName="event_registrations">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_event_registrations"/>
+            </column>
+            <column name="business_owner_id" type="UUID"/>
+            <column name="calendar_event_id" type="UUID"/>
+            <column name="registration_date" type="DATETIME"/>
+            <column name="registration_status" type="VARCHAR(255)"/>
+            <column name="external_event_id" type="VARCHAR(50)"/>
+            <column name="external_attendee_id" type="VARCHAR(50)"/>
+            <column name="checked_in" type="BOOLEAN"/>
+            <column name="cancelled" type="BOOLEAN"/>
+            <column name="refunded" type="BOOLEAN"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

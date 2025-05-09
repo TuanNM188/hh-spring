@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p th:text="#{email.activation.greeting(${user.login})}">Dear</p>
+  <p th:text="#{email.creation.text1}">Your HUUB account has been created, please click on the URL below to access it:</p>
+  <p>
+    <a th:with="url=(@{|${baseUrl}/account/reset/finish?key=${user.resetKey}|})" th:href="${url}" text="Login Link">Login link</a>
+  </p>
+  <p class="mb-0">Regards,</p>
+  <p class="mt-0"><strong>The HUUB team</strong></p>
+</div>

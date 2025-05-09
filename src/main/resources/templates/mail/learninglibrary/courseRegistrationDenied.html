@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.course.registration.denied.greeting(${businessOwnerName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.course.registration.denied.body(${courseName})}">
+    Your registration for {0} has been denied.
+  </p>
+  <p>
+      <span th:text="#{email.course.registration.denied.support1}">
+        Please contact your portal host if you have any questions regarding this determination or
+      </span>
+    <a th:with="url=(@{|${liveChat}|})" th:href="${url}" th:text="#{email.course.registration.denied.support2}">
+      chat with our team now.
+    </a>
+  </p>
+  <p class="mb-0"> Thanks, </p>
+  <p class="mt-0"><strong>The HUUB team</strong></p>
+</div>
+</html>

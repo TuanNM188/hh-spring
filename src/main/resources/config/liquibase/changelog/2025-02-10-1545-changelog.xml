@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727934619953-112" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO menu(
+                id, created_by, created_date, last_modified_by, last_modified_date, is_delete, label, icon, router_link, priority_order, is_active, "position")
+            VALUES
+                ('28c2ef70-cca9-406b-8de6-a81eeb5e0ffe', 'admin@localhost.com', '2024-12-31 03:45:08.432', 'admin@localhost.com', '2024-12-31 03:45:08.432', false, 'Summaries', null, '/metrics-reports/summaries', 1, true, 'METRICS_REPORTS'),
+                ('1ab55dc0-d651-46ce-bcaf-e11cde2c9235', 'admin@localhost.com', '2024-12-31 03:45:08.432', 'admin@localhost.com', '2024-12-31 03:45:08.432', false, 'Demographics', null, '/metrics-reports/demographics', 2, true, 'METRICS_REPORTS'),
+                ('493f6e16-ad3b-433e-8b8f-ee347f6e7561', 'admin@localhost.com', '2024-12-31 03:45:08.432', 'admin@localhost.com', '2024-12-31 03:45:08.432', false, 'Engagement', null, '/metrics-reports/engagement', 3, true, 'METRICS_REPORTS'),
+                ('a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e', 'admin@localhost.com', '2024-12-31 03:45:08.432', 'admin@localhost.com', '2024-12-31 03:45:08.432', false, 'Technical Assistance Data', null, '/metrics-reports/technical-assistance-data', 4, true, 'METRICS_REPORTS'),
+                ('57f62aaa-5c47-4ab0-96fe-510347fec050', 'admin@localhost.com', '2024-12-31 03:45:08.432', 'admin@localhost.com', '2024-12-31 03:45:08.432', false, 'Exports', null, '/metrics-reports/exports', 5, true, 'METRICS_REPORTS');
+
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '28c2ef70-cca9-406b-8de6-a81eeb5e0ffe'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '57f62aaa-5c47-4ab0-96fe-510347fec050'),
+                ('ROLE_PORTAL_HOST', '28c2ef70-cca9-406b-8de6-a81eeb5e0ffe'),
+                ('ROLE_PORTAL_HOST', '1ab55dc0-d651-46ce-bcaf-e11cde2c9235'),
+                ('ROLE_PORTAL_HOST', '493f6e16-ad3b-433e-8b8f-ee347f6e7561'),
+                ('ROLE_PORTAL_HOST', 'a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e'),
+                ('ROLE_PORTAL_HOST', '57f62aaa-5c47-4ab0-96fe-510347fec050'),
+                ('ROLE_COMMUNITY_PARTNER', 'a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353996958-98" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET question_type = 'DROPDOWN_SINGLE_CHOICE_OTHER'
+            WHERE id = '09ad6253-3199-47ee-bd40-781ec45d9860';
+
+            UPDATE question
+            SET question_type = 'DROPDOWN_SINGLE_CHOICE_OTHER'
+            WHERE id = '09acdffa-40a7-4202-adf7-4a03cde52304';
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1729353996958-97" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET question_type = 'DROPDOWN_SINGLE_CHOICE_OTHER'
+            WHERE id = '09a98977-9fdf-48aa-be01-3966f834b5b6';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

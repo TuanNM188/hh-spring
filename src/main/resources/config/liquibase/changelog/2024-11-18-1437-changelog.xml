@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1718558838875-02" author="hnnguyen">
+        <sql>
+            UPDATE answer_option SET answer = 'PR' WHERE id = '974679ae-bee1-49a1-93ee-f6cdcce31bd6';
+            UPDATE answer_option SET answer = 'GU' WHERE id = '024141b8-2091-40f7-b3ab-362c36dc2a6a';
+            UPDATE answer_option SET answer = 'VI' WHERE id = 'fd04e69d-12f5-46ba-aae7-777a3ce53ebc';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

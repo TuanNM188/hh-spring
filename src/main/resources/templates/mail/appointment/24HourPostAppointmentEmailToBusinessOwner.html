@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+  <div th:fragment="body-content">
+    <p th:text="#{email.24-hour-post.appointment.greeting(${receiverName})}">Hello {receiverName},</p>
+    <p th:text="#{email.24-hour-post.appointment.body(${senderName})}">
+      Thank you for attending your session with {senderName}. Please complete the following post-appointment survey regarding your
+      experience and share any feedback you have.
+    </p>
+    <p>
+      <strong>
+        <a
+          th:with="url=(@{|${baseUrl}/appointment/${appointmentId}/feedback|})"
+          th:href="${url}"
+          th:text="#{email.24-hour-post.appointment.link}"
+          class="link-custom"
+        >
+          Rate your session.
+        </a>
+      </strong>
+    </p>
+    <p>
+      <span th:text="#{email.24-hour-post.appointment.body2}"> Have additional questions or concerns? </span>
+      <strong
+        ><a
+          th:with="url=(@{|${supportLiveChat}|})"
+          th:href="${url}"
+          th:text="#{email.advisor.post-appointment-report-reminder.support8}"
+          class="link-custom"
+        >
+          Chat with our team now.
+        </a></strong
+      >
+    </p>
+    <p>
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support6}"> Thank you, </span>
+      <br />
+      <strong th:text="#{email.advisor.post-appointment-report-reminder.support7}"> The HUUB team </strong>
+    </p>
+  </div>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="9017909818121-3" author="TuanNM">
+        <sql>
+            INSERT INTO authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_COMMUNITY_PARTNER','736391ca-9847-4d6b-8ad9-4d52fbce9da8'::uuid);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

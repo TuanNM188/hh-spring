@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.member.businessOwner.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.invitation.member.businessOwner.invite}">
+    Thank you for joining HUUB! To finish activating your account and start exploring the platform, please click the verification link below:
+  </p>
+  <p>
+    <a class="link-custom" th:with="url=(@{|${baseUrl}/auth/set-password/${token}?type=${activeType}|})" th:href="${url}" th:text="#{email.invitation.member.businessOwner.support1}">Verify My Email</a>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.member.businessOwner.welcome}">
+    To your success,
+  </p>
+  <p class="mt-0">
+    <strong th:text="#{email.invitation.member.businessOwner.signature}">
+      The HUUB Team
+    </strong>
+  </p>
+  <p th:text="#{email.invitation.member.businessOwner.closing}">
+    If you're having trouble with the button above, copy and paste the URL below into your web browser.
+  </p>
+  <p>
+    <a th:with="url=(@{|${baseUrl}/auth/set-password/${token}?type=${activeType}|})" th:href="${url}" th:text="${url}">Verify My Email</a>
+  </p>
+</div>

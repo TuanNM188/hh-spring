@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="17292936929853-03" author="TuanNM">
+        <sql>
+            UPDATE user_answer_form
+            SET additional_answer='&lt;p&gt;&lt;strong&gt;How do I apply?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span&gt;Make sure you have a {Portal Name} account (if not, sign up here)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Submit your application by clicking the button below.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;'
+            WHERE id = '8caa3b1b-5d74-4523-9198-f41799a82e42'::uuid::uuid;
+            UPDATE question
+            SET question='You choose {Category Name} and {Category Name}. Please describe how an advisor can best support you.'
+            WHERE id = 'c3105b47-5d9d-42f0-980a-ee37b6b99ffe'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

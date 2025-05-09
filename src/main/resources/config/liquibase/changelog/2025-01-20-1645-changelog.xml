@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1737366459992-01" author="Hung Tran">
+        <sql>
+            INSERT INTO public."permission" (id,"name","type")
+            VALUES ('51c72e8c-3c15-48e5-9828-0376c7b1391c'::uuid,'CREATE_FEEDBACK_PROJECT','API');
+
+            INSERT INTO public.authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_BUSINESS_OWNER','51c72e8c-3c15-48e5-9828-0376c7b1391c'::uuid);
+
+            UPDATE public."permission"
+            SET "name" = 'CREATE_FEEDBACK_APPOINTMENT'
+            WHERE id = '2573610f-7b94-49af-8ff9-75e4c81a06c5'::uuid;
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

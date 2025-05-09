@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1736759386476-11"
+               author="TuanNM">
+        <createTable tableName="appointment">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_appointment"/>
+            </column>
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+            <column name="appointment_date"
+                    type="DATETIME"/>
+            <column name="start_time"
+                    type="TIME"/>
+            <column name="end_time"
+                    type="TIME"/>
+            <column name="status"
+                    type="VARCHAR(50)"/>
+            <column name="timezone"
+                    type="VARCHAR(50)"/>
+            <column name="user_id"
+                    type="UUID"/>
+            <column name="technical_advisor_id"
+                    type="UUID"/>
+            <column name="community_partner_id"
+                    type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1736759386476-12"
+               author="TuanNM">
+        <createTable tableName="appointment_detail">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_appointment_detail"/>
+            </column>
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+            <column name="category_id"
+                    type="UUID"/>
+            <column name="service_id"
+                    type="UUID"/>
+            <column name="support_description"
+                    type="TEXT"/>
+            <column name="share_links"
+                    type="TEXT"/>
+            <column name="service_outcomes"
+                    type="TEXT"/>
+            <column name="rating"
+                    type="INT"/>
+            <column name="feedback"
+                    type="TEXT"/>
+            <column name="comments"
+                    type="TEXT"/>
+            <column name="use_award_hours"
+                    type="BIGINT"/>
+            <column name="appointment_id"
+                    type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1736759386476-124"
+               author="TuanNM">
+        <addUniqueConstraint columnNames="appointment_id"
+                             constraintName="uc_appointment_detail_appointment"
+                             tableName="appointment_detail"/>
+    </changeSet>
+    <changeSet id="1736759386476-138"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="appointment_id"
+                                 baseTableName="appointment_detail"
+                                 constraintName="FK_APPOINTMENT_DETAIL_ON_APPOINTMENT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="appointment"/>
+    </changeSet>
+    <changeSet id="1736759386476-139"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="community_partner_id"
+                                 baseTableName="appointment"
+                                 constraintName="FK_APPOINTMENT_ON_COMMUNITY_PARTNER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="community_partner"/>
+    </changeSet>
+    <changeSet id="1736759386476-140"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="technical_advisor_id"
+                                 baseTableName="appointment"
+                                 constraintName="FK_APPOINTMENT_ON_TECHNICAL_ADVISOR"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technical_advisor"/>
+    </changeSet>
+    <changeSet id="1736759386476-141"
+               author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="appointment"
+                                 constraintName="FK_APPOINTMENT_ON_USER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1926759386476-15" author="TuanMN">
+        <addColumn tableName="technical_assistance_submit">
+            <column name="remaining_award_hours" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

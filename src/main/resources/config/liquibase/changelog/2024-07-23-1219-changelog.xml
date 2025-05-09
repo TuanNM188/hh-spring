@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595209808-27" author="Nghia Nguyen">
+        <sql>
+            INSERT INTO feature
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, "name", feature_code, router_link, is_dynamic, priority_order, parent_id, description)
+            VALUES('1e64fca1-c052-4877-9413-9b22d22e37b2'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'About', 'PORTAL_FUNDING_ABOUT', NULL, false, 1, 'f1507fed-428e-4715-a40e-93800a5d2b82'::uuid, NULL),
+                  ('2629bd2a-3f91-4519-852c-e0f6f97af02b'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Funder Details', 'PORTAL_FUNDING_FUNDER_DETAILS', NULL, false, 2, 'f1507fed-428e-4715-a40e-93800a5d2b82'::uuid, NULL),
+                  ('2a862950-6c3e-46af-8bef-d783b9b9e513'::uuid, 'admin@localhost.com', '2024-07-09 02:38:49.086', 'admin@localhost.com', '2024-07-09 02:38:49.086', false, 'Application Details', 'PORTAL_FUNDING_APPLICATION_DETAILS', NULL, false, 3, 'f1507fed-428e-4715-a40e-93800a5d2b82'::uuid, NULL);
+            UPDATE feature
+            SET parent_id = '3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid, priority_order = 2, "name"='Funding', router_link = '/portals/funding' WHERE id = 'f1507fed-428e-4715-a40e-93800a5d2b82';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

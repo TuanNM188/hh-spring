@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720666099278-25" author="TuanNM">
+        <createTable tableName="program">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_program"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="contact_start" type="DATETIME"/>
+            <column name="contract_end" type="DATETIME"/>
+            <column name="is_active" type="BOOLEAN"/>
+            <column name="portal_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720666099278-26" author="TuanNM">
+        <createTable tableName="program_term">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_program_term"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="start_date" type="DATETIME"/>
+            <column name="end_date" type="DATETIME"/>
+            <column name="budget" type="DECIMAL"/>
+            <column name="status" type="SMALLINT"/>
+            <column name="program_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720666099278-27" author="TuanNM">
+        <createTable tableName="program_term_vendor">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_program_term_vendor"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="vendor_id" type="UUID"/>
+            <column name="contracted_rate" type="DECIMAL"/>
+            <column name="negotiated_rate" type="DECIMAL"/>
+            <column name="status" type="SMALLINT"/>
+            <column name="program_term_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1720666099278-60" author="TuanNM">
+        <addUniqueConstraint columnNames="portal_id" constraintName="uc_program_portal" tableName="program"/>
+    </changeSet>
+    <changeSet id="1720666099278-71" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="program"
+                                 constraintName="FK_PROGRAM_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portals"/>
+    </changeSet>
+    <changeSet id="1720666099278-72" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="program_id" baseTableName="program_term"
+                                 constraintName="FK_PROGRAM_TERM_ON_PROGRAM" referencedColumnNames="id"
+                                 referencedTableName="program"/>
+    </changeSet>
+    <changeSet id="1720666099278-73" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="program_term_id" baseTableName="program_term_vendor"
+                                 constraintName="FK_PROGRAM_TERM_VENDOR_ON_PROGRAM_TERM" referencedColumnNames="id"
+                                 referencedTableName="program_term"/>
+    </changeSet>
+
+</databaseChangeLog>

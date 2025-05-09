@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1741195096599-170" author="Hung Tran">
+        <addColumn tableName="invoice_detail">
+            <column name="technical_assistance_submit_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1741195096599-218" author="Hung Tran">
+        <dropColumn columnName="technical_assistance_submit_id" tableName="invoice"/>
+    </changeSet>
+
+</databaseChangeLog>

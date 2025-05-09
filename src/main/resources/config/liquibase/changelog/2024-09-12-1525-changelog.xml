@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718595788875-95" author="hnnguyen">
+        <addColumn tableName="question">
+            <column name="allow_action_visible" type="boolean" valueBoolean="false"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1718594838875-96" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET question_type = 'DROPDOWN_MULTIPLE_CHOICE_OTHER' WHERE id = '0a66272d-3414-4784-8a8b-c3f4a89706ce';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a6a95d6-2899-448a-9c20-b53ae2913057';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a67be2b-ece4-4606-a77a-10dcf0d1edcf';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a679568-5dd9-496f-8801-d7ee25deaf44';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a65032c-7fbf-44e1-95e9-ebee1cc8f422';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a615beb-95f2-44f3-acb0-2d943f9f11b4';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a586a08-9447-4105-82c0-5d381b3f4878';
+            UPDATE question
+            SET allow_action_visible = true WHERE id = '0a561740-a57a-4cd0-aabb-0faa6be899a8';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

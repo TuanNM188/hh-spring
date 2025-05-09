@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720666099632-25" author="TuanNM">
+        <sql>
+            UPDATE feature
+            SET "name"='Settings', router_link='/portals/settings'
+            WHERE id='bdc72b47-5be8-429e-ba74-2a04020f6677'::uuid;
+            UPDATE feature
+            SET "name"='Community Partners',  router_link='/portals/community-partners'
+            WHERE id='2cfc6df9-2e3f-404b-bd90-a97a9063802d'::uuid;
+            UPDATE feature
+            SET  router_link='/portals/calendar-events'
+            WHERE id='5e994fbb-c48f-4837-8705-b39c9642607d'::uuid;
+            UPDATE feature
+            SET  parent_id='3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid
+            WHERE id='f1507fed-428e-4715-a40e-93800a5d2b82'::uuid;
+            UPDATE feature
+            SET  parent_id='3764923a-a3c2-46fc-8a42-2c0e23a71c88'::uuid
+            WHERE id='fd210bad-e471-49f0-97bd-5e4feca0b265'::uuid;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

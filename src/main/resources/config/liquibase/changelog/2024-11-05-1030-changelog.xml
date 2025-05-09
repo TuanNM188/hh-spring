@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727934619953-78" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO menu(
+                id, created_by, created_date, last_modified_by, last_modified_date, is_delete, label, icon, router_link, priority_order, is_active, "position")
+            VALUES
+                ('00c48af6-d1d6-49be-9a16-1609b5302ce3', 'admin@localhost.com', '2024-11-05 03:45:08.432', 'admin@localhost.com', '2024-11-05 03:45:08.432', false, 'Community Boards', 'community-boards', '/community-boards', 4, true, 'TOP');
+
+            UPDATE menu SET priority_order = 5 WHERE id = '1a41268c-9898-4783-be33-0d5f99c352bc';
+            UPDATE menu SET priority_order = 6 WHERE id = '1fb93603-e6f6-4ba6-acfb-23e87813c62f';
+            UPDATE menu SET priority_order = 7 WHERE id = '2036f1d3-2004-49f9-a726-552647025897';
+            UPDATE menu SET priority_order = 8 WHERE id = '20868ba4-a30e-43f9-9632-1ac87712baaa';
+            UPDATE menu SET priority_order = 9 WHERE id = '251905b4-2f68-44f7-ab2c-1d66e033865a';
+            UPDATE menu SET priority_order = 10 WHERE id = '2586bab8-79a1-472f-a041-3b19c83267b1';
+            UPDATE menu SET priority_order = 11 WHERE id = '4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace';
+
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '00c48af6-d1d6-49be-9a16-1609b5302ce3'),
+
+                ('ROLE_PORTAL_HOST', '00c48af6-d1d6-49be-9a16-1609b5302ce3'),
+
+                ('ROLE_COMMUNITY_PARTNER', '00c48af6-d1d6-49be-9a16-1609b5302ce3'),
+
+                ('ROLE_TECHNICAL_ADVISOR', '00c48af6-d1d6-49be-9a16-1609b5302ce3'),
+
+                ('ROLE_BUSINESS_OWNER', '00c48af6-d1d6-49be-9a16-1609b5302ce3');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

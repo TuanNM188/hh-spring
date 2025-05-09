@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{baseTemplate :: content}"
+>
+<div th:fragment="body-content">
+  <p th:text="#{email.common.preAppointment.greeting(${advisorFirstName})}">
+    Hello { Advisor First name},
+  </p>
+  <p
+    th:text="#{email.common.preAppointment.content(${businessOwnerFullName}, ${appointmentDateTime})}"
+  >
+    This is a friendly reminder that your appointment with {Business owner
+    Full Name} is tomorrow, {Appointment date and time}.
+  </p>
+  <p class="mb-0">
+    <strong th:text="#{email.common.preAppointment.content1}">
+      As a reminder, you'll be meeting with each other virtually using this
+      link:
+    </strong>
+    <a
+      class="link-custom"
+      th:with="url=(@{|${advisorMeetingLink}|})"
+      th:href="${advisorMeetingLink}"
+      th:text="#{email.common.preAppointment.advisorMeetingLink}"
+    >
+      Meeting Link
+    </a>
+  </p>
+  <p
+    class="mb-0"
+    th:text="#{email.common.preAppointment.content2(${appointmentDateTime})}"
+  >
+    Your appointment is scheduled for {Appointment date and time}.
+  </p>
+  <a
+    th:with="url=(@{|${linkToAppointment}|})"
+    th:href="${url}"
+    th:text="#{email.common.preAppointment.appointmentLink}"
+    class="link-custom"
+  >View the appointment details here.</a
+  >
+
+  <p class="mb-0">
+    <strong th:text="#{email.advisor.preAppointment.content1}"
+    >Need to adjust this appointment?</strong
+    >
+  </p>
+  <p
+    class="mt-0"
+    th:text="#{email.advisor.preAppointment.content2(${portalName})}"
+  >
+    Manage your appointments via your dashboard in the {0}. You must contact
+    the business owner directly to coordinate any scheduling changes.
+  </p>
+  <p>
+    <strong class="red-color">Cancelation Policy:</strong>
+    <span th:text="#{email.advisor.preAppointment.content3}">
+        All bookings are confirmed immediately, and any cancelations must be
+        made at least 24 hours before the session date. Rescheduling
+        appointments must occur at least 2 hours before the scheduled session
+        date and time. Please
+      </span>
+    <a
+      class="link-custom"
+      th:with="url=(@{|${supportLiveChat}|})"
+      th:href="${supportLiveChat}"
+      th:text="#{email.common.preAppointment.content3}"
+    >chat with our team now
+    </a>
+    <span th:text="#{email.businessOwner.preAppointment.content5}">
+        if you need scheduling assistance.</span
+    >
+    <span th:text="#{email.advisor.preAppointment.content5}">
+        Repeated and frequent cancelations or
+        rescheduling can result in removal from the advisor network.
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">
+    Thanks,
+  </p>
+  <p class="mt-0">
+    <strong th:text="#{email.invitation.common.project.end}"
+    >The HUUB Team</strong
+    >
+  </p>
+</div>
+</html>

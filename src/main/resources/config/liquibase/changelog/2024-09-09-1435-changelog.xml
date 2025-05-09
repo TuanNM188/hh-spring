@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718595838875-95" author="hnnguyen">
+        <addColumn tableName="question">
+            <column name="allow_custom_options" type="boolean" valueBoolean="false"/>
+            <column name="column_size" type="VARCHAR(255)"/>
+            <column name="placeholder" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1720595559886-30" author="hnnguyen">
+        <addColumn tableName="answer_option">
+            <column name="is_extra" type="boolean" valueBoolean="false"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1720775209886-32" author="hnnguyen">
+        <addColumn tableName="answer_option">
+            <column name="entry_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1718558838875-96" author="hnnguyen">
+        <sql>
+            INSERT INTO question
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_code, form_code, question_type, question, is_require, group_code, parent_id , option_type, priority_order, allow_custom_options, column_size, placeholder)
+            VALUES
+                -- QUESTION
+                ('0b0c59de-9b24-4941-9cfb-554675170dba'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_FIRST_NAME', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Your First Name?', true, 'PERSONAL_INFORMATION', null, null, 1, false, '6', 'First name...'),
+                ('0b0853a6-f5f5-4394-bc07-001c9db45a7e'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_LAST_NAME', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Your Last Name?', true, 'PERSONAL_INFORMATION', null, null, 2, false, '6', 'Last name...'),
+                ('0afc52a3-5759-4da3-b726-7cdabe40b2d2'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_EMAIL_ADDRESS', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Your Email Address?', true, 'PERSONAL_INFORMATION', null, null, 3, false, '6', 'Email address...'),
+                ('0af7f1b3-4b88-46b4-8e9b-675658c1db74'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_PHONE_NUMBER', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Your Phone Number?', true, 'PERSONAL_INFORMATION', null, null, 4, false, '6', 'Phone number...'),
+                ('0af55be8-b146-4e22-96d5-c2a6bb4baf51'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_JOB_TITLE', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Your Job Title?', true, 'PERSONAL_INFORMATION', null, null, 5, false, '6', 'Job title...'),
+                ('0af49154-6f49-45eb-8d2e-e3bcee4386ac'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_PREFER_CONTACTED', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_MULTIPLE_CHOICE', 'How do you prefer to be contacted?', true, 'PERSONAL_INFORMATION', null, 'ANSWER_OPTION', 6, false, '6', 'Prefer to be contacted...'),
+                ('0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_HEAR_ABOUT_PROGRAM', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_MULTIPLE_CHOICE_OTHER', 'How did you hear about the program?', true, 'BUSINESS_INFORMATION', null, 'ANSWER_OPTION',7, true, '12', 'Hear about the program...'),
+                ('0aee3672-9e23-46e3-87f4-07a9d4b59040'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_BUSINESS', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Name of your business', true, 'BUSINESS_INFORMATION', null, null, 8, false, '12', 'Legal business name...'),
+                ('0ae9bb00-f7d5-4de6-8073-d6facb7dc39a'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_COUNTRY', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_MULTIPLE_CHOICE', 'Country', true, 'BUSINESS_INFORMATION', null,'ANSWER_OPTION', 9, false, '6', 'Country name...'),
+                ('0ae56733-2982-430d-87f2-947beda5698f'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_STATE_PROVINCE', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_SINGLE_CHOICE', 'State/Province', true, 'BUSINESS_INFORMATION', null, null, 10, false, '6', 'State name...'),
+                ('0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_CITY', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_SINGLE_CHOICE', 'City', true, 'BUSINESS_INFORMATION', null, null, 11, false, '6', 'City name...'),
+                ('0ae00898-dbf1-4673-9505-26fc1fe35174'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_ZIPCODE', 'PORTAL_INTAKE_QUESTION_PROFILE', 'DROPDOWN_SINGLE_CHOICE', 'ZIP', true, 'BUSINESS_INFORMATION', null, null, 12, false, '6', 'ZIP code...'),
+                ('0ae00744-bb4e-4272-b886-f334ba7d0fe3'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'PORTAL_INTAKE_QUESTION_STREET_ADDRESS', 'PORTAL_INTAKE_QUESTION_PROFILE', 'TEXT', 'Street Address', true, 'BUSINESS_INFORMATION', null, null, 13, false, '12', 'Street address...');
+
+            INSERT INTO answer_option
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_id, answer, priority_order, is_extra)
+            VALUES
+                -- PORTAL_INTAKE_QUESTION_PREFER_CONTACTED
+                ('0ad931ec-9b8b-41d0-a585-5f5c3d9c4040'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0af49154-6f49-45eb-8d2e-e3bcee4386ac'::uuid, 'Email', 1, false),
+                ('0ad7ad58-f184-4fe0-a80e-693c2a5cd5ec'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0af49154-6f49-45eb-8d2e-e3bcee4386ac'::uuid, 'Text messaging/SMS', 2, false),
+                ('0ad64b1e-28de-4d95-b9f7-e39abaab68b1'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0af49154-6f49-45eb-8d2e-e3bcee4386ac'::uuid, 'Phone call', 3, false),
+                -- PORTAL_INTAKE_QUESTION_HEAR_ABOUT_PROGRAM
+                ('0ac8cd06-620c-4715-9c3f-faf2af7f5370'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'City Staff', 1, false),
+                ('0ac87d55-de3d-4604-985b-e6fb75cdad7a'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'HUUB', 2, false),
+                ('0ac79e81-bab8-4222-9668-081de88edfb9'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Search Engine', 3, false),
+                ('0ac475da-eedd-465d-baa8-0f4a44acde55'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Social media', 4, false),
+                ('0abd1573-9146-4ff0-aecb-e38015aad837'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'City website', 5, false),
+                ('0abcf2b5-504f-4ecb-a867-0fe0c752be95'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Recommendation from a friend or colleague', 6, false),
+                ('0abc8ae7-20b2-4829-82c3-07cecb70d797'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Television', 7, false),
+                ('0abbe0a0-b262-4e43-a1b2-2ff29f566b86'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Radio', 8, false),
+                ('0abb5607-c139-4369-a162-9c3144567f8f'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, 'Newspaper', 9, false),
+                --PORTAL_INTAKE_QUESTION_COUNTRY
+                ('0aba74c0-8eb1-4308-98ac-e38ebab8b87d'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a'::uuid,'US', 1, false),
+                ('0aba5011-c1e4-497c-8f8a-59144cfebde5'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a'::uuid,'CA', 2, false);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

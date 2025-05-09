@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1720888298334-03" author="TuanNM">
+        <sql>
+            UPDATE jhi_user
+            SET password_hash= (SELECT string_agg(substr('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', (random() * 61 + 1):: int, 1),
+                                           '') AS random_password
+                                FROM generate_series(1, 60))
+            WHERE password_hash is null;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

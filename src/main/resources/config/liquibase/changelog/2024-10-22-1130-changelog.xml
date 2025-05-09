@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619853-70" author="hnnguyen (generated)">
+        <sql>
+            DELETE FROM authority_permissions WHERE permission_id = '403806f3-b542-4030-8718-480367d19493';
+            DELETE FROM authority_permissions WHERE permission_id = 'c7e47d4f-e9ed-453b-ac7a-8914e87c58da';
+            DELETE FROM authority_permissions WHERE permission_id = '3fd16b3c-f2de-4cd8-814d-6bf86a9cddfa';
+
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('e6e8b9ed-377f-42e4-822d-34820ab46d81', 'GET_LEARNING_LIBRARY_DETAIL_OWN', 'API'),
+                ('3b1e56f3-4d37-4a3c-8ed2-453ae68c16a0', 'GET_LEARNING_LIBRARY_OVERVIEW_BY_ID_OWN', 'API'),
+                ('b936dda7-4678-4683-9204-2ab2516ff5e4', 'GET_LEARNING_LIBRARY_DETAIL_LEARNING_BY_ID_OWN', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '403806f3-b542-4030-8718-480367d19493'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c7e47d4f-e9ed-453b-ac7a-8914e87c58da'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '3fd16b3c-f2de-4cd8-814d-6bf86a9cddfa'),
+
+                ('ROLE_PORTAL_HOST', 'e6e8b9ed-377f-42e4-822d-34820ab46d81'),
+                ('ROLE_PORTAL_HOST', '3b1e56f3-4d37-4a3c-8ed2-453ae68c16a0'),
+                ('ROLE_PORTAL_HOST', 'b936dda7-4678-4683-9204-2ab2516ff5e4'),
+
+                ('ROLE_TECHNICAL_ADVISOR', 'e6e8b9ed-377f-42e4-822d-34820ab46d81'),
+                ('ROLE_TECHNICAL_ADVISOR', '3b1e56f3-4d37-4a3c-8ed2-453ae68c16a0'),
+                ('ROLE_TECHNICAL_ADVISOR', 'b936dda7-4678-4683-9204-2ab2516ff5e4'),
+
+                ('ROLE_COMMUNITY_PARTNER', 'e6e8b9ed-377f-42e4-822d-34820ab46d81'),
+                ('ROLE_COMMUNITY_PARTNER', '3b1e56f3-4d37-4a3c-8ed2-453ae68c16a0'),
+                ('ROLE_COMMUNITY_PARTNER', 'b936dda7-4678-4683-9204-2ab2516ff5e4'),
+
+                ('ROLE_BUSINESS_OWNER', 'e6e8b9ed-377f-42e4-822d-34820ab46d81'),
+                ('ROLE_BUSINESS_OWNER', '3b1e56f3-4d37-4a3c-8ed2-453ae68c16a0'),
+                ('ROLE_BUSINESS_OWNER', 'b936dda7-4678-4683-9204-2ab2516ff5e4');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1727755619853-71" author="hnnguyen (generated)">
+        <sql>
+            DELETE FROM authority_permissions WHERE permission_id = '2bbb3ff4-eaee-48ea-8a27-b64164109cf4';
+            DELETE FROM authority_permissions WHERE permission_id = '2e8452dc-5816-44c9-906b-c5406591706a';
+
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('69f05d72-8395-4d52-b1d9-6047148781bf', 'GET_PORTAL_DETAIL_OWN', 'API'),
+                ('87a8e913-7463-485f-b527-a494160217ff', 'UPDATE_PORTAL_DETAIL_OWN', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '2bbb3ff4-eaee-48ea-8a27-b64164109cf4'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '2e8452dc-5816-44c9-906b-c5406591706a'),
+
+                ('ROLE_PORTAL_HOST', '69f05d72-8395-4d52-b1d9-6047148781bf'),
+                ('ROLE_PORTAL_HOST', '87a8e913-7463-485f-b527-a494160217ff');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1727755619853-72" author="hnnguyen (generated)">
+        <sql>
+            DELETE FROM authority_permissions WHERE permission_id = '609d69c8-f200-4b28-bae7-3552a2fbfcee';
+            DELETE FROM authority_permissions WHERE permission_id = '00ecce2e-980d-4134-9045-a2e430e09021';
+
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('9d590fa8-0b3c-429d-b29d-03f67accf132', 'GET_TECHNICAL_ADVISOR_OWN', 'API'),
+                ('d5c9a953-e6b0-4a9d-8bef-345b2a3aefc7', 'UPDATE_TECHNICAL_ADVISOR_OWN', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '609d69c8-f200-4b28-bae7-3552a2fbfcee'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '00ecce2e-980d-4134-9045-a2e430e09021'),
+
+                ('ROLE_PORTAL_HOST', '9d590fa8-0b3c-429d-b29d-03f67accf132'),
+                ('ROLE_PORTAL_HOST', 'd5c9a953-e6b0-4a9d-8bef-345b2a3aefc7');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1727755619853-73" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO menu_authority(
+                authority_name, menu_id)
+            VALUES
+                ('ROLE_COMMUNITY_PARTNER', '0619a5d5-f8ea-4095-9826-5e81a644f9f9'),
+                ('ROLE_TECHNICAL_ADVISOR', '0619a5d5-f8ea-4095-9826-5e81a644f9f9'),
+                ('ROLE_BUSINESS_OWNER', '0619a5d5-f8ea-4095-9826-5e81a644f9f9');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

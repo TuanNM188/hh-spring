@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.course.registration.approval.greeting(${businessOwnerName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.course.registration.approval.body(${courseName})}">
+    Your registration for {0} has been approved.
+  </p>
+  <p>
+      <span th:text="#{email.course.registration.approval.start}">
+        Get started:
+      </span>
+    <a th:with="url=(@{|${baseUrl}/learning-library/course/${learningLibraryId}?view=preview|})" th:href="${url}" th:text="#{email.course.registration.approval.link}">course link</a>
+  </p>
+  <p class="mb-0"> Thanks, </p>
+  <p class="mt-0"><strong>The HUUB team</strong></p>
+</div>
+</html>

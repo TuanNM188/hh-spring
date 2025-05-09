@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717943218121-98" author="hnnguyen (generated)">
+        <addColumn tableName="calendar_integration">
+            <column name="integrate_by" type="VARCHAR(50)"/>
+            <column name="sync_event_status" type="VARCHAR(50)"/>
+            <column name="retry_count" type="INT" defaultValueNumeric="0" />
+            <column name="last_sync" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1717954438121-99" author="hnnguyen (generated)">
+        <sql>
+            UPDATE calendar_integration SET integrate_by = 'PORTAL' WHERE portal_id IS NOT NULL;
+            UPDATE calendar_integration SET sync_event_status = 'SUCCESS' WHERE portal_id IS NOT NULL;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

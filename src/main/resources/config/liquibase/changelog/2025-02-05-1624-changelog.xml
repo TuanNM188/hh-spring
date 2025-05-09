@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="17982556199532-01" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('dd2bb634-36bf-436d-8149-fabe9a9d7f1e', 'INVITE_MEMBER_TO_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'dd2bb634-36bf-436d-8149-fabe9a9d7f1e'),
+                ('ROLE_PORTAL_HOST', 'dd2bb634-36bf-436d-8149-fabe9a9d7f1e'),
+                ('ROLE_TECHNICAL_ADVISOR', 'dd2bb634-36bf-436d-8149-fabe9a9d7f1e'),
+                ('ROLE_COMMUNITY_PARTNER', 'dd2bb634-36bf-436d-8149-fabe9a9d7f1e'),
+                ('ROLE_BUSINESS_OWNER', 'dd2bb634-36bf-436d-8149-fabe9a9d7f1e')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-02" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('289ce4eb-03a4-482f-8a56-5773a3e31ef6', 'ACCEPT_INVITE_TO_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '289ce4eb-03a4-482f-8a56-5773a3e31ef6'),
+                ('ROLE_PORTAL_HOST', '289ce4eb-03a4-482f-8a56-5773a3e31ef6'),
+                ('ROLE_TECHNICAL_ADVISOR', '289ce4eb-03a4-482f-8a56-5773a3e31ef6'),
+                ('ROLE_COMMUNITY_PARTNER', '289ce4eb-03a4-482f-8a56-5773a3e31ef6'),
+                ('ROLE_BUSINESS_OWNER', '289ce4eb-03a4-482f-8a56-5773a3e31ef6')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-03" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('c59bbcc0-6511-4d68-8fe1-036b8d87705f', 'REJECT_INVITE_TO_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c59bbcc0-6511-4d68-8fe1-036b8d87705f'),
+                ('ROLE_PORTAL_HOST', 'c59bbcc0-6511-4d68-8fe1-036b8d87705f'),
+                ('ROLE_TECHNICAL_ADVISOR', 'c59bbcc0-6511-4d68-8fe1-036b8d87705f'),
+                ('ROLE_COMMUNITY_PARTNER', 'c59bbcc0-6511-4d68-8fe1-036b8d87705f'),
+                ('ROLE_BUSINESS_OWNER', 'c59bbcc0-6511-4d68-8fe1-036b8d87705f')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-04" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('dcb8e22c-620e-44f6-b817-7e99847a4275', 'GET_MEMBERS_INVITE_TO_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'dcb8e22c-620e-44f6-b817-7e99847a4275'),
+                ('ROLE_PORTAL_HOST', 'dcb8e22c-620e-44f6-b817-7e99847a4275'),
+                ('ROLE_TECHNICAL_ADVISOR', 'dcb8e22c-620e-44f6-b817-7e99847a4275'),
+                ('ROLE_COMMUNITY_PARTNER', 'dcb8e22c-620e-44f6-b817-7e99847a4275'),
+                ('ROLE_BUSINESS_OWNER', 'dcb8e22c-620e-44f6-b817-7e99847a4275')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-05" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('4ec0b948-bb79-4993-a375-2231ae20215d', 'REMOVE_MEMBERS_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '4ec0b948-bb79-4993-a375-2231ae20215d'),
+                ('ROLE_PORTAL_HOST', '4ec0b948-bb79-4993-a375-2231ae20215d'),
+                ('ROLE_TECHNICAL_ADVISOR', '4ec0b948-bb79-4993-a375-2231ae20215d'),
+                ('ROLE_COMMUNITY_PARTNER', '4ec0b948-bb79-4993-a375-2231ae20215d'),
+                ('ROLE_BUSINESS_OWNER', '4ec0b948-bb79-4993-a375-2231ae20215d')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-06" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('0a64130c-7605-443c-915b-84837a26a9ae', 'PROMOTE_MEMBERS_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '0a64130c-7605-443c-915b-84837a26a9ae'),
+                ('ROLE_PORTAL_HOST', '0a64130c-7605-443c-915b-84837a26a9ae'),
+                ('ROLE_TECHNICAL_ADVISOR', '0a64130c-7605-443c-915b-84837a26a9ae'),
+                ('ROLE_COMMUNITY_PARTNER', '0a64130c-7605-443c-915b-84837a26a9ae')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-07" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('7bc7ad61-1383-4c2f-b21c-f85ca6cd05b8', 'DEMOTE_MEMBERS_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '7bc7ad61-1383-4c2f-b21c-f85ca6cd05b8'),
+                ('ROLE_PORTAL_HOST', '7bc7ad61-1383-4c2f-b21c-f85ca6cd05b8'),
+                ('ROLE_TECHNICAL_ADVISOR', '7bc7ad61-1383-4c2f-b21c-f85ca6cd05b8'),
+                ('ROLE_COMMUNITY_PARTNER', '7bc7ad61-1383-4c2f-b21c-f85ca6cd05b8')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-08" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('0cb938a8-01f9-4249-8f72-3d7d7e1305d4', 'GET_FILES_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '0cb938a8-01f9-4249-8f72-3d7d7e1305d4'),
+                ('ROLE_PORTAL_HOST', '0cb938a8-01f9-4249-8f72-3d7d7e1305d4'),
+                ('ROLE_TECHNICAL_ADVISOR', '0cb938a8-01f9-4249-8f72-3d7d7e1305d4'),
+                ('ROLE_COMMUNITY_PARTNER', '0cb938a8-01f9-4249-8f72-3d7d7e1305d4'),
+                ('ROLE_BUSINESS_OWNER', '0cb938a8-01f9-4249-8f72-3d7d7e1305d4')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-09" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('770024f4-dc58-499a-ae01-fa32fc2ca0dd', 'UPLOAD_FILE_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '770024f4-dc58-499a-ae01-fa32fc2ca0dd'),
+                ('ROLE_PORTAL_HOST', '770024f4-dc58-499a-ae01-fa32fc2ca0dd'),
+                ('ROLE_TECHNICAL_ADVISOR', '770024f4-dc58-499a-ae01-fa32fc2ca0dd'),
+                ('ROLE_COMMUNITY_PARTNER', '770024f4-dc58-499a-ae01-fa32fc2ca0dd'),
+                ('ROLE_BUSINESS_OWNER', '770024f4-dc58-499a-ae01-fa32fc2ca0dd')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="17982556199532-10" author="LinhNguyen">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('782ba35b-83a8-4a64-9910-78af8794cb80', 'DELETE_FILE_IN_GROUP', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '782ba35b-83a8-4a64-9910-78af8794cb80'),
+                ('ROLE_PORTAL_HOST', '782ba35b-83a8-4a64-9910-78af8794cb80'),
+                ('ROLE_TECHNICAL_ADVISOR', '782ba35b-83a8-4a64-9910-78af8794cb80'),
+                ('ROLE_COMMUNITY_PARTNER', '782ba35b-83a8-4a64-9910-78af8794cb80'),
+                ('ROLE_BUSINESS_OWNER', '782ba35b-83a8-4a64-9910-78af8794cb80')
+            ;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

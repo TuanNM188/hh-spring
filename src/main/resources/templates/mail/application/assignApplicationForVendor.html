@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.applications.community.partner.approved.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.applications.community.partner.approved.body}">
+    A new business has been assigned technical assistance with your organization.
+    Please review the business owner's profile and make advisor recommendations based on their needs.
+  </p>
+  <p>
+    <a th:with="url=(@{|${baseUrl}/business-owners/card?userId=${userId}|})"
+       th:href="${url}"
+       th:text="#{email.applications.community.partner.approved.body2}">View Business Owner Profile</a>
+  </p>
+  <p><span th:text="#{email.applications.community.partner.approved.support1}">
+    If you have any questions or need assistance, please email us at
+  </span> <span th:text="#{email.applications.community.partner.approved.support.email}">contact@myhuub.com</span>.
+  </p>
+</div>
+</html>

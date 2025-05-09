@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717833213821-50" author="TuanNM">
+        <renameColumn tableName="user_answer_form"
+                      oldColumnName="user_id"
+                      newColumnName="entry_id"
+                      columnDataType="UUID"/>
+        <addColumn tableName="user_answer_form">
+            <column name="entry_type" type="VARCHAR(50)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1718558832699-95" author="TuanNM">
+        <sql>
+            INSERT INTO question (id, created_by, created_date, last_modified_by, last_modified_date, is_delete,
+                                  question, question_type, question_code, priority_order, is_require, form_code,
+                                  option_type, allow_custom_options, allow_action_visible, input_type, message_validate,
+                                  column_size)
+            VALUES ('f0ff92d2-c009-43f8-ae3c-77750bf5476a'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'Page Title', 'TEXT',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_PAGE_TITLE', 1, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('f2ef0f9e-da7e-42a4-9b68-4b9c237c1735'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'Page Sub-title', 'TEXT',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_PAGE_SUB_TITLE', 2, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('a9562ff7-a09a-4c71-a16a-d656d61326c3'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'Panel 1 Title', 'TEXT',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_PANEL_1_TITLE', 3, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('67b562b4-830a-47ee-9e01-ee7ce25e8777'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'Panel 1 Body', 'TEXT_AREA',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_PANEL_1_BODY', 4, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('bb9235d3-9422-46ac-a1cd-5f7fff56c032'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'The Program Title', 'TEXT_AREA',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_THE_PROGRAM_TITLE', 5, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('69b743f9-27f3-4b05-b02c-942ee007955f'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'The Program Body', 'RADIOBUTTON',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_THE_PROGRAM_BODY', 6, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('a10d4593-4acf-42df-8175-fa3c9f6f833c'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'How to Apply', 'TEXT_AREA',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_HOW_TO_APPLY', 7, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, null, 'Field required', '12'),
+                   ('4d9f5e6a-56f6-41b8-8b79-8ca62993e63d'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'Social Juice URL', 'TEXT',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_HOW_TO_APPLY', 8, false, 'PORTAL_ABOUT_SCREEN_CONFIGURATION',
+                    'TEXT', false, false, 'URL', 'Field required', '12'),
+                   ('f78c82fd-4cd0-40d0-92e6-00d5035e4941'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', false, 'FAQs', 'TEXT_AREA',
+                    'PORTAL_ABOUT_SCREEN_CONFIGURATION_FAQS', 9, true, 'PORTAL_ABOUT_SCREEN_CONFIGURATION', 'TEXT',
+                    false, false, null, 'Field required', '12');
+            INSERT INTO user_answer_form (id, created_by, created_date, last_modified_by, last_modified_date,
+                                          question_id, additional_answer, is_active)
+            VALUES ('6935d170-f109-4fb5-8b24-25de98d10f45'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'f0ff92d2-c009-43f8-ae3c-77750bf5476a'::uuid,
+                    'Get Personalized 1-on-1 Assistance.', true),
+                   ('1374be75-0870-428f-a8dd-c5a482e9bf1b'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'f2ef0f9e-da7e-42a4-9b68-4b9c237c1735'::uuid,
+                    'Join the thousands of entrepreneurs that have strengthened their businesses as a {Portal Name} member.',
+                    true),
+                   ('7852fc24-c2e6-4736-9446-bfde015e58cc'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'a9562ff7-a09a-4c71-a16a-d656d61326c3'::uuid,
+                    'We’re here for you.', true),
+                   ('ac4ac5c0-e545-492e-b131-bbe2fb836e4b'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', '67b562b4-830a-47ee-9e01-ee7ce25e8777'::uuid,
+                    'Receive support from someone you trust: one-on-one consulting, training, and practical support from expert business advisors to help you tackle what matters most in your business.',
+                    true),
+                   ('51dd38be-3780-4fa0-9279-592ad3936a71'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'bb9235d3-9422-46ac-a1cd-5f7fff56c032'::uuid,
+                    '{Portal Name} members can apply for FREE support to improve their skills and knowledge through the {Program Name}.',
+                    true),
+                   ('5287a015-0d96-40e4-8308-12ff6ad83f8f'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', '69b743f9-27f3-4b05-b02c-942ee007955f'::uuid,
+                    'The {Portal Name} brings multiple services for small businesses into a single network for entrepreneurs...',
+                    true),
+                   ('8caa3b1b-5d74-4523-9198-f41799a82e42'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'a10d4593-4acf-42df-8175-fa3c9f6f833c'::uuid,
+                    '&lt;p&gt;&lt;strong style="color: rgb(0, 0, 0);"&gt;How do I apply?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;Make sure you have a {Portal Name} account (if not, sign up here)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;Submit your application by clicking the button below.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="color: rgb(0, 0, 0);"&gt;Questions?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;Please contact {Portal Primary Contact Name}.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;{Portal Primary Contact Email}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;{Portal Primary Contact Phone}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;',
+                    true),
+                   ('631c2153-dbee-4987-b3c7-8d9156934872'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', '4d9f5e6a-56f6-41b8-8b79-8ca62993e63d'::uuid,
+                    null, true),
+                   ('79d10eb8-e8d7-466f-a134-06494bc561f9'::uuid, 'admin@localhost.com', '2024-11-11 03:45:08.432',
+                    'admin@localhost.com', '2024-11-11 03:45:08.432', 'f78c82fd-4cd0-40d0-92e6-00d5035e4941'::uuid,
+                    '&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- Do I need to be a {Portal Name} Member?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;Yes - to access 1-on-1 services you must create a free account.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- What are the eligibility requirements?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;You must be a resident or own/operate a business in {City/Region}.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- Do I need a business license?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;Yes - you must have a valid business license to receive 1-on-1 support.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- Support is on a first-come, first-served basis&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- Priority is given to first-time applicants.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- Businesses must get started within 10 business days of approval.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style="background-color: rgb(242, 247, 253); color: rgb(66, 66, 66);"&gt;- All support must be used within 90 days of approval.&lt;/strong&gt;&lt;/p&gt;',
+                    true);
+        </sql>
+    </changeSet>
+
+    <changeSet id="1792558832699-95" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id, "name", "type")
+            VALUES ('fd6fd58f-6130-4fdc-8b20-1a93f4ae65e4'::uuid,
+                    'GET_FORM_QUESTION_BY_FORM_ABOUT_SCREEN_CONFIGURATION_BY_PORTAL_ID', 'API'),
+                   ('bc393ac5-613b-4daa-baa4-25be1411f429'::uuid,
+                    'FILL_FORM_QUESTION_BY_FORM_ABOUT_SCREEN_CONFIGURATION_BY_PORTAL_ID', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', 'fd6fd58f-6130-4fdc-8b20-1a93f4ae65e4'::uuid),
+                   ('ROLE_PORTAL_HOST', 'fd6fd58f-6130-4fdc-8b20-1a93f4ae65e4'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', 'bc393ac5-613b-4daa-baa4-25be1411f429'::uuid),
+                   ('ROLE_PORTAL_HOST', 'bc393ac5-613b-4daa-baa4-25be1411f429'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+  <div th:fragment="body-content">
+    <strong th:text="#{email.schedule.appointment.greeting(${receiverName})}">Hello {receiverName},</strong>
+    <p>
+      <span th:text="#{email.schedule.appointment.thanks(${senderName})}"> Thanks for scheduling an appointment with {senderName} </span>
+      <a th:with="url=(@{|mailto:${advisorEmail}|})" th:href="${url}" th:text="|(${advisorEmail}).|"> ({advisorEmail}) </a>
+    </p>
+    <p>
+      <span th:text="#{email.schedule.appointment.reminder}">
+        As a reminder, you'll be meeting with each other virtually using this link:
+      </span>
+      <br />
+      <strong>
+        <a th:with="url=(@{|${advisorMeetingLink}|})" th:href="${url}" text="Meeting Link" class="link-custom"> Meeting Link </a>
+      </strong>
+    </p>
+    <p>
+      <span th:text="#{email.schedule.appointment.dateTime(${appointmentDateAndTime})}">
+        Your appointment is scheduled for {appointmentDateAndTime}.
+      </span>
+      <br />
+      <strong>
+        <a
+          th:with="url=(@{|${baseUrl}/manage-1-1-support?appointmentId=${appointmentId}|})"
+          th:href="${url}"
+          th:text="#{email.advisor.schedule.appointment.viewDetails}"
+          class="link-custom"
+        >
+          View the appointment details here.
+        </a>
+      </strong>
+    </p>
+    <p>
+      <strong>
+        <span th:text="#{email.schedule.appointment.importantStep}"> IMPORTANT STEP: </span>
+      </strong>
+      <span th:text="#{email.schedule.appointment.importantStep2(${senderName})}">
+        Make sure to add this appointment to your calendar now. Please send any additional files or information before meeting with
+        {senderName} to maximize your time via email (
+      </span>
+      <a th:with="url=(@{|mailto:${advisorEmail}|})" th:href="${url}" th:text="${advisorEmail}"> {advisorEmail} </a>
+      <span th:text="#{email.schedule.appointment.last}"> ). </span>
+    </p>
+    <p>
+      <strong>
+        <span th:text="#{email.schedule.appointment.cancelReschedule}"> Need to Cancel or Reschedule? </span>
+      </strong>
+      <span th:text="#{email.schedule.appointment.managerAppointment(${portalName})}">
+        Manage your appointments via your dashboard in the {portalName}.
+      </span>
+    </p>
+    <p>
+      <strong>
+        <span th:text="#{email.schedule.appointment.cancellationPolicy}" class="red-color"> Cancelation Policy: </span>
+      </strong>
+      <span th:text="#{email.schedule.appointment.cancellationPolicy.content}">
+        All bookings are confirmed immediately, and any cancelations must be made at least 24 hours before the session date.
+      </span>
+      <span th:text="#{email.schedule.appointment.cancellationPolicy.content2}">
+        The hour will be forfeited if a cancelation notice is not received within 24 hours of the session.
+      </span>
+      <span th:text="#{email.schedule.appointment.rescheduling}">
+        Rescheduling appointments must occur at least 2 hours before the scheduled session date and time.
+      </span>
+      <span th:text="#{email.schedule.appointment.support1}"> Please </span>
+      <strong>
+        <a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}" th:text="#{email.schedule.appointment.support}" class="link-custom">
+          chat with our team
+        </a>
+      </strong>
+      <span th:text="#{email.schedule.appointment.support2}"> now if you need scheduling assistance. </span>
+    </p>
+    <p>
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support5}"> Thanks, </span>
+      <br />
+      <strong th:text="#{email.advisor.post-appointment-report-reminder.support7}"> The HUUB team </strong>
+    </p>
+  </div>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353996958-96" author="hnnguyen">
+        <sql>
+            UPDATE question
+            SET display_form                   = 'BUSINESS_OWNER_FORM',
+                column_size_for_member_form    = '12',
+                priority_order_for_member_form = 2,
+                group_code_for_member          = 'MEMBER_BUSINESS_OWNER_ASSISTANCE_NEEDS'
+            WHERE id = '09ad6253-3199-47ee-bd40-781ec45d9860';
+
+            UPDATE question
+            SET display_form                   = 'BUSINESS_OWNER_FORM',
+                column_size_for_member_form    = '12',
+                priority_order_for_member_form = 1,
+                group_code_for_member          = 'MEMBER_BUSINESS_OWNER_ASSISTANCE_NEEDS'
+            WHERE id = '09b568fc-6a12-408f-906c-9c9824854560';
+
+            UPDATE question
+            SET display_form                   = 'BUSINESS_OWNER_FORM',
+                column_size_for_member_form    = '12',
+                priority_order_for_member_form = 4,
+                group_code_for_member          = 'MEMBER_BUSINESS_OWNER_ASSISTANCE_NEEDS'
+            WHERE id = '09acdffa-40a7-4202-adf7-4a03cde52304';
+
+            UPDATE question
+            SET display_form                   = 'BUSINESS_OWNER_FORM',
+                column_size_for_member_form    = '12',
+                priority_order_for_member_form = 5,
+                group_code_for_member          = 'MEMBER_BUSINESS_OWNER_ASSISTANCE_NEEDS'
+            WHERE id = '88f4b2d0-c6b7-434b-b91a-323bb00708b8';
+
+            UPDATE question
+            SET display_form                   = 'BUSINESS_OWNER_FORM',
+                column_size_for_member_form    = '12',
+                priority_order_for_member_form = 3,
+                group_code_for_member          = 'MEMBER_BUSINESS_OWNER_ASSISTANCE_NEEDS'
+            WHERE id = 'f25d961d-18aa-49ba-9c8d-e34353b8995c';
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

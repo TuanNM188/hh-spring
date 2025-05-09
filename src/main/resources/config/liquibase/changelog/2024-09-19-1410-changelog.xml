@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727065033701-13" author="TuanNM">
+        <createTable tableName="business_owner">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_business_owner"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="portal_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1727065033701-92" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="business_owner"
+                                 constraintName="FK_BUSINESS_OWNER_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1727065033701-93" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="business_owner"
+                                 constraintName="FK_BUSINESS_OWNER_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1718597438882-65" author="TuanNM">
+    <addColumn tableName="question">
+        <column name="input_type" type="VARCHAR(50)"/>
+    </addColumn>
+    </changeSet>
+    <changeSet id="1718597438893-65" author="TuanNM">
+        <sql>
+            INSERT INTO question
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question, group_code, question_type, question_code, priority_order, is_require, form_code, option_type, parent_id, allow_custom_options, column_size, placeholder, allow_action_visible, description)
+            VALUES('4ae15dd7-f132-44d0-b664-37f51bd16fa7'::uuid, 'admin@localhost.com', '2024-09-09 03:45:08.432', 'admin@localhost.com', '2024-09-09 03:45:08.432', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_HEAR_ABOUT_PROGRAM_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_PROFILE', 'ANSWER_OPTION', '0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid, true, '12', 'Hear about the other programs...', false, NULL),
+                  ('c315c9b3-6d48-4bb8-9d62-73a3a21787f3'::uuid, 'admin@localhost.com', '2024-09-12 03:45:08.432', 'admin@localhost.com', '2024-09-12 03:45:08.432', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_LANGUAGE_SPEAKING_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_DEMOGRAPHICS', 'ANSWER_OPTION', '0a66272d-3414-4784-8a8b-c3f4a89706ce'::uuid, false, '12', 'Other Language speaking...', false, NULL),
+                  ('f25d961d-18aa-49ba-9c8d-e34353b8995c'::uuid, 'admin@localhost.com', '2024-09-16 14:21:54.296', 'admin@localhost.com', '2024-09-16 14:21:54.296', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_FIRST_PRIORITY_AREA_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_ASSISTANCE_NEEDS', 'ANSWER_OPTION', '09ad6253-3199-47ee-bd40-781ec45d9860'::uuid, false, '12', 'Other...', false, NULL),
+                  ('88f4b2d0-c6b7-434b-b91a-323bb00708b8'::uuid, 'admin@localhost.com', '2024-09-16 14:21:54.296', 'admin@localhost.com', '2024-09-16 14:21:54.296', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_SECOND_PRIORITY_AREA_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_ASSISTANCE_NEEDS', 'ANSWER_OPTION', '09acdffa-40a7-4202-adf7-4a03cde52304'::uuid, false, '12', 'Other...', false, NULL),
+                  ('95be7874-e4a2-4c03-b3bd-50c7bdee69a0'::uuid, 'admin@localhost.com', '2024-09-16 14:21:54.296', 'admin@localhost.com', '2024-09-16 14:21:54.296', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_HOW_FREE_ASSISTANCE_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_ASSISTANCE_NEEDS', 'ANSWER_OPTION', '09ab03fe-2165-4e5d-81e2-983dffc24dcd'::uuid, false, '12', 'Other...', false, NULL),
+                  ('495f7cf0-1ff5-4db3-bff2-1b53e0d57c8a'::uuid, 'admin@localhost.com', '2024-09-16 14:21:54.296', 'admin@localhost.com', '2024-09-16 14:21:54.296', false, 'Other', NULL, 'TEXT', 'PORTAL_INTAKE_QUESTION_RESOURCE_INTERESTED_OTHER', 1, true, 'PORTAL_INTAKE_QUESTION_ASSISTANCE_NEEDS', 'ANSWER_OPTION', '09a98977-9fdf-48aa-be01-3966f834b5b6'::uuid, false, '12', 'Other...', false, NULL);
+
+        </sql>
+
+    </changeSet>
+    <changeSet id="17185974388923-65" author="TuanNM">
+        <sql>
+            UPDATE question
+            SET  input_type='TEXT'
+            WHERE id='0b0c59de-9b24-4941-9cfb-554675170dba'::uuid;
+            UPDATE question
+            SET  input_type='TEXT'
+            WHERE id='0b0853a6-f5f5-4394-bc07-001c9db45a7e'::uuid;
+            UPDATE question
+            SET  input_type='TEXT'
+            WHERE id='0aee3672-9e23-46e3-87f4-07a9d4b59040'::uuid;
+            UPDATE question
+            SET  input_type='TEXT'
+            WHERE id='0ae00744-bb4e-4272-b886-f334ba7d0fe3'::uuid;
+            UPDATE question
+            SET  input_type='EMAIL'
+            WHERE id='0afc52a3-5759-4da3-b726-7cdabe40b2d2'::uuid;
+            UPDATE question
+            SET input_type='NUMBER_PHONE'
+            WHERE id='0af7f1b3-4b88-46b4-8e9b-675658c1db74'::uuid;
+            UPDATE question
+            SET  input_type='TEXT'
+            WHERE id='0af55be8-b146-4e22-96d5-c2a6bb4baf51'::uuid;
+            UPDATE question
+            SET input_type='TEXT'
+            WHERE id='4ae15dd7-f132-44d0-b664-37f51bd16fa7'::uuid;
+
+            UPDATE question
+            SET question_type='DROPDOWN_SINGLE_CHOICE'
+            WHERE id='0af49154-6f49-45eb-8d2e-e3bcee4386ac'::uuid::uuid;
+            UPDATE question
+            SET question_type='DROPDOWN_SINGLE_CHOICE_OTHER'
+            WHERE id='0aef9c75-fb21-4ce5-b0c7-6dfa5411e8a6'::uuid::uuid;
+            UPDATE question
+            SET question_type='DROPDOWN_SINGLE_CHOICE_OTHER'
+            WHERE id='0a66272d-3414-4784-8a8b-c3f4a89706ce'::uuid::uuid;
+            UPDATE question
+            SET question_type='DROPDOWN_SINGLE_CHOICE'
+            WHERE id='0a561740-a57a-4cd0-aabb-0faa6be899a8'::uuid::uuid;
+
+            UPDATE question
+            SET question_type='INPUT_NUMBER',input_type='NUMBER'
+            WHERE id='0a679568-5dd9-496f-8801-d7ee25deaf44'::uuid::uuid;
+
+            INSERT INTO question (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,question,question_type,question_code,priority_order,is_require,form_code,option_type,allow_custom_options,column_size,allow_action_visible)
+            VALUES ('09a98977-9fdf-48aa-be01-3966f834b5b0'::uuid,'admin@localhost.com','2024-09-16 14:21:54.296','admin@localhost.com','2024-09-16 14:21:54.296',false,'Would you like to apply for this free assistance?','RADIOBUTTON','PORTAL_INTAKE_QUESTION_WOULD_TOU_LIKE_APPLY_FREE_ASSISTANCE',0,true,'PORTAL_INTAKE_QUESTION_ASSISTANCE_NEEDS','ANSWER_OPTION',false,'12',false);
+
+            INSERT INTO answer_option (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,question_id,answer,priority_order,is_extra)
+            VALUES ('13dfb28e-42f8-496d-841f-1b07168e396b'::uuid,'admin@localhost.com','2024-06-20 03:45:08.432','admin@localhost.com','2024-06-20 03:45:08.432',false,'09a98977-9fdf-48aa-be01-3966f834b5b0'::uuid,'Yes',1,false);
+            INSERT INTO answer_option (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,question_id,answer,priority_order,is_extra)
+            VALUES ('8b084a56-f9a9-4973-9654-5ff0a42407ce'::uuid,'admin@localhost.com','2024-06-20 03:45:08.432','admin@localhost.com','2024-06-20 03:45:08.432',false,'09a98977-9fdf-48aa-be01-3966f834b5b0'::uuid,'No',2,false);
+
+            INSERT INTO answer_option (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,answer,priority_order,is_extra)
+            VALUES ('c4611303-1179-4c6d-bd01-be14159b48a8'::uuid,'admin@localhost.com','2024-09-24 07:45:42.956','admin@localhost.com','2024-09-24 07:45:42.956',false,'Other',99,false);
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

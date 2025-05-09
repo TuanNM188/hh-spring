@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.project.proposal.approve.greeting(${advisorFirstName})}">Hello {advisorFirstName},</p>
+  <p th:text="#{email.invitation.project.proposal.approve.body(${businessOwnerFullName})}">Your project proposal with {Business Owner Full Name} has been approved.</p>
+  <p th:text="#{email.invitation.project.proposal.approve.body1(${businessOwnerFullName})}">Please begin the project and coordinate with {Business Owner Full Name} as needed.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${linkToProjectDetail}|})"
+          th:href="${linkToProjectDetail}"
+          th:text="#{email.invitation.project.proposal.approve.link}"
+        >View Project</a
+        >
+      </span>
+  </p>
+  <p>
+    <strong th:text="#{email.invitation.project.proposal.approve.body2}">As a reminder, project work does not include appointments, so if you need to schedule any additional meetings with your business owner, please advise them to schedule directly through the booking system.</strong>
+  </p>
+  <p th:text="#{email.invitation.project.proposal.approve.body3}">Once you have completed the entire scope of work, please return to the portal and submit your project report. Your project work will not be processed for payment until you complete the report.</p>
+  <p>
+    <span th:text="#{email.invitation.project.proposal.approve.body4(${navigatorFullName}, ${navigatorEmail})}">If you have any questions or need additional information regarding this proposal, email the business owner''s navigator,</span>
+    <span><a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"  th:text="#{email.invitation.project.proposal.approve.body5}">chat with our team</a> now.</span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <a
+        th:href="${memberUrl}"
+        th:text="${senderName}"
+    >senderName</a>
+    <span th:text="#{email.request.join.group.body}">wants to join the group</span>
+    <a
+        th:href="${groupUrl}"
+        th:text="${groupName}"
+    >groupName</a>.
+    <span th:text="#{email.request.join.group.body1}">As you are organizer of this group, you must either accept or reject the membership request.</span>
+  </p>
+  <p>
+    <a
+        th:href="${referenceUrl}"
+        th:text="#{email.request.join.group.body2}"
+    >Click here</a>
+    <span th:text="#{email.request.join.group.body3}">to manage this and all other pending requests.</span>
+  </p>
+</div>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719342379562-10" author="LinhNguyen">
+        <sql>
+            INSERT INTO public."permission" (id,"name","type")
+            VALUES ('80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid,'GET_DETAIL_BROWSE_TECHNICAL_ADVISOR_BY_ID','API'),
+                   ('a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid,'GET_BROWSE_TECHNICAL_ADVISOR_BY_ID','API'),
+                   ('f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid,'GET_BOOKING_SETTING_OF_TECHNICAL_ADVISOR_BY_ID','API'),
+                   ('0d03069a-a790-48e3-8948-d2a7f0d81733'::uuid,'BOOKING_APPOINTMENT_WITH_ADVISOR','API');
+
+            INSERT INTO public.authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid),
+                   ('ROLE_PORTAL_HOST','80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR','80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid),
+                   ('ROLE_BUSINESS_OWNER','80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','80ee09df-d5e2-4470-90a2-b27184e038a5'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid),
+                   ('ROLE_PORTAL_HOST','a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR','a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid),
+                   ('ROLE_BUSINESS_OWNER','a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','a0fdb236-8abf-4d7c-9c14-5e6a8de26c6f'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid),
+                   ('ROLE_PORTAL_HOST','f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid),
+                   ('ROLE_TECHNICAL_ADVISOR','f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid),
+                   ('ROLE_BUSINESS_OWNER','f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','f934b279-63b6-4c2a-92a1-54705078c5bb'::uuid),
+                   ('ROLE_BUSINESS_OWNER','0d03069a-a790-48e3-8948-d2a7f0d81733'::uuid);
+
+        </sql>
+    </changeSet>
+    <changeSet id="1719342379562-11" author="LinhNguyen">
+        <sql>
+            INSERT INTO public."permission" (id,"name","type")
+            VALUES ('196def02-984f-46d3-ad73-c86b15940a3d'::uuid,'MANAGE_1_1_SUPPORT_OVERVIEW','API'),
+                   ('624110d4-86b7-48ea-9d47-eec6aa6f2444'::uuid,'MANAGE_1_1_SUPPORT_APPOINTMENT','API'),
+                   ('7828ec4e-4a8c-447e-8685-aff666c5ee1b'::uuid,'MANAGE_1_1_SUPPORT_PROJECTS','API');
+
+            INSERT INTO public.authority_permissions (authority_name,permission_id)
+            VALUES
+                ('ROLE_BUSINESS_OWNER','196def02-984f-46d3-ad73-c86b15940a3d'::uuid),
+                ('ROLE_BUSINESS_OWNER','624110d4-86b7-48ea-9d47-eec6aa6f2444'::uuid),
+                ('ROLE_BUSINESS_OWNER','7828ec4e-4a8c-447e-8685-aff666c5ee1b'::uuid);
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="1717942939562-10" author="LinhNguyen">
+        <modifyDataType tableName="technical_assistance_submit" columnName="assign_award_hours" newDataType="float"/>
+        <modifyDataType tableName="technical_assistance_submit" columnName="remaining_award_hours" newDataType="float"/>
+        <modifyDataType tableName="appointment_detail" columnName="use_award_hours" newDataType="float"/>
+    </changeSet>
+
+</databaseChangeLog>

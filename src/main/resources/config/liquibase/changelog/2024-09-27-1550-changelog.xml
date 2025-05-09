@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718597438852-65" author="TuanNM">
+        <addColumn tableName="community_partner">
+            <column name="user_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1718597438817-65" author="TuanNM">
+        <addColumn tableName="community_partner">
+            <column name="portal_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1718597438869-65" author="TuanNM">
+        <addColumn tableName="community_partner">
+            <column name="is_vendor" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="1727426617876-101" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="portal_id" baseTableName="community_partner"
+                                 constraintName="FK_COMMUNITY_PARTNER_ON_PORTAL" referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1727426617876-102" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="community_partner"
+                                 constraintName="FK_COMMUNITY_PARTNER_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+
+    <changeSet id="1719239413498-21" author="TuanNM">
+        <dropColumn columnName="description" tableName="community_partner"/>
+    </changeSet>
+
+    <changeSet id="1719239413497-21" author="TuanNM">
+        <dropColumn columnName="address" tableName="community_partner"/>
+    </changeSet>
+
+    <changeSet id="1719239413496-21" author="TuanNM">
+        <dropColumn columnName="contact_email" tableName="community_partner"/>
+    </changeSet>
+
+    <changeSet id="1719239413495-21" author="TuanNM">
+        <dropColumn columnName="contact_phone" tableName="community_partner"/>
+    </changeSet>
+
+</databaseChangeLog>

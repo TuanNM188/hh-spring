@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.invitation.project.extension.denied.greeting(${userName})}">Hello {User name},</p>
+  <p th:text="#{email.invitation.project.extension.denied.body(${projectName}, ${navigatorEmail})}">The extension request for the project {Project Name} has been denied. Please get in touch with your navigator directly at {Navigator email} if you have immediate questions.</p>
+  <p>
+      <span>
+        <a
+          th:with="url=(@{|${linkToProjectDetail}|})"
+          th:href="${linkToProjectDetail}"
+          th:text="#{email.invitation.project.extension.denied.link}"
+        >View the project.</a
+        >
+      </span>
+  </p>
+  <p class="mb-0" th:text="#{email.invitation.common.project.thank}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.invitation.common.project.end}">The HUUB Team</strong></p>
+</div>
+</html>
+
+

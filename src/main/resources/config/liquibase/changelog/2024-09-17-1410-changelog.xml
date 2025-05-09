@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718597438886-65" author="hnnguyen">
+        <sql>
+            INSERT INTO feature
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, "name", feature_code, router_link, description, is_dynamic, priority_order, parent_id)
+            VALUES('0b0eaa03-f772-4ac8-913b-b45a992cd1b4'::uuid, 'admin@localhost.com', '2024-09-09 02:38:49.086', 'admin@localhost.com', '2024-09-09 02:38:49.086', false, 'Optional Questions', 'PORTALS_INTAKE_ADDITIONAL_QUESTIONS', NULL, NULL, false, 5, '0b25991b-9689-4e61-91d7-0fa2ded8547b'::uuid);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

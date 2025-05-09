@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <!-- Initialize project report sequence -->
+    <changeSet id="1742438129808-100" author="huytruong (generated)">
+        <comment>Initialize project report sequence with starting value 1000</comment>
+        <insert tableName="sequence_store">
+            <column name="sequence_name" value="project_report_sequence"/>
+            <column name="current_value" valueNumeric="1000"/>
+            <column name="increment_size" valueNumeric="1"/>
+            <column name="last_updated" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+
+    <!-- Initialize appointment report sequence -->
+    <changeSet id="1742438129808-101" author="huytruong (generated)">
+        <comment>Initialize appointment report sequence with starting value 1000</comment>
+        <insert tableName="sequence_store">
+            <column name="sequence_name" value="appointment_report_sequence"/>
+            <column name="current_value" valueNumeric="1000"/>
+            <column name="increment_size" valueNumeric="1"/>
+            <column name="last_updated" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1742439608091-100" author="huytruong (generated)">
+        <addColumn tableName="appointment_report">
+            <column name="report_number" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1742439608091-101" author="huytruong (generated)">
+        <addColumn tableName="project_report">
+            <column name="report_number" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1742439608091-102" author="huytruong (generated)">
+        <sql>
+            UPDATE appointment_report
+            SET report_number = get_next_sequence_value('appointment_report_sequence');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1742439608091-103" author="huytruong (generated)">
+        <sql>
+            UPDATE project_report
+            SET report_number = get_next_sequence_value('project_report_sequence');
+        </sql>
+    </changeSet>
+
+    <changeSet id="1742439608091-104" author="huytruong (generated)">
+        <sql>
+            ALTER TABLE appointment_report ALTER COLUMN report_number SET NOT NULL;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1742439608091-105" author="huytruong (generated)">
+        <sql>
+            ALTER TABLE project_report ALTER COLUMN report_number SET NOT NULL;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

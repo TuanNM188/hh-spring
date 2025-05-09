@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+    <changeSet id="17982556199532-01" author="Hung Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('846aa53a-ceda-4d8e-8afb-bd5ae22ef2f5', 'UPLOAD_PROJECT_ATTACHMENT', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '846aa53a-ceda-4d8e-8afb-bd5ae22ef2f5')
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527921-01" author="Hung Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('26709cf9-ec99-417f-9844-272a6078bb01', 'UPLOAD_APPOINTMENT_REPORT_ATTACHMENT', 'API'),
+                ('0af10a93-f70f-4a16-9f26-1fd2e21bb879', 'UPLOAD_PROJECT_REPORT_ATTACHMENT', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '26709cf9-ec99-417f-9844-272a6078bb01'),
+                ('ROLE_SYSTEM_ADMINISTRATOR', '0af10a93-f70f-4a16-9f26-1fd2e21bb879')
+            ;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

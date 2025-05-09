@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720666099678-25" author="NghiaNguyen">
+        <renameTable
+            oldTableName="technical_advisors"
+            newTableName="technical_advisor"/>
+    </changeSet>
+    <changeSet id="1719239413344-21" author="NghiaNguyen">
+        <renameTable
+            oldTableName="organizations"
+            newTableName="organization"/>
+    </changeSet>
+
+</databaseChangeLog>

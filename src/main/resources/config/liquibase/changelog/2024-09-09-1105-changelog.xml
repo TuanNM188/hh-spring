@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595209808-88" author="Nghia Nguyen">
+        <sql>
+            UPDATE feature
+            SET router_link = '/portals/intake-questions' WHERE id = '0b25991b-9689-4e61-91d7-0fa2ded8547b';
+        </sql>
+    </changeSet>
+
+    <changeSet id="1720595209808-18" author="Nghia Nguyen">
+        <sql>
+            UPDATE feature
+            SET feature_code = 'PORTALS_INTAKE_QUESTIONS' WHERE id = '0b25991b-9689-4e61-91d7-0fa2ded8547b';
+            UPDATE feature
+            SET feature_code = 'PORTALS_PROFILE' WHERE id = '0b1d537f-1cfd-4444-9f09-508f10cccad4';
+            UPDATE feature
+            SET feature_code = 'PORTALS_BUSINESS' WHERE id = '0b1aa7c4-ac0d-4f0d-8f2a-e453fc6dfec7';
+            UPDATE feature
+            SET feature_code = 'PORTALS_DEMOGRAPHICS' WHERE id = '0b10489c-7d27-4f43-8ff5-7e11c5221a88';
+            UPDATE feature
+            SET feature_code = 'PORTALS_ASSISTANCE_NEEDS' WHERE id = '0b0eaa03-f772-4ac8-913b-b45a992cd1b2';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

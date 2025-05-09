@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1720595209808-100" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO feature
+                (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, name, feature_code, router_link, description, is_dynamic, priority_order, parent_id, group_code, group_name)
+            VALUES
+                ('9e81a9f2-6ad8-402e-aaee-81a7123ca7e2', 'admin@localhost.com', '2025-01-03 02:38:49.086', 'admin@localhost.com', '2025-01-03 02:38:49.086', false, 'Portal Welcome', 'PORTAL_WELCOME', null, null, false, 2, 'bdc72b47-5be8-429e-ba74-2a04020f6677', null, null);
+
+            UPDATE feature SET priority_order = 3 WHERE id = 'ab8d8bbf-acd1-475b-8566-98eed10b4d90';
+            UPDATE feature SET priority_order = 4 WHERE id = '7d9f3b89-e5b6-4543-8ed7-872b2888751c';
+            UPDATE feature SET priority_order = 5 WHERE id = 'b25f607d-e279-4cfb-a747-7b0620c5ab70';
+            UPDATE feature SET priority_order = 6 WHERE id = '4016486c-b8ec-409a-a9ab-deb5596b6ec5';
+            UPDATE feature SET priority_order = 7 WHERE id = 'fca2a297-3e1e-46db-8a62-9b1b7411670e';
+            UPDATE feature SET priority_order = 8 WHERE id = '5e57c104-e283-4527-a7d3-fa31495c5c58';
+        </sql>
+    </changeSet>
+
+    <changeSet id="1720595209808-101" author="hnnguyen (generated)">
+        <update tableName="portal">
+            <column name="welcome_message" value="&lt;p&gt;Hi {User First Name}, Welcome to {Portal Name} where you will find all kinds of resources for your small business! I’m Chelsea, HUUB COO and small business advocate. To get started, add your profile photo, then head over to the Community Board (link) and share an introduction of yourself. Answer these three questions: who you are, what business you run, and what you hope to get from {Portal Name}. Here’s to your continued success! - {Sender First Name}&lt;/p&gt;" />
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

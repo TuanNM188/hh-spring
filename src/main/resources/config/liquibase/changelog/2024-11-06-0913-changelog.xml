@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="17179491192121-3" author="TuanNM">
+        <addColumn tableName="portal">
+            <column name="organization" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="17178191192121-3" author="TuanNM">
+        <addColumn tableName="program_term">
+            <column name="program_manager_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="17178191195921-3" author="TuanNM">
+       <sql>
+           INSERT INTO "permission" (id,"name","type")
+           VALUES ('a296257d-b24c-4bc4-a65e-0739e5a1479b'::uuid,'GET_ALL_PROGRAM_MANAERS','API');
+
+           INSERT INTO authority_permissions (authority_name,permission_id)
+           VALUES ('ROLE_PORTAL_HOST','a296257d-b24c-4bc4-a65e-0739e5a1479b'::uuid),
+           ('ROLE_SYSTEM_ADMINISTRATOR','a296257d-b24c-4bc4-a65e-0739e5a1479b'::uuid);
+       </sql>
+    </changeSet>
+</databaseChangeLog>

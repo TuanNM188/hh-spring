@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+  <div th:fragment="body-content">
+    <p th:text="#{email.advisor.24-hour-post.appointment.greeting(${receiverName})}">Hello {receiverName},</p>
+    <p th:text="#{email.advisor.24-hour-post.appointment.body(${appointmentDateAndTime}, ${senderName})}">
+      Thank you for attending your appointment on {appointmentDateAndTime} with {senderName}.
+    </p>
+    <p th:text="#{email.advisor.24-hour-post.appointment.body2}">
+      Please complete the required appointment report. Make sure you include an additional scope of work if needed.
+    </p>
+    <p>
+      <strong>
+        <a
+          th:with="url=(@{|${baseUrl}/submit-appointment-report/${appointmentId}?isReportRedirected=true|})"
+          th:href="${url}"
+          th:text="#{email.advisor.post-appointment-report-reminder.link}"
+          class="link-custom"
+        >
+          Add appointment report.
+        </a>
+      </strong>
+    </p>
+    <p>
+      <strong th:text="#{email.advisor.post-appointment-report-reminder.body}">
+        As a reminder, your session will not be processed for payment until you complete the report.
+      </strong>
+    </p>
+    <p>
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support}">
+        If you have any additional questions or need assistance regarding your appointment, email
+      </span>
+      <strong
+        ><a
+          th:with="url=(@{|mailto:${supportEmail}|})"
+          th:href="${url}"
+          th:text="#{email.advisor.post-appointment-report-reminder.support2}"
+          class="link-custom"
+        >
+          contact@myhuub.com
+        </a></strong
+      >
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support3}"> or </span>
+      <strong
+        ><a
+          th:with="url=(@{|${supportLiveChat}|})"
+          th:href="${url}"
+          th:text="#{email.advisor.post-appointment-report-reminder.support4}"
+          class="link-custom"
+        >
+          chat with our team now.
+        </a></strong
+      >
+    </p>
+    <p>
+      <span th:text="#{email.advisor.post-appointment-report-reminder.support5}"> Thanks, </span>
+      <br />
+      <strong th:text="#{email.advisor.post-appointment-report-reminder.support7}"> The HUUB team </strong>
+    </p>
+  </div>
+</html>

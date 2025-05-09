@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719804617572-12" author="TuanNM">
+        <createTable tableName="calendar_event">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_calendar_event"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="external_event_id" type="VARCHAR(255)"/>
+            <column name="external_calendar_id" type="VARCHAR(255)"/>
+            <column name="subject" type="VARCHAR(255)"/>
+            <column name="body" type="TEXT"/>
+            <column name="start_time" type="DATETIME"/>
+            <column name="end_time" type="DATETIME"/>
+            <column name="timezone" type="VARCHAR(255)"/>
+            <column name="location" type="text"/>
+            <column name="summary" type="TEXT"/>
+            <column name="description" type="TEXT"/>
+            <column name="calendar_integration_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719804617572-13" author="TuanNM">
+        <createTable tableName="calendar_integration">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_calendar_integration"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="calendar_id" type="VARCHAR(255)"/>
+            <column name="calendar_ref_id" type="VARCHAR(255)"/>
+            <column name="calendar_type" type="VARCHAR(50)"/>
+            <column name="ical_link" type="VARCHAR(2000)"/>
+            <column name="problem" type="VARCHAR(2000)"/>
+            <column name="calendar_status" type="VARCHAR(50)"/>
+            <column name="booking_setting_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719804617572-14" author="TuanNM">
+        <createTable tableName="calendar_token">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_calendar_token"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="access_token" type="TEXT"/>
+            <column name="refresh_token" type="TEXT"/>
+            <column name="token_expire_time" type="DATETIME"/>
+            <column name="calendar_integration_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719804617572-46" author="TuanNM">
+        <addUniqueConstraint columnNames="booking_setting_id" constraintName="uc_calendar_integration_booking_setting"
+                             tableName="calendar_integration"/>
+    </changeSet>
+    <changeSet id="1719804617572-47" author="TuanNM">
+        <addUniqueConstraint columnNames="calendar_integration_id"
+                             constraintName="uc_calendar_token_calendar_integration" tableName="calendar_token"/>
+    </changeSet>
+    <changeSet id="1719804617572-51" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="technical_advisor_id" baseTableName="booking_setting"
+                                 constraintName="FK_BOOKING_SETTING_ON_TECHNICAL_ADVISOR" referencedColumnNames="id"
+                                 referencedTableName="technical_advisors"/>
+    </changeSet>
+    <changeSet id="1719804617572-52" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="calendar_integration_id" baseTableName="calendar_event"
+                                 constraintName="FK_CALENDAR_EVENT_ON_CALENDAR_INTEGRATION" referencedColumnNames="id"
+                                 referencedTableName="calendar_integration"/>
+    </changeSet>
+    <changeSet id="1719804617572-53" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="booking_setting_id" baseTableName="calendar_integration"
+                                 constraintName="FK_CALENDAR_INTEGRATION_ON_BOOKING_SETTING" referencedColumnNames="id"
+                                 referencedTableName="booking_setting"/>
+    </changeSet>
+    <changeSet id="1719804617572-54" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="calendar_integration_id" baseTableName="calendar_token"
+                                 constraintName="FK_CALENDAR_TOKEN_ON_CALENDAR_INTEGRATION" referencedColumnNames="id"
+                                 referencedTableName="calendar_integration"/>
+    </changeSet>
+
+</databaseChangeLog>

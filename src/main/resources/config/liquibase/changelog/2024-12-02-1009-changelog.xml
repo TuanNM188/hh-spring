@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729688068334-03" author="TuanNM">
+        <createTable tableName="user_favorite">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_favorite"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entry_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="favorite_type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(50)"/>
+        </createTable>
+        <addUniqueConstraint
+            tableName="user_favorite"
+            columnNames="user_id, entry_id, favorite_type"
+            constraintName="uq_user_favorite_unique_combination"/>
+    </changeSet>
+
+    <changeSet id="1729350934334-74" author="TuanNM">
+        <sql>
+            INSERT INTO menu (id,created_by,created_date,last_modified_by,last_modified_date,is_delete,"label",icon,router_link,priority_order,is_active,"position")
+            VALUES ('a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid,'admin@localhost.com','2024-10-01 03:45:08.432','admin@localhost.com','2024-10-01 03:45:08.432',false,'Funding','funding','/fundings',12,true,'TOP');
+
+        </sql>
+    </changeSet>
+    <changeSet id="1729353934634-74" author="TuanNM">
+        <sql>
+            INSERT INTO menu_authority (authority_name,menu_id)
+            VALUES ('ROLE_TECHNICAL_ADVISOR','a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid),
+                   ('ROLE_COMMUNITY_PARTNER','a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid),
+                   ('ROLE_BUSINESS_OWNER','a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid),
+                   ('ROLE_PORTAL_HOST','a3c5bc1f-0b86-4501-bc8e-97f69d482223'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

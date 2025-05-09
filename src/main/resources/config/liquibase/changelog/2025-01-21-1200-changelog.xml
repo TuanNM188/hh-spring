@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1737444854438-100" author="huytruong (generated)">
+        <createTable tableName="project_report">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_project_report"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="project_id" type="UUID"/>
+            <column name="hours_completed" type="integer"/>
+            <column name="description" type="TEXT"/>
+            <column name="service_outcomes" type="TEXT"/>
+            <column name="feedback" type="TEXT"/>
+            <column defaultValueBoolean="true" name="confirmation" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1737444854438-101" author="huytruong (generated)">
+        <createTable tableName="project_report_attachment">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_project_report_attachment"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column defaultValueBoolean="false" name="is_delete" type="boolean"/>
+            <column name="project_report_id" type="UUID"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="path" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="suffix" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1737444854438-102" author="huytruong (generated)">
+        <addForeignKeyConstraint baseColumnNames="project_id" baseTableName="project_report"
+                                 constraintName="FK_PROJECT_REPORT_ON_PROJECT" referencedColumnNames="id"
+                                 referencedTableName="project"/>
+    </changeSet>
+    <changeSet id="1737444854438-103" author="huytruong (generated)">
+        <addForeignKeyConstraint baseColumnNames="project_report_id" baseTableName="project_report_attachment"
+                                 constraintName="FK_PROJECT_REPORT_ATTACHMENT_ON_PROJECT_REPORT" referencedColumnNames="id"
+                                 referencedTableName="project_report"/>
+    </changeSet>
+    <changeSet id="1737444854438-104" author="huytruong (generated)">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('c6e211c4-e9ed-465b-a211-c4e9ede65b77', 'CREATE_PROJECT_REPORT', 'API'),
+                ('eff62b9c-9eae-4256-b62b-9c9eae52565a', 'UPLOAD_PROJECT_REPORT_ATTACHMENT', 'API');
+        </sql>
+    </changeSet>
+    <changeSet id="1737444854438-105" author="huytruong (generated)">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_TECHNICAL_ADVISOR', 'c6e211c4-e9ed-465b-a211-c4e9ede65b77'),
+                ('ROLE_TECHNICAL_ADVISOR', 'eff62b9c-9eae-4256-b62b-9c9eae52565a');
+        </sql>
+    </changeSet>
+    <changeSet id="1737444854438-106" author="huytruong (generated)">
+        <addColumn tableName="project">
+            <column name="estimated_hours_needed" type="integer" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1737444854438-107" author="huytruong (generated)">
+        <addColumn tableName="project">
+            <column name="service_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

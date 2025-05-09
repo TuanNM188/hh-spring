@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.result.appointment.survey.notify.body(${businessOwner})}">
+    Hello {0},
+  </p>
+  <p class="mb-0">
+    <strong th:text="#{email.result.appointment.survey.notify.body1}"></strong>
+    <span th:text="${appointmentDateAndTime}"></span>
+  </p>
+  <p class="mt-0">
+    <strong th:text="#{email.result.appointment.survey.notify.body2}"></strong>
+    <span th:text="${technicalAdvisor}"></span>
+  </p>
+  <p class="mb-0" th:text="#{email.result.appointment.survey.notify.body3(${rateValue})}">
+    Please Rate your Advisement Session: {# value}
+  </p>
+  <p class="mt-0" th:text="#{email.result.appointment.survey.notify.body4(${feedback})}">
+    Please share any other feedback you have that would improve your experience in the future.: {feedback}
+  </p>
+  <p class="mb-0" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>

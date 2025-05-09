@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+
+    <changeSet id="1727755619953-99" author="Binh Tran">
+        <sql>
+            DELETE FROM setting_definition WHERE id in ('526b5e5c-698f-41c5-9dae-e0c49398f623', 'cbe54ed2-d458-4931-a5af-1e43b8d2faa2');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

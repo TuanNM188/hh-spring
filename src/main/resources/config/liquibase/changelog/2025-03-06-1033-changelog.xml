@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1718089739941-22" author="hnnguyen">
+        <addColumn tableName="menu">
+            <column name="menu_key" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="1729350938394-07" author="hnnguyen">
+        <sql>
+            UPDATE menu
+            SET menu_key = 'menu.esDashboard'
+            WHERE id = '7aecd809-f434-4b25-b114-d4870400eda3';
+
+            UPDATE menu
+            SET menu_key = 'menu.myPortal'
+            WHERE id = '14f7d015-09ef-4c51-a0e4-ae56e9fbe65c';
+
+            UPDATE menu
+            SET menu_key = 'menu.vendors'
+            WHERE id = 'bba20d11-09d0-49a7-8d24-3753df052044';
+
+            UPDATE menu
+            SET menu_key = 'menu.communityResources'
+            WHERE id = '1fb93603-e6f6-4ba6-acfb-23e87813c62f';
+
+            UPDATE menu
+            SET menu_key = 'menu.eventCalendar'
+            WHERE id = '251905b4-2f68-44f7-ab2c-1d66e033865a';
+
+            UPDATE menu
+            SET menu_key = 'menu.funding'
+            WHERE id = 'a3c5bc1f-0b86-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET menu_key = 'menu.demographics'
+            WHERE id = '1ab55dc0-d651-46ce-bcaf-e11cde2c9235';
+
+            UPDATE menu
+            SET menu_key = 'menu.manageOneOnOneSupport'
+            WHERE id = 'e79240d0-4020-4b11-b2c3-07b2fca71e64';
+
+            UPDATE menu
+            SET menu_key = 'menu.technicalAdvisors'
+            WHERE id = '2036f1d3-2004-49f9-a726-552647025897';
+
+            UPDATE menu
+            SET menu_key = 'menu.bookAnAdvisor'
+            WHERE id = 'fdc0399a-38ce-4efb-afa4-f3c590c8b0c0';
+
+            UPDATE menu
+            SET menu_key = 'menu.engagement'
+            WHERE id = '493f6e16-ad3b-433e-8b8f-ee347f6e7561';
+
+            UPDATE menu
+            SET menu_key = 'menu.projectManagement'
+            WHERE id = 'a4056326-a282-400e-bb55-7db07628f4f9';
+
+            UPDATE menu
+            SET menu_key = 'menu.taSurveys'
+            WHERE id = '969b4b39-1ba6-43c4-8624-dcc42a4934e9';
+
+            UPDATE menu
+            SET menu_key = 'menu.metricsReports'
+            WHERE id = 'bac29c51-0229-478a-99a9-83afbd62fb24';
+
+            UPDATE menu
+            SET menu_key = 'menu.allPortals'
+            WHERE id = '0a9692f3-8289-4374-ad80-5baf05ec0053';
+
+            UPDATE menu
+            SET menu_key = 'menu.learningLibrary'
+            WHERE id = '20868ba4-a30e-43f9-9632-1ac87712baaa';
+
+            UPDATE menu
+            SET menu_key = 'menu.summaries'
+            WHERE id = '28c2ef70-cca9-406b-8de6-a81eeb5e0ffe';
+
+            UPDATE menu
+            SET menu_key = 'menu.businessOwners'
+            WHERE id = 'b679de4a-4f2d-4ef9-820a-59af1ef19847';
+
+            UPDATE menu
+            SET menu_key = 'menu.communityBoard'
+            WHERE id = '00c48af6-d1d6-49be-9a16-1609b5302ce3';
+
+            UPDATE menu
+            SET menu_key = 'menu.applyForOneOnOneSupport'
+            WHERE id = 'a3c5bc1f-0b74-4501-bc8e-97f69d482223';
+
+            UPDATE menu
+            SET menu_key = 'menu.taManagement'
+            WHERE id = 'dab932ad-6ba1-4df9-86d2-e398ac124f55';
+
+            UPDATE menu
+            SET menu_key = 'menu.myPortal'
+            WHERE id = '323805d8-86f8-4ef2-a13e-0356838220b2';
+
+            UPDATE menu
+            SET menu_key = 'menu.exports'
+            WHERE id = '57f62aaa-5c47-4ab0-96fe-510347fec050';
+
+            UPDATE menu
+            SET menu_key = 'menu.surveys'
+            WHERE id = '567f1990-dde5-410b-9f63-26d6dfc6b4aa';
+
+            UPDATE menu
+            SET menu_key = 'menu.courseEventManagement'
+            WHERE id = '554b5980-0298-4af6-9c81-be0017f6d716';
+
+            UPDATE menu
+            SET menu_key = 'menu.technicalAssistanceData'
+            WHERE id = 'a47e4e2c-88b2-4a9f-b7e8-6102f6e5c23e';
+
+            UPDATE menu
+            SET menu_key = 'menu.systemConfig'
+            WHERE id = '4bfcf09c-bd8a-4b0b-9c6d-545fd6e97ace';
+
+            UPDATE menu
+            SET menu_key = 'menu.appointmentManagement'
+            WHERE id = '049512d8-fa8a-4a1b-90b7-a76bec17a0f0';
+
+            UPDATE menu
+            SET menu_key = 'menu.applicationManagement'
+            WHERE id = 'db9a0450-6b99-43ec-ab2f-486b52ed265e';
+
+            UPDATE menu
+            SET menu_key = 'menu.about'
+            WHERE id = '5d9eb032-9b58-4d54-a2c1-c4c2b2218cc9';
+
+            UPDATE menu
+            SET menu_key = 'menu.members'
+            WHERE id = '0619a5d5-f8ea-4095-9826-5e81a644f9f9';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

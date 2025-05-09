@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <changeSet id="1729093996951-001" author="TaiTran">
+        <addColumn tableName="project">
+            <column name="work_in_progress_date" type="timestamp"/>
+            <column name="denied_date" type="timestamp"/>
+            <column name="remaining_award_hours" type="float"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

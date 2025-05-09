@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1738900527222-002" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('915c86b9-b42d-4f56-81ad-38cb0b90386a', 'CREATE_PROJECT', 'API'),
+                ('b810d5b5-522c-4418-a812-a54f8f02a6ff', 'UPDATE_PROJECT', 'API'),
+                ('fcfbfb0e-4472-4e23-a936-692c6b8e14f3', 'GET_PROJECT_DETAIL', 'API'),
+                ('c3abc372-8546-4deb-a124-a0bf7028685c', 'GET_PROJECT_REPORT', 'API'),
+                ('c42d8b64-44b1-4178-9534-be395f0133ab', 'GET_PROJECT_UPDATE', 'API'),
+                ('1d63ab3a-04de-4dfa-bf96-0a560e381db1', 'GET_PROJECT_EXTENSION_REQUEST', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+--                 CREATE_PROJECT
+                ('ROLE_SYSTEM_ADMINISTRATOR', '915c86b9-b42d-4f56-81ad-38cb0b90386a'),
+                ('ROLE_PORTAL_HOST', '915c86b9-b42d-4f56-81ad-38cb0b90386a'),
+                ('ROLE_COMMUNITY_PARTNER', '915c86b9-b42d-4f56-81ad-38cb0b90386a'),
+--                 UPDATE_PROJECT
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'b810d5b5-522c-4418-a812-a54f8f02a6ff'),
+                ('ROLE_PORTAL_HOST', 'b810d5b5-522c-4418-a812-a54f8f02a6ff'),
+                ('ROLE_COMMUNITY_PARTNER', 'b810d5b5-522c-4418-a812-a54f8f02a6ff'),
+--                 GET_PROJECT_DETAIL
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'fcfbfb0e-4472-4e23-a936-692c6b8e14f3'),
+                ('ROLE_PORTAL_HOST', 'fcfbfb0e-4472-4e23-a936-692c6b8e14f3'),
+                ('ROLE_COMMUNITY_PARTNER', 'fcfbfb0e-4472-4e23-a936-692c6b8e14f3'),
+--                 GET_PROJECT_EXTENSION_REQUEST
+                ('ROLE_SYSTEM_ADMINISTRATOR', '1d63ab3a-04de-4dfa-bf96-0a560e381db1'),
+                ('ROLE_PORTAL_HOST', '1d63ab3a-04de-4dfa-bf96-0a560e381db1'),
+                ('ROLE_COMMUNITY_PARTNER', '1d63ab3a-04de-4dfa-bf96-0a560e381db1'),
+--                 GET_PROJECT_REPORT
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c3abc372-8546-4deb-a124-a0bf7028685c'),
+                ('ROLE_PORTAL_HOST', 'c3abc372-8546-4deb-a124-a0bf7028685c'),
+                ('ROLE_COMMUNITY_PARTNER', 'c3abc372-8546-4deb-a124-a0bf7028685c'),
+--                 GET_PROJECT_UPDATE
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c42d8b64-44b1-4178-9534-be395f0133ab'),
+                ('ROLE_PORTAL_HOST', 'c42d8b64-44b1-4178-9534-be395f0133ab'),
+                ('ROLE_COMMUNITY_PARTNER', 'c42d8b64-44b1-4178-9534-be395f0133ab')
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527222-003" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('c03c4b0a-8e02-41d1-86ff-1caf5ee47914', 'UPDATE_PROJECT_REPORT', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'c03c4b0a-8e02-41d1-86ff-1caf5ee47914'),
+                ('ROLE_PORTAL_HOST', 'c03c4b0a-8e02-41d1-86ff-1caf5ee47914'),
+                ('ROLE_COMMUNITY_PARTNER', 'c03c4b0a-8e02-41d1-86ff-1caf5ee47914')
+               ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527222-004" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('6c62c5e5-9a90-4446-b5dc-687324407482', 'CREATE_PROJECT_UPDATE', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '6c62c5e5-9a90-4446-b5dc-687324407482'),
+                ('ROLE_PORTAL_HOST', '6c62c5e5-9a90-4446-b5dc-687324407482'),
+                ('ROLE_COMMUNITY_PARTNER', '6c62c5e5-9a90-4446-b5dc-687324407482')
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527222-005" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('8a6e3249-681a-4bfd-9b5a-2391ce20a6be', 'CREATE_PROJECT_EXTENSION_REQUEST', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_SYSTEM_ADMINISTRATOR', '8a6e3249-681a-4bfd-9b5a-2391ce20a6be'),
+                ('ROLE_PORTAL_HOST', '8a6e3249-681a-4bfd-9b5a-2391ce20a6be'),
+                ('ROLE_COMMUNITY_PARTNER', '8a6e3249-681a-4bfd-9b5a-2391ce20a6be')
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527222-006" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('90cedac3-cd7f-4b3c-864d-11f5488809bb', 'APPROVE_PROJECT', 'API'),
+                ('4cc802b8-259f-4ad4-afbd-0c09ce1a7018', 'DENY_PROJECT', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+            --                 APPROVE_PROJECT
+            ('ROLE_SYSTEM_ADMINISTRATOR', '90cedac3-cd7f-4b3c-864d-11f5488809bb'),
+            ('ROLE_PORTAL_HOST', '90cedac3-cd7f-4b3c-864d-11f5488809bb'),
+            ('ROLE_COMMUNITY_PARTNER', '90cedac3-cd7f-4b3c-864d-11f5488809bb'),
+            --                 DENY_PROJECT
+            ('ROLE_SYSTEM_ADMINISTRATOR', '4cc802b8-259f-4ad4-afbd-0c09ce1a7018'),
+            ('ROLE_PORTAL_HOST', '4cc802b8-259f-4ad4-afbd-0c09ce1a7018'),
+            ('ROLE_COMMUNITY_PARTNER', '4cc802b8-259f-4ad4-afbd-0c09ce1a7018')
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="1738900527222-007" author="Tai Tran">
+        <sql>
+            INSERT INTO permission (id, name, type)
+            VALUES
+                ('58ed536d-67e7-49dc-b003-2565cf410606', 'APPROVE_PROJECT_EXTENSION_REQUEST', 'API'),
+                ('d17108c9-d8cd-4685-8ed7-b71561367329', 'DENY_PROJECT_EXTENSION_REQUEST', 'API')
+            ;
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                --                 APPROVE_PROJECT_EXTENSION_REQUEST
+                ('ROLE_SYSTEM_ADMINISTRATOR', '58ed536d-67e7-49dc-b003-2565cf410606'),
+                ('ROLE_PORTAL_HOST', '58ed536d-67e7-49dc-b003-2565cf410606'),
+                ('ROLE_COMMUNITY_PARTNER', '58ed536d-67e7-49dc-b003-2565cf410606'),
+                --                 DENY_PROJECT_EXTENSION_REQUEST
+                ('ROLE_SYSTEM_ADMINISTRATOR', 'd17108c9-d8cd-4685-8ed7-b71561367329'),
+                ('ROLE_PORTAL_HOST', 'd17108c9-d8cd-4685-8ed7-b71561367329'),
+                ('ROLE_COMMUNITY_PARTNER', 'd17108c9-d8cd-4685-8ed7-b71561367329')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="1738900527223-004" author="Linh Nguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_BUSINESS_OWNER', 'fcfbfb0e-4472-4e23-a936-692c6b8e14f3'),
+                ('ROLE_BUSINESS_OWNER', 'c3abc372-8546-4deb-a124-a0bf7028685c')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="1738900527223-005" author="Linh Nguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_BUSINESS_OWNER', '90cedac3-cd7f-4b3c-864d-11f5488809bb'),
+                ('ROLE_BUSINESS_OWNER', '4cc802b8-259f-4ad4-afbd-0c09ce1a7018')
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="1738900527223-006" author="Linh Nguyen">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES
+                ('ROLE_BUSINESS_OWNER', 'c42d8b64-44b1-4178-9534-be395f0133ab'),
+                ('ROLE_BUSINESS_OWNER', '1d63ab3a-04de-4dfa-bf96-0a560e381db1')
+            ;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

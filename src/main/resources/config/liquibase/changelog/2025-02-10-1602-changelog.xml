@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1739178303633-194" author="TuanNM">
+        <addColumn tableName="project">
+            <column name="technical_assistance_submit_id"
+                    type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1739177903633-194" author="TuanNM">
+        <addForeignKeyConstraint baseColumnNames="technical_assistance_submit_id" baseTableName="project"
+                                 constraintName="FK_PROJECT_ON_TECHNICAL_ASSISTANCE_SUBMIT" referencedColumnNames="id"
+                                 referencedTableName="technical_assistance_submit"/>
+    </changeSet>
+
+    <changeSet id="1739102903633-194" author="TuanNM">
+        <addColumn tableName="project">
+            <column name="completed_date"
+                    type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1739103903633-194" author="TuanNM">
+        <sql>
+            INSERT INTO "permission" (id,"name","type")
+            VALUES ('7d36003b-4970-4505-9c1f-155aece0a599'::uuid,'SEARCH_PROJECT_MANAGEMENTS','API'),
+             ('22efb488-3a74-444a-8464-f5b1ab9f36d0'::uuid,'OVERVIEW_PROJECT_MANAGEMENTS','API');
+
+            INSERT INTO authority_permissions
+                (authority_name, permission_id)
+            VALUES('ROLE_PORTAL_HOST', '7d36003b-4970-4505-9c1f-155aece0a599'::uuid),
+            ('ROLE_SYSTEM_ADMINISTRATOR', '7d36003b-4970-4505-9c1f-155aece0a599'::uuid),
+            ('ROLE_COMMUNITY_PARTNER', '7d36003b-4970-4505-9c1f-155aece0a599'::uuid),
+            ('ROLE_TECHNICAL_ADVISOR', '7d36003b-4970-4505-9c1f-155aece0a599'::uuid),
+            ('ROLE_PORTAL_HOST', '22efb488-3a74-444a-8464-f5b1ab9f36d0'::uuid),
+            ('ROLE_SYSTEM_ADMINISTRATOR', '22efb488-3a74-444a-8464-f5b1ab9f36d0'::uuid),
+            ('ROLE_COMMUNITY_PARTNER', '22efb488-3a74-444a-8464-f5b1ab9f36d0'::uuid),
+            ('ROLE_TECHNICAL_ADVISOR', '22efb488-3a74-444a-8464-f5b1ab9f36d0'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

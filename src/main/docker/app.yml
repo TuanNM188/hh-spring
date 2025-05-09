@@ -1,0 +1,38 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: huub
+services:
+  app:
+    image: huub
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=docker,api-docs
+      - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/huub
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/huub
+    ports:
+      - 2029:8080
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8080/management/health
+      interval: 5s
+      timeout: 5s
+      retries: 40
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    networks:
+      - huub_network
+    volumes:
+      - /home/minhtc/projects/huub/firebase-adminsdk-docker.json:/app/resources/config/firebase/firebase-adminsdk-docker.json
+      - /home/minhtc/projects/huub/application-docker.yml:/app/resources/config/application-docker.yml
+  postgresql:
+    extends:
+      file: ./postgresql.yml
+      service: postgresql
+
+networks:
+  huub_network:
+    driver: bridge

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplateCustom :: content}">
+
+<div th:fragment="body-content">
+  <p>
+    <a
+        th:href="${buttonHref}"
+        th:text="${senderName}"
+    >{follower name}</a>
+    <span th:text="#{email.follow.member.new.follower.body}"></span>
+  </p>
+</div>

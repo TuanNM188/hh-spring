@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1719988838875-09" author="hnnguyen (generated)">
+        <sql>
+            UPDATE question SET priority_order_for_member_form = 5 WHERE id='0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53';
+            UPDATE question SET priority_order_for_member_form = 4 WHERE id='0ae56733-2982-430d-87f2-947beda5698f';
+        </sql>
+    </changeSet>
+
+    <changeSet id="172773919953-08" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, "name", "type")
+            VALUES ('6e91b4a3-71f9-49f3-b2e9-38d5b51c4b2d', 'PROFILE_BUSINESS_OWNER_ANSWER', 'API');
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_BUSINESS_OWNER', '6e91b4a3-71f9-49f3-b2e9-38d5b51c4b2d');
+        </sql>
+    </changeSet>
+
+    <changeSet id="172773919953-09" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_BUSINESS_OWNER', '7a54fa00-d409-4848-abf2-9cd0091aa13f'),
+                   ('ROLE_BUSINESS_OWNER', '2c3ea30f-db0a-459c-ab27-5cbf60515c40');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

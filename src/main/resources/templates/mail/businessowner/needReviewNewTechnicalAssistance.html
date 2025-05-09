@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.program.manager.review.technical.assistance.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.program.manager.review.technical.assistance.body(${portalName})}">
+    A new technical assistance application is ready to be reviewed for {0}.
+  </p>
+  <p>
+    <a th:with="url=(@{|${baseUrl}/business-owners/card?userId=${userId}|})" th:href="${url}"
+       th:text="#{email.program.manager.review.technical.assistance.body2}">View Application</a>
+  </p>
+  <p th:text="#{email.program.manager.review.technical.assistance.body3}">
+    Please review the application within 24-48 hours of this message.
+  </p>
+  <p>
+    <span th:text="#{email.program.manager.review.technical.assistance.thanks}">
+      Thanks,
+    </span>
+    <br/>
+    <strong th:text="#{email.program.manager.review.technical.assistance.huubTeam}">
+      The HUUB Team
+    </strong>
+  </p>
+</div>
+</html>
+
+
+

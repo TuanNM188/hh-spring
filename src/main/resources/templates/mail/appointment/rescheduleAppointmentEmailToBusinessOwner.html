@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.reschedule.businessOwner.appointment.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.reschedule.businessOwner.appointment.body(${advisorName})}">
+    The details for your appointment with {Advisor Full Name} have changed.
+  </p>
+  <p th:text="#{email.reschedule.businessOwner.appointment.body2(${appointmentDateAndTime})}">
+    Your appointment is now scheduled for {Appointment date and time}.
+  </p>
+  <p>
+  <span th:text="#{email.reschedule.businessOwner.appointment.body3}">
+    As a reminder, you'll be meeting with each other virtually using this link:
+  </span>
+    <a th:with="url=(@{|${advisorMeetingLink}|})"
+       th:href="${url}"
+       th:text="#{email.reschedule.businessOwner.appointment.body.meetingLink}">Advisor Meeting Link</a>
+  </p>
+  <p>
+  <span th:text="#{email.reschedule.businessOwner.appointment.body2(${appointmentDateAndTime})}">
+    Your appointment is scheduled for {Appointment date and time}.
+  </span>
+    <br>
+    <a th:with="url=(@{|${baseUrl}${appointmentDetailUrl}|})"
+       th:href="${url}"
+       th:text="#{email.reschedule.businessOwner.appointment.body.appointmentUrl}">View Business Owner Profile</a>
+  </p>
+  <p>
+    <strong th:text="#{email.reschedule.businessOwner.appointment.importantStep}">
+    IMPORTANT STEP:
+    </strong>
+  <span th:text="#{email.reschedule.businessOwner.appointment.importantStep.content(${advisorName}, ${advisorEmail})}">
+    Make sure to add this appointment to your calendar now. Please send any additional files or information before meeting with {Advisor Full Name} to maximize your time via email ( {Advisor email}).
+  </span>
+  </p>
+  <p>
+    <strong th:text="#{email.reschedule.businessOwner.appointment.needCancelOrSchedule}">
+      Need to Cancel or Reschedule?
+    </strong>
+    <span th:text="#{email.reschedule.businessOwner.appointment.needCancelOrSchedule.content(${portalName})}">
+    Manage your appointments via your dashboard in the {Portal Name}.
+  </span>
+  </p>
+  <p>
+    <strong style="color: red;" th:text="#{email.reschedule.businessOwner.appointment.body7}">Cancelation Policy:</strong>
+    <span th:text="#{email.reschedule.businessOwner.appointment.body8}">All bookings are confirmed immediately, and any cancelations must be made at least 24 hours before the session date. Rescheduling appointments must occur at least 2 hours before the scheduled session date and time. Please</span>
+    <a th:with="url=(@{|${supportLiveChat}|})" th:href="${url}"
+       th:text="#{email.reschedule.businessOwner.appointment.body9}">chat with our team now</a>
+    <span th:text="#{email.reschedule.businessOwner.appointment.body10}">if you need scheduling assistance.</span>
+  </p>
+  <p>
+<span th:text="#{email.reschedule.businessOwner.appointment.support1}">
+  Thanks,
+</span>
+    <br/>
+    <strong th:text="#{email.reschedule.businessOwner.appointment.support2}">
+      The HUUB Team
+    </strong>
+  </p>
+</div>
+</html>

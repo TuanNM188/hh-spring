@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1727755619953-01" author="hnnguyen (generated)">
+        <sql>
+            UPDATE setting_definition SET title = 'HUUB Portal' WHERE id = 'b0e73043-dc0e-444a-9564-bfe5377ffa15';
+            UPDATE setting_definition SET group_name = 'Community Board', group_code = 'COMMUNITY_BOARD' WHERE id = 'e2dcfb83-0c31-4108-881a-34064697c37a';
+            UPDATE setting_definition SET group_name = 'Community Board', group_code = 'COMMUNITY_BOARD' WHERE id = 'd8428455-c849-47db-8ba6-efbe15a16073';
+            UPDATE setting_definition SET group_name = 'Community Board', group_code = 'COMMUNITY_BOARD' WHERE id = 'a53a9bb8-b1e6-4d73-b03d-c96cea82ab6c';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = '42ab5f88-c7df-4733-97d7-9a5a241ad265';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = '1930e17d-adb3-45f0-baf6-5045257ec11a';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = 'b367bcb5-b8bf-4715-bf4d-1d75171990f5';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = '7638f6f9-d2d3-4d75-b367-9cc02046a675';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = 'ce21c182-cf78-40f1-8323-2ddcc4923acb';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = '29d17dbc-4fb5-4ae2-bf53-a04acc608de1';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = 'e4a2de25-0c62-4b75-88f0-1fc91ae26304';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = 'e64ec354-074a-47aa-8bab-d1688c49f839';
+            UPDATE setting_definition SET group_name = 'Groups', group_code = 'GROUPS' WHERE id = '902b58df-80a8-4760-9d5c-372115e1ab32';
+        </sql>
+    </changeSet>
+
+    <changeSet id="1726718850481-01" author="hnnguyen (generated)">
+        <sql>
+            DELETE FROM terms_acceptance;
+            DELETE FROM terms_and_conditions WHERE id = '27ce01b8-4c54-482f-b156-cdcf524d7ca9';
+        </sql>
+        <insert tableName="terms_and_conditions">
+            <column name="id" value="27ce01b8-4c54-482f-b156-cdcf524d7ca9"/>
+            <column name="created_by" value="admin@localhost.com"/>
+            <column name="created_date" value="2024-11-20 02:38:49.086"/>
+            <column name="last_modified_by" value="admin@localhost.com"/>
+            <column name="last_modified_date" value="2024-11-20 02:38:49.086"/>
+            <column name="is_delete" value="false"/>
+            <column name="text">
+                <![CDATA[
+**1. Introduction**
+
+These Terms and Conditions ("Agreement") govern your use of our platform and the submission of content. By submitting content, you agree to comply with these terms. This is a legally binding agreement between you and HUUB LLC.
+
+**2. Eligibility**
+
+You must be at least 18 years old or the legal age of majority in your jurisdiction to submit content. By agreeing to these terms, you represent and warrant that you meet these eligibility requirements.
+
+**3. Content Submission**
+
+By submitting content, you grant HUUB LLC a non-exclusive, worldwide, royalty-free, perpetual, and irrevocable license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display the content in any media. You also represent and warrant that you own all rights to the content or have obtained all necessary permissions.
+
+**4. User Conduct**
+
+You agree not to submit any content that is illegal, harmful, defamatory, obscene, or otherwise objectionable. HUUB LLC reserves the right to remove any content that violates these terms or is deemed inappropriate.
+
+**5. Intellectual Property**
+
+All content submitted by you remains your intellectual property. However, by submitting content, you grant HUUB LLC the rights outlined in Section 3.
+
+**6. Privacy**
+
+We value your privacy. Please review our Privacy Policy to understand how we collect, use, and protect your personal information.
+
+**7. Limitation of Liability**
+
+HUUB LLC will not be liable for any damages arising from the use or inability to use the platform or submission of content, including but not limited to indirect, incidental, punitive, and consequential damages.
+
+**8. Governing Law**
+
+This Agreement is governed by the laws of the State of Arizona, without regard to its conflict of law principles.
+            ]]>
+            </column>
+            <column name="version_number" value="1"/>
+            <column name="is_active" value="true"/>
+            <column name="type" value="LEARNING_LIBRARY"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

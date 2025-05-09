@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1718598868849-99" author="Binh Tran">
+        <sql>
+            INSERT INTO answer_option
+            (id, created_by, created_date, last_modified_by, last_modified_date, is_delete, question_id, answer, priority_order)
+            VALUES
+                ('73eaed8a-21b6-4017-8b11-5ee94e6cbf21'::uuid, 'admin@localhost.com', '2024-06-20 03:45:08.432', 'admin@localhost.com', '2024-06-20 03:45:08.432', false,  '9c14850f-4e39-4921-8e84-24c29dc4c481', 'None', 6);
+
+            UPDATE answer_option SET priority_order = 7 WHERE id = '2a58b445-a330-4637-a179-33274926b9db';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

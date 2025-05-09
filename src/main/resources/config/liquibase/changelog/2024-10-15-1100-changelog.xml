@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1689774396641-29" author="TuanNM">
+        <sql>
+            INSERT INTO public."permission" (id,"name","type")
+            VALUES ('6627d4e0-9f4f-426a-a411-fced524dfa18'::uuid,'SEARCH_CALENDAR_EVENTS','API'),
+                   ('736391ca-9847-4d6b-8ad9-4d52fbce9da8'::uuid,'CREATE_CALENDAR_EVENTS','API'),
+                   ('c8d2fca1-e01f-49db-9210-c43df9b935ec'::uuid,'GET_DETAIL_CALENDAR_EVENT_BY_ID','API'),
+                   ('cf6a3a43-b4e0-45fc-85ae-f2bda2943e87'::uuid,'DELETE_CALENDAR_EVENT_BY_ID','API'),
+                   ('297dc652-a044-41f9-999d-ad4e5a87fdbb'::uuid,'UPDATE_CALENDAR_EVENT_BY_ID','API'),
+                   ('c567334c-eb0d-4b23-b111-63263df48fea'::uuid,'GET_CALENDAR_EVENTS_BY_PORTAL','API'),
+                   ('bb849836-3e9b-4dc6-94de-ff8b520cdbfe'::uuid,'UPDATE_PORTAL_SETTINGS_BY_PORTAL','API');
+
+            INSERT INTO public.authority_permissions (authority_name,permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR','6627d4e0-9f4f-426a-a411-fced524dfa18'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','736391ca-9847-4d6b-8ad9-4d52fbce9da8'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','c8d2fca1-e01f-49db-9210-c43df9b935ec'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','cf6a3a43-b4e0-45fc-85ae-f2bda2943e87'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','297dc652-a044-41f9-999d-ad4e5a87fdbb'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','c567334c-eb0d-4b23-b111-63263df48fea'::uuid),
+                   ('ROLE_SYSTEM_ADMINISTRATOR','bb849836-3e9b-4dc6-94de-ff8b520cdbfe'::uuid),
+                   ('ROLE_PORTAL_HOST','6627d4e0-9f4f-426a-a411-fced524dfa18'::uuid),
+                   ('ROLE_PORTAL_HOST','736391ca-9847-4d6b-8ad9-4d52fbce9da8'::uuid),
+                   ('ROLE_PORTAL_HOST','c8d2fca1-e01f-49db-9210-c43df9b935ec'::uuid),
+                   ('ROLE_PORTAL_HOST','cf6a3a43-b4e0-45fc-85ae-f2bda2943e87'::uuid),
+                   ('ROLE_PORTAL_HOST','297dc652-a044-41f9-999d-ad4e5a87fdbb'::uuid),
+                   ('ROLE_PORTAL_HOST','c567334c-eb0d-4b23-b111-63263df48fea'::uuid),
+                   ('ROLE_PORTAL_HOST','bb849836-3e9b-4dc6-94de-ff8b520cdbfe'::uuid);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

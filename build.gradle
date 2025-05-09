@@ -1,0 +1,194 @@
+plugins {
+    id "java"
+    id "maven-publish"
+    id "idea"
+    id "eclipse"
+    id "com.gorylenko.gradle-git-properties"
+    alias(libs.plugins.spring.boot)
+    id "jhipster.spring-cache-conventions"
+    id "jhipster.docker-conventions"
+    id "jhipster.code-quality-conventions"
+    id "jhipster.node-gradle-conventions"
+    id "org.liquibase.gradle"
+    // jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
+}
+
+group = "com.formos.huub"
+version = "0.0.1-SNAPSHOT"
+
+description = ""
+
+sourceCompatibility=21
+targetCompatibility=21
+assert System.properties["java.specification.version"] == "17" || "18" || "19" || "20" || "21"
+
+ext {
+    springProfiles = ""
+    if (project.hasProperty("tls")) {
+        springProfiles += ",tls"
+    }
+    if (project.hasProperty("e2e")) {
+        springProfiles += ",e2e"
+    }
+}
+
+repositories {
+    // Local maven repository is required for libraries built locally with maven like development jhipster-bom.
+    // mavenLocal()
+    mavenCentral()
+    // jhipster-needle-gradle-repositories - JHipster will add additional repositories
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+apply from: "gradle/liquibase.gradle"
+// jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
+
+if (project.hasProperty("prod")) {
+    apply from: "gradle/profile_prod.gradle"
+} else if (project.hasProperty("docker")) {
+    apply from: "gradle/profile_docker.gradle"
+
+}else if (project.hasProperty("stg")) {
+    apply from: "gradle/profile_stg.gradle"
+
+}else if (project.hasProperty("uat")) {
+    apply from: "gradle/profile_uat.gradle"
+
+}else if (project.hasProperty("huub")) {
+    apply from: "gradle/profile_huub.gradle"
+
+}else {
+    apply from: "gradle/profile_dev.gradle"
+}
+
+if (project.hasProperty("war")) {
+    apply from: "gradle/war.gradle"
+}
+
+
+idea {
+    module {
+        excludeDirs += files("node_modules")
+    }
+}
+
+eclipse {
+    sourceSets {
+        main {
+            java {
+                srcDirs += ["build/generated/sources/annotationProcessor/java/main"]
+            }
+        }
+    }
+}
+
+defaultTasks "bootRun"
+
+springBoot {
+    mainClass = "com.formos.huub.HuubApp"
+}
+
+gitProperties {
+    failOnNoGitDirectory = false
+    keys = ["git.branch", "git.commit.id.abbrev", "git.commit.id.describe"]
+}
+
+tasks.withType(com.gorylenko.GenerateGitPropertiesTask).configureEach {
+  outputs.doNotCacheIf("Task is always executed") { true }
+}
+
+configurations {
+    providedRuntime
+    implementation.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-hppc"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    testImplementation("com.tngtech.archunit:archunit-junit5-api:${archunitJunit5Version}") {
+        exclude group: "org.slf4j", module: "slf4j-api"
+    }
+    testRuntimeOnly("com.tngtech.archunit:archunit-junit5-engine:${archunitJunit5Version}") {
+        exclude group: "org.slf4j", module: "slf4j-api"
+    }
+    implementation "io.micrometer:micrometer-registry-prometheus-simpleclient"
+    implementation "jakarta.annotation:jakarta.annotation-api"
+    implementation "org.apache.commons:commons-lang3"
+
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.springframework.boot:spring-boot-loader-tools"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-aop"
+    implementation "org.springframework.boot:spring-boot-starter-logging"
+    implementation "org.springframework.boot:spring-boot-starter-mail"
+    implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-starter-undertow"
+
+    implementation "org.springframework.security:spring-security-data"
+    modules {
+        module("org.springframework.boot:spring-boot-starter-tomcat") {
+            replacedBy("org.springframework.boot:spring-boot-starter-undertow", "Use Undertow instead of Tomcat")
+        }
+    }
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    testImplementation "org.springframework.boot:spring-boot-test"
+    testImplementation "org.springframework.security:spring-security-test"
+    implementation libs.jhipster.framework
+    implementation libs.springdoc.openapi.starter.webmvc.api
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.security:spring-security-data"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-hibernate6"
+    implementation "org.hibernate.orm:hibernate-core"
+    implementation "org.hibernate.validator:hibernate-validator"
+    annotationProcessor "org.hibernate.orm:hibernate-jpamodelgen"
+    implementation "com.fasterxml.jackson.module:jackson-module-jaxb-annotations"
+    implementation "com.zaxxer:HikariCP"
+    implementation "com.google.api-client:google-api-client:${googleApiClientVersion}"
+    implementation "com.google.oauth-client:google-oauth-client-jetty:${googleOauthClientJettyVersion}"
+    implementation "com.google.apis:google-api-services-calendar:${googleApiServicesCalendar}"
+    annotationProcessor "org.glassfish.jaxb:jaxb-runtime"
+    testImplementation "org.testcontainers:jdbc"
+    testImplementation "org.testcontainers:junit-jupiter"
+    testImplementation "org.testcontainers:testcontainers"
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocOpenapiWebUI}"
+    implementation platform("software.amazon.awssdk:bom:${awssdkVersion}")
+    implementation "software.amazon.awssdk:s3"
+    implementation "software.amazon.awssdk:translate"
+    implementation "commons-io:commons-io:${gsonVersion}"
+    implementation "net.sf.biweekly:biweekly:${biweeklyVersion}"
+    implementation "com.google.code.gson:gson:${gsonVersion}"
+    implementation "com.itextpdf:itext-core:${itextpdfVersion}"
+    implementation "org.commonmark:commonmark:${commonmarkVersion}"
+    implementation "com.itextpdf:html2pdf:${html2pdfVersion}"
+    implementation "com.google.guava:guava:${googleGuavaVersion}"
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version:"${firebaseAdminVersion}"
+    implementation "com.google.http-client:google-http-client-jackson2:${googleHttpClientJackson2Version}"
+    implementation "com.microsoft.azure:msal4j:${msal4jVersion}"
+    implementation "com.sendgrid:sendgrid-java:${sendgridVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-quartz:${quartzVersion}"
+    implementation "com.twilio.sdk:twilio:${twilioVersion}"
+}
+
+task cleanResources(type: Delete) {
+    delete "build/resources"
+}
+
+
+compileJava.dependsOn processResources
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << '-Amapstruct.verbose=true'
+}
+
+processResources.dependsOn bootBuildInfo

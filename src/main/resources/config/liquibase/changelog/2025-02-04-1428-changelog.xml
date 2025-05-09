@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1738643841500-138"
+               author="hungd">
+        <createTable tableName="project_attachment">
+            <column name="id"
+                    type="UUID">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_project_attachment"/>
+            </column>
+            <column name="created_by"
+                    type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date"
+                    type="DATETIME"/>
+            <column name="last_modified_by"
+                    type="VARCHAR(50)"/>
+            <column name="last_modified_date"
+                    type="DATETIME"/>
+            <column defaultValueBoolean="false"
+                    name="is_delete"
+                    type="boolean"/>
+            <column name="name"
+                    type="VARCHAR(255)"/>
+            <column name="path"
+                    type="VARCHAR(255)"/>
+            <column name="type"
+                    type="VARCHAR(255)"/>
+            <column name="suffix"
+                    type="VARCHAR(255)"/>
+            <column name="project_id"
+                    type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1738643841500-139"
+               author="hungd">
+        <addColumn tableName="project">
+            <column name="business_owner_id"
+                    type="UUID"/>
+            <column name="estimated_completion_date"
+                    type="DATETIME"/>
+            <column name="proposed_start_date"
+                    type="DATETIME"/>
+            <column name="technical_advisor_id"
+                    type="UUID"/>
+            <column name="vendor_id"
+                    type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1738643841500-155"
+               author="hungd">
+        <addForeignKeyConstraint baseColumnNames="project_id"
+                                 baseTableName="project_attachment"
+                                 constraintName="FK_PROJECT_ATTACHMENT_ON_PROJECT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+    </changeSet>
+    <changeSet id="1738643841500-156"
+               author="hungd">
+        <addForeignKeyConstraint baseColumnNames="business_owner_id"
+                                 baseTableName="project"
+                                 constraintName="FK_PROJECT_ON_BUSINESS_OWNER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_owner"/>
+    </changeSet>
+    <changeSet id="1738643841500-157"
+               author="hungd">
+        <addForeignKeyConstraint baseColumnNames="portal_id"
+                                 baseTableName="project"
+                                 constraintName="FK_PROJECT_ON_PORTAL"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portal"/>
+    </changeSet>
+    <changeSet id="1738643841500-158"
+               author="hungd">
+        <addForeignKeyConstraint baseColumnNames="technical_advisor_id"
+                                 baseTableName="project"
+                                 constraintName="FK_PROJECT_ON_TECHNICAL_ADVISOR"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technical_advisor"/>
+    </changeSet>
+    <changeSet id="1738643841500-159"
+               author="hungd">
+        <addForeignKeyConstraint baseColumnNames="vendor_id"
+                                 baseTableName="project"
+                                 constraintName="FK_PROJECT_ON_VENDOR"
+                                 referencedColumnNames="id"
+                                 referencedTableName="community_partner"/>
+    </changeSet>
+    <changeSet id="1738643841500-192"
+               author="hungd">
+        <dropColumn columnName="user_id"
+                    tableName="project"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="172773919953-01" author="hnnguyen (generated)">
+        <addColumn tableName="question">
+            <column name="display_form" type="VARCHAR(50)"/>
+            <column name="column_size_for_member_form" type="VARCHAR(255)"/>
+            <column name="priority_order_for_member_form" type="INT"/>
+            <column name="group_code_for_member" type="VARCHAR(100)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="172773919953-02" author="hnnguyen (generated)">
+        <sql>
+            UPDATE question
+            SET display_form = 'BUSINESS_OWNER_FORM'
+            WHERE id IN ('0aee3672-9e23-46e3-87f4-07a9d4b59040',
+                         '0af55be8-b146-4e22-96d5-c2a6bb4baf51',
+                         '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a',
+                         '0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53',
+                         '0ae56733-2982-430d-87f2-947beda5698f',
+                         '0ae00898-dbf1-4673-9505-26fc1fe35174',
+                         '0ae00744-bb4e-4272-b886-f334ba7d0fe3',
+                         'cb21266f-0b68-4007-9995-fea0200e3aa9',
+                         '26d2d21d-d226-4b90-bd70-132304525c28',
+                         '565da7fa-535e-45c7-a42c-589acd5e47f4',
+                         'e81f3e2e-9d08-4489-b9f6-aa98e137eeaf',
+                         '49590e3a-1f44-47d6-9840-a1212991569d',
+                         'a2efa28a-0211-471a-8e2a-22c69d238db5',
+                         'baf66e03-ba69-47bf-8b05-8dd4825419a5',
+                         '82893d2a-8790-4dc5-a9fc-35b41f4bc2a4',
+                         '2414044e-166d-4cfd-b8aa-ba488fc0682a',
+                         '63289d1b-da93-4505-8b3a-12dc3b714bb2',
+                         'f2a0b130-0c6c-415d-800e-0a46d3b4c2dd',
+                         'c4e36b4d-317c-4038-8964-378fdc47639b',
+
+                         '0a6a95d6-2899-448a-9c20-b53ae2913057',
+                         '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7',
+                         '0a67be2b-ece4-4606-a77a-10dcf0d1edcf',
+                         '0a679568-5dd9-496f-8801-d7ee25deaf44',
+                         '0a66272d-3414-4784-8a8b-c3f4a89706ce',
+                         '0a65032c-7fbf-44e1-95e9-ebee1cc8f422',
+                         '0a59e5ad-4edf-43ef-afad-dc507afc8003',
+                         '0a586a08-9447-4105-82c0-5d381b3f4878',
+                         '0a561740-a57a-4cd0-aabb-0faa6be899a8');
+
+            UPDATE question
+            SET group_code_for_member = 'MEMBER_BUSINESS_OWNER_PROFILE'
+            WHERE id IN ('0aee3672-9e23-46e3-87f4-07a9d4b59040',
+                         '0af55be8-b146-4e22-96d5-c2a6bb4baf51',
+                         '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a',
+                         '0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53',
+                         '0ae56733-2982-430d-87f2-947beda5698f',
+                         '0ae00898-dbf1-4673-9505-26fc1fe35174',
+                         '0ae00744-bb4e-4272-b886-f334ba7d0fe3');
+            UPDATE question
+            SET group_code_for_member = 'MEMBER_BUSINESS_OWNER_BUSINESS'
+            WHERE id IN ('cb21266f-0b68-4007-9995-fea0200e3aa9',
+                         '26d2d21d-d226-4b90-bd70-132304525c28',
+                         '565da7fa-535e-45c7-a42c-589acd5e47f4',
+                         'e81f3e2e-9d08-4489-b9f6-aa98e137eeaf',
+                         '49590e3a-1f44-47d6-9840-a1212991569d',
+                         'a2efa28a-0211-471a-8e2a-22c69d238db5',
+                         'baf66e03-ba69-47bf-8b05-8dd4825419a5',
+                         '82893d2a-8790-4dc5-a9fc-35b41f4bc2a4',
+                         '2414044e-166d-4cfd-b8aa-ba488fc0682a',
+                         '63289d1b-da93-4505-8b3a-12dc3b714bb2',
+                         'f2a0b130-0c6c-415d-800e-0a46d3b4c2dd',
+                         'c4e36b4d-317c-4038-8964-378fdc47639b');
+
+            UPDATE question
+            SET group_code_for_member = 'MEMBER_BUSINESS_OWNER_DEMOGRAPHICS'
+            WHERE id IN ('0a6a95d6-2899-448a-9c20-b53ae2913057',
+                         '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7',
+                         '0a67be2b-ece4-4606-a77a-10dcf0d1edcf',
+                         '0a679568-5dd9-496f-8801-d7ee25deaf44',
+                         '0a66272d-3414-4784-8a8b-c3f4a89706ce',
+                         '0a65032c-7fbf-44e1-95e9-ebee1cc8f422',
+                         '0a59e5ad-4edf-43ef-afad-dc507afc8003',
+                         '0a586a08-9447-4105-82c0-5d381b3f4878',
+                         '0a561740-a57a-4cd0-aabb-0faa6be899a8');
+
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 1 WHERE id = '0aee3672-9e23-46e3-87f4-07a9d4b59040';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 2 WHERE id = '0af55be8-b146-4e22-96d5-c2a6bb4baf51';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 3 WHERE id = '0ae9bb00-f7d5-4de6-8073-d6facb7dc39a';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 4 WHERE id = '0ae27844-256a-4a0a-b7a8-3e1b8fbf3d53';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 5 WHERE id = '0ae56733-2982-430d-87f2-947beda5698f';
+            UPDATE question SET column_size_for_member_form = 2, priority_order_for_member_form = 6 WHERE id = '0ae00898-dbf1-4673-9505-26fc1fe35174';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 7 WHERE id = '0ae00744-bb4e-4272-b886-f334ba7d0fe3';
+
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 1 WHERE id = 'cb21266f-0b68-4007-9995-fea0200e3aa9';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 2 WHERE id = '26d2d21d-d226-4b90-bd70-132304525c28';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 3 WHERE id = '565da7fa-535e-45c7-a42c-589acd5e47f4';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 4 WHERE id = 'e81f3e2e-9d08-4489-b9f6-aa98e137eeaf';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 5 WHERE id = '49590e3a-1f44-47d6-9840-a1212991569d';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 6 WHERE id = 'a2efa28a-0211-471a-8e2a-22c69d238db5';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 7 WHERE id = 'baf66e03-ba69-47bf-8b05-8dd4825419a5';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 8 WHERE id = '82893d2a-8790-4dc5-a9fc-35b41f4bc2a4';
+            UPDATE question SET column_size_for_member_form = 12, priority_order_for_member_form = 9 WHERE id = '2414044e-166d-4cfd-b8aa-ba488fc0682a';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 10 WHERE id = '63289d1b-da93-4505-8b3a-12dc3b714bb2';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 11 WHERE id = 'f2a0b130-0c6c-415d-800e-0a46d3b4c2dd';
+            UPDATE question SET column_size_for_member_form = 12, priority_order_for_member_form = 12 WHERE id = 'c4e36b4d-317c-4038-8964-378fdc47639b';
+
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 1 WHERE id = '0a6a95d6-2899-448a-9c20-b53ae2913057';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 2 WHERE id = '0a69c77f-f357-4ef6-b43e-ef9eee8f01b7';
+            UPDATE question SET column_size_for_member_form = 4, priority_order_for_member_form = 3 WHERE id = '0a67be2b-ece4-4606-a77a-10dcf0d1edcf';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 4 WHERE id = '0a679568-5dd9-496f-8801-d7ee25deaf44';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 5 WHERE id = '0a66272d-3414-4784-8a8b-c3f4a89706ce';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 6 WHERE id = '0a65032c-7fbf-44e1-95e9-ebee1cc8f422';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 7 WHERE id = '0a59e5ad-4edf-43ef-afad-dc507afc8003';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 8 WHERE id = '0a586a08-9447-4105-82c0-5d381b3f4878';
+            UPDATE question SET column_size_for_member_form = 6, priority_order_for_member_form = 9 WHERE id = '0a561740-a57a-4cd0-aabb-0faa6be899a8';
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="172773919953-03" author="hnnguyen (generated)">
+        <sql>
+            INSERT INTO permission (id, "name", "type")
+            VALUES ('2c3ea30f-db0a-459c-ab27-5cbf60515c40', 'GET_MEMBER_BUSINESS_OWNER_ANSWER_BY_USER_ID', 'API'),
+                   ('7a54fa00-d409-4848-abf2-9cd0091aa13f', 'GET_MEMBER_BUSINESS_OWNER_QUESTION_BY_PORTAL_ID', 'API');
+
+            INSERT INTO authority_permissions (authority_name, permission_id)
+            VALUES ('ROLE_SYSTEM_ADMINISTRATOR', '2c3ea30f-db0a-459c-ab27-5cbf60515c40'),
+                   ('ROLE_PORTAL_HOST', '2c3ea30f-db0a-459c-ab27-5cbf60515c40'),
+                   ('ROLE_SYSTEM_ADMINISTRATOR', '7a54fa00-d409-4848-abf2-9cd0091aa13f'),
+                   ('ROLE_PORTAL_HOST', '7a54fa00-d409-4848-abf2-9cd0091aa13f');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

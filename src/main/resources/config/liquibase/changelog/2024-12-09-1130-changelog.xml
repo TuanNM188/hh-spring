@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1729255619853-03" author="TuanNM">
+        <sql>
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_PORTAL_HOST' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_BUSINESS_OWNER' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_TECHNICAL_ADVISOR' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_SYSTEM_ADMINISTRATOR' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_COMMUNITY_PARTNER' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  "permission"
+            WHERE id='7c5d44c1-6078-4251-b51e-aa82473c671b'::uuid::uuid;
+            DELETE FROM  authority_permissions
+            WHERE authority_name='ROLE_SYSTEM_ADMINISTRATOR' AND permission_id='7c5d44c1-6078-4251-b51e-aa82473c669b'::uuid::uuid;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

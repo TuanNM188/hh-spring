@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1729353996958-100" author="hnnguyen">
+        <sql>
+            UPDATE answer_option
+            SET answer = '$5,000,000-$9,999,999'
+            WHERE id = '3a8bacd8-decd-4da4-9c13-575eb3950381';
+
+            UPDATE answer_option
+            SET answer = '$5,000,000-$9,999,999'
+            WHERE id = '3a8bacd8-decd-4da4-9c13-575eb3950368';
+
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

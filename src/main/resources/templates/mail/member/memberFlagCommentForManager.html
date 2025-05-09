@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{baseTemplate :: content}">
+
+<div th:fragment="body-content">
+  <p th:text="#{email.activity.flag.comment.greeting(${receiverName})}">
+    Hello {0},
+  </p>
+  <p th:text="#{email.activity.flag.comment.body(${portalName}, ${senderName})}">
+    A comment on the {0} has been flagged by {1}.
+  </p>
+  <p class="mb-0">
+    <strong th:text="#{email.activity.flag.comment.body2}">
+      Reason:
+    </strong>
+    <span th:text="${description}">
+      description
+    </span>
+  </p>
+  <p class="mb-0">
+    <strong th:text="#{email.activity.flag.comment.body3}">
+      Post:
+    </strong>
+    <a class="link-custom"
+       th:href="${referenceUrl}"
+       text="Link to the flagged post"
+    >Link to the flagged post</a>
+  </p>
+  <p th:text="#{email.activity.flag.comment.body4}">
+    Please review this flagged content at your earliest convenience. If action is required, you can use the moderation tools available within the portal.
+  </p>
+  <p class="mb-0" th:text="#{email.footer.thanks}">Thanks,</p>
+  <p class="mt-0"><strong th:text="#{email.footer.signature}">The HUUB Team</strong></p>
+</div>
+</html>
